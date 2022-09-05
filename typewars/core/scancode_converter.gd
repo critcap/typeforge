@@ -1,5 +1,4 @@
 class_name ScancodeConverter
-extends Node
 
 
 static func convert_text_to_scancodes(text: Array) -> Array:
@@ -9,21 +8,38 @@ static func convert_text_to_scancodes(text: Array) -> Array:
 		for character in word:
 			var scancode: int
 
-			if OS.keyboard_get_layout_language(0) == "de":
+			if !is_qwerty_layout():
 				scancode = _handle_german_layout(character)
 				scancodes.append(scancode)
 				continue
 
 			scancodes.append(OS.find_scancode_from_string(character))
 
-		# at the end of each word add a space if its not at the last word
-		if word == text[-1]:
-			break
 		scancodes.append(space)
 
 	return scancodes
 
 
+static func convert_scancodes_to_text(scancodes: Array) -> Array:
+	var text = []
+	var space = OS.find_scancode_from_string("Space")
+	var word = ""
+	for scancode in scancodes:
+		if scancode == space:
+			text.append(word)
+			word = ""
+			continue
+		var letter := Umlaut.get_umlaut_from_scancode(scancode)
+		letter = OS.get_scancode_string(scancode) if letter.empty() else letter
+		word += letter.to_lower()
+
+	return text
+
+
 static func _handle_german_layout(character: String) -> int:
 	var scancode = OS.find_scancode_from_string(character)
-	return scancode if scancode != 0 else UmlautHandler.get_scancode_from_umlaut(character)
+	return scancode if scancode != 0 else Umlaut.get_scancode_from_umlaut(character)
+
+
+static func is_qwerty_layout() -> bool:
+	return OS.get_latin_keyboard_variant() == "QWERTY"

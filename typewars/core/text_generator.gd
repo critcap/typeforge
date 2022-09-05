@@ -1,4 +1,4 @@
-class_name TypingGenerator
+class_name TextGenerator
 extends Node
 
 const HOMEROW = ["a", "s", "d", "f", "j", "k", "l", "ö"]
@@ -7,14 +7,14 @@ const MAX_WORDS: int = 8
 const MIN_WORDS: int = 3
 
 
-func generate_typing_string(length: int) -> Array:
+static func generate_typing_string(length: int) -> Array:
 	var words = []
 	for _i in range(length):
-		words.append(generate_word(MIN_WORDS, MAX_WORDS))
+		words.append(_generate_word(MIN_WORDS, MAX_WORDS))
 	return words
 
 
-func generate_word(min_l, max_l) -> String:
+static func _generate_word(min_l, max_l) -> String:
 	var word = ""
 	while true:
 		if is_word_finished(word, min_l, max_l):
@@ -24,7 +24,7 @@ func generate_word(min_l, max_l) -> String:
 	return word
 
 
-func is_word_finished(word: String, min_l, max_l) -> bool:
+static func is_word_finished(word: String, min_l, max_l) -> bool:
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
 	if word.length() < min_l:

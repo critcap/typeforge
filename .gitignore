@@ -3,3 +3,5 @@
 .mono
 .vscode/settings.json
 typewars/.DS_Store
+.idea/.idea.Typewars/.idea
+.vscode
