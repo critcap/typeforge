@@ -35,6 +35,5 @@ margin_bottom = 68.0
 [node name="Label" parent="Control/CenterContainer" instance=ExtResource( 3 )]
 
 [connection signal="correct_letter_input" from="TypingTest" to="Control/CenterContainer/Label" method="_on_TypingTest_correct_letter_input"]
-[connection signal="test_started" from="TypingTest" to="Control/CenterContainer/Label" method="_on_TypingTest_test_started"]
 [connection signal="word_passed" from="TypingTest" to="Control/CenterContainer/Label" method="_on_TypingTest_word_passed"]
 [connection signal="wrong_letter_input" from="TypingTest" to="Control/CenterContainer/Label" method="_on_TypingTest_wrong_letter_input"]
