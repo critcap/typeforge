@@ -1,4 +1,3 @@
-class_name TypingTest
 extends Node
 
 signal test_started(text)
@@ -72,6 +71,7 @@ func validate_input(key_event: InputEventKey) -> void:
 		if test_codes[test_index] == KEY_SPACE:
 			text_index += 1
 			emit_signal("word_passed")
+			return
 		test_index += 1
 		emit_signal("correct_letter_input")
 	else:

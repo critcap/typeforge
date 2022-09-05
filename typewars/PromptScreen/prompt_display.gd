@@ -36,4 +36,4 @@ func update_progress_indicator(offset: int = 0):
 	if get_current().empty():
 		progress_indicator.rect_size.x = 0
 		return
-	pass#progress_indicator.rect_size.x = rect_size.x / get_current().length() * (index + offset)
+	progress_indicator.rect_size.x = rect_size.x / get_current().length() * (index + offset)
