@@ -1,5 +1,8 @@
 extends Label
 
+export (Color) var correct_letter_color = Color.green
+export (Color) var wrong_letter_color = Color.red
+
 var test_content: Array
 var index := 0
 
@@ -11,11 +14,13 @@ func setup(content: Array):
 
 
 func _on_TypingTest_correct_letter_input():
+	progress_indicator.color = correct_letter_color
 	index += 1
 	update_progress_indicator()
 
 
 func _on_TypingTest_wrong_letter_input():
+	progress_indicator.color = wrong_letter_color
 	update_progress_indicator(1)
 
 

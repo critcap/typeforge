@@ -18,7 +18,7 @@ var timer: Stopwatch
 
 
 func _ready():
-	test_text = TextGenerator.generate_typing_string(10)
+	test_text = TextGenerator.generate_typing_string(40)
 	test_codes = ScancodeConverter.convert_text_to_scancodes(test_text)
 	timer = Stopwatch.new()
 	add_child(timer)
@@ -36,7 +36,6 @@ func end_test() -> void:
 	print(
 		str("Test ended with " + str(errors) + " errors in " + str(timer.get_time()) + " seconds")
 	)
-	pass
 
 
 func _has_started() -> bool:
@@ -71,6 +70,7 @@ func validate_input(key_event: InputEventKey) -> void:
 		if test_codes[test_index] == KEY_SPACE:
 			text_index += 1
 			emit_signal("word_passed")
+			test_index += 1
 			return
 		test_index += 1
 		emit_signal("correct_letter_input")
