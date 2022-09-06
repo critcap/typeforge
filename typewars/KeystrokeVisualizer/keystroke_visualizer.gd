@@ -2,6 +2,7 @@ class_name KeystrokeVisualizer
 extends Control
 
 export (float, 0.0, 1.0) var max_content_width: float = 0.6
+export (float, 0.0, 99.0, 0.1) var lingering_time: float = 2.0
 
 var active: Label setget , get_active
 
@@ -10,6 +11,16 @@ onready var body: = $Body
 
 func get_active() -> Label:
 	return body.get_children()[-1] if body.get_children().size() > 0 else null
+
+func _process(delta):
+	if body.get_children().size() < 6:
+		return
+	
+	var child: = body.get_children()[0] as SelfDestructingLabel
+	if child.is_destructing():
+		return
+	
+	child.commit_sudoku(lingering_time)
 
 
 func _unhandled_input(event):
@@ -41,9 +52,9 @@ func write(letter: String) -> void:
 	if get_content_size().x > body.rect_size.x * max_content_width:
 		body.get_child(0).free()
 
-
+# TODO remove add_new_block functions + references
 func add_new_block() -> void:
-	active = Label.new()
+	active = SelfDestructingLabel.new()
 	body.add_child(active)
 
 

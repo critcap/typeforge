@@ -19,12 +19,17 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://typewars/base/scancode_converter.gd"
 }, {
-"base": "Reference",
+"base": "Label",
+"class": "SelfDestructingLabel",
+"language": "GDScript",
+"path": "res://typewars/KeystrokeVisualizer/self_destructing_label.gd"
+}, {
+"base": "Node",
 "class": "State",
 "language": "GDScript",
 "path": "res://typewars/base/common/state.gd"
 }, {
-"base": "Reference",
+"base": "Node",
 "class": "StateMachine",
 "language": "GDScript",
 "path": "res://typewars/base/common/state_machine.gd"
@@ -34,10 +39,10 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://typewars/base/common/stopwatch.gd"
 }, {
-"base": "Node",
+"base": "Reference",
 "class": "TextGenerator",
 "language": "GDScript",
-"path": "res://typewars/base/test_controller.gd"
+"path": "res://typewars/base/test_generator.gd"
 }, {
 "base": "Reference",
 "class": "Umlaut",
@@ -52,6 +57,7 @@ _global_script_classes=[ {
 _global_script_class_icons={
 "KeystrokeVisualizer": "",
 "ScancodeConverter": "",
+"SelfDestructingLabel": "",
 "State": "",
 "StateMachine": "",
 "Stopwatch": "",

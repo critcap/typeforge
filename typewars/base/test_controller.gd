@@ -1,35 +1,80 @@
-class_name TextGenerator
 extends Node
 
-const HOMEROW = ["a", "s", "d", "f", "j", "k", "l", "ö"]
+signal test_started(text)
+signal word_passed
+signal wrong_letter_input
+signal correct_letter_input
 
-const MAX_WORDS: int = 8
-const MIN_WORDS: int = 3
+var has_started setget , _has_started
+var errors: int = 0
 
+var test_text: Array
+var test_codes: Array
 
-static func generate_typing_string(length: int) -> Array:
-	seed(OS.get_ticks_msec())
-	var words = []
-	for _i in range(length):
-		words.append(_generate_word(MIN_WORDS, MAX_WORDS))
-	return words
+var test_index := 0
+var text_index := 0
 
-
-static func _generate_word(min_l, max_l) -> String:
-	var word = ""
-	while true:
-		if is_word_finished(word, min_l, max_l):
-			return word
-		randomize()
-		word += HOMEROW[randi() % HOMEROW.size()]
-
-	return word
+var timer: Stopwatch
 
 
-static func is_word_finished(word: String, min_l, max_l) -> bool:
-	randomize()
-	if word.length() < min_l:
-		return false
-	if word.length() >= max_l:
-		return true
-	return true if round(randf()) == 1 else false
+func _ready():
+	test_text = TextGenerator.generate_typing_string(40)
+	test_codes = ScancodeConverter.convert_text_to_scancodes(test_text)
+	timer = Stopwatch.new()
+	add_child(timer)
+
+
+func start_test() -> void:
+	test_index = 0
+	text_index = 0
+	timer.start()
+	emit_signal("test_started", test_text as Array)
+
+
+func end_test() -> void:
+	timer.stop()
+	print(
+		str("Test ended with " + str(errors) + " errors in " + str(timer.get_time()) + " seconds")
+	)
+
+
+func _has_started() -> bool:
+	return timer.has_started()
+
+
+func _input(event):
+	if event.is_action_pressed("ui_cancel"):
+		get_tree().quit()
+		return
+	if !(event is InputEventKey):
+		return
+
+	var key_event := event as InputEventKey
+	if !key_event.pressed || key_event.echo:
+		return
+
+	if !self.has_started:
+		start_test()
+
+	validate_input(key_event)
+
+	if test_index >= test_codes.size():
+		end_test()
+
+
+func validate_input(key_event: InputEventKey) -> void:
+	if key_event.physical_scancode == test_codes[test_index]:
+		if test_index >= test_codes.size():
+			end_test()
+			return
+		if test_codes[test_index] == KEY_SPACE:
+			text_index += 1
+			emit_signal("word_passed")
+			test_index += 1
+			return
+		test_index += 1
+		emit_signal("correct_letter_input")
+	else:
+		emit_signal("wrong_letter_input")
+		errors += 1
+		print("Error: " + str(errors))
