@@ -8,8 +8,6 @@ static func visualize_input(scancode: int) -> String:
 
 
 # More Symbols
-# https://www.lifewire.com/what-are-windows-keyboard-equivalents-to-mac-2260203#:~:text=In%20this%20example%2C%20you%20want,to%20perform%20the%20Option%20action.
-
 static func _parse_modifier_key_as_symbol(key_string: String) -> String:
 	key_string = key_string.to_lower()
 	match key_string:
