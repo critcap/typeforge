@@ -56,21 +56,23 @@ func _input(event):
 	if can_start(key_event):
 		start_test()
 		return
-		
+
 	if !self._has_started():
 		return
-		
+
 	validate_input(key_event)
 
 	if test_index >= test_codes.size():
 		end_test()
 
+
 func can_start(event: InputEventKey) -> bool:
-	if self._has_started(): 
+	if self._has_started():
 		return false
-	if event.scancode == KEY_SPACE: 
+	# ? Keep on spacebar start?
+	if event.scancode == KEY_SPACE:
 		return true
-	if event.physical_scancode == test_codes[0]: 
+	if event.physical_scancode == test_codes[0]:
 		return true
 	return false
 
