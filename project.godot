@@ -9,10 +9,20 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Node",
+"class": "ExerciseDataLoader",
+"language": "GDScript",
+"path": "res://typewars/test_loader.gd"
+}, {
 "base": "Control",
 "class": "KeystrokeVisualizer",
 "language": "GDScript",
 "path": "res://typewars/KeystrokeVisualizer/keystroke_visualizer.gd"
+}, {
+"base": "Reference",
+"class": "Qwertzyfier",
+"language": "GDScript",
+"path": "res://typewars/base/qwertzyfier.gd"
 }, {
 "base": "Reference",
 "class": "ScancodeConverter",
@@ -44,10 +54,20 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://typewars/base/test_generator.gd"
 }, {
+"base": "Node",
+"class": "TypingExercise",
+"language": "GDScript",
+"path": "res://typewars/base/typing_excercise.gd"
+}, {
 "base": "Reference",
 "class": "Umlaut",
 "language": "GDScript",
 "path": "res://typewars/base/umlaut.gd"
+}, {
+"base": "Node",
+"class": "Validator",
+"language": "GDScript",
+"path": "res://typewars/base/validator.gd"
 }, {
 "base": "Node",
 "class": "Visualizer",
@@ -55,14 +75,18 @@ _global_script_classes=[ {
 "path": "res://typewars/base/vizualizer.gd"
 } ]
 _global_script_class_icons={
+"ExerciseDataLoader": "",
 "KeystrokeVisualizer": "",
+"Qwertzyfier": "",
 "ScancodeConverter": "",
 "SelfDestructingLabel": "",
 "State": "",
 "StateMachine": "",
 "Stopwatch": "",
 "TextGenerator": "",
+"TypingExercise": "",
 "Umlaut": "",
+"Validator": "",
 "Visualizer": ""
 }
 
