@@ -1,7 +1,6 @@
 class_name SelfDestructingLabel
 extends Label
 
-
 var _is_destructing: bool = false setget , is_destructing
 
 
@@ -20,12 +19,20 @@ func self_destroy(timer: float) -> void:
 
 func commit_sudoku(timer: float) -> void:
 	self_destroy(timer)
-	
-	
+
+
 func animate_destruction(timer: float) -> void:
 	var tween = Tween.new()
 	add_child(tween)
-	tween.interpolate_property(self, "modulate", Color(1,1,1,1.0), Color(1,1,1,0.0), timer, tween.TRANS_LINEAR, tween.EASE_OUT)
+	tween.interpolate_property(
+		self,
+		"modulate",
+		Color(1, 1, 1, 1.0),
+		Color(1, 1, 1, 0.0),
+		timer,
+		tween.TRANS_LINEAR,
+		tween.EASE_OUT
+	)
 	tween.start()
 	yield(tween, "tween_completed")
 	queue_free()

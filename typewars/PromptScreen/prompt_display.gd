@@ -1,12 +1,13 @@
 extends Label
 
-export (Color) var correct_letter_color = Color.green
-export (Color) var wrong_letter_color = Color.red
+export(Color) var correct_letter_color = Color.green
+export(Color) var wrong_letter_color = Color.red
 
 var test_content: Array
 var index := 0
 
 onready var progress_indicator := $ColorRect
+
 
 func setup(content: Array):
 	test_content = content

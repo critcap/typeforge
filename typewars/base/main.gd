@@ -1,13 +1,10 @@
 extends Node
 
-
 var file_path = "res://dev/test.yaml"
 var data_loader: Dataloader = YamlDataLoader.new()
 
 onready var typing_test = $TypingTest
 onready var prompt = $Control/CenterContainer/Label
-
-
 
 #var key_display: Array
 
