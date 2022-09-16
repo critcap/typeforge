@@ -1,10 +1,13 @@
 extends Node
 
-onready var typing_test = $TypingTest
-onready var prompt = $Control/CenterContainer/Label
-onready var data_loader: Dataloader = YamlDataLoader.new()
 
 var file_path = "res://dev/test.yaml"
+var data_loader: Dataloader = YamlDataLoader.new()
+
+onready var typing_test = $TypingTest
+onready var prompt = $Control/CenterContainer/Label
+
+
 
 #var key_display: Array
 
@@ -21,7 +24,6 @@ func load_exercises():
 	if error != 0:
 		print(error)
 		return
-	
 
 
 func _on_data_loaded(exercises: Array):

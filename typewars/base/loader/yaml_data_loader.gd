@@ -27,7 +27,7 @@ func load_data(file_path: String) -> int:
 
 
 func get_tests(yaml_content):
-	if !yaml_content.has("tests") || yaml_content["tests"].empty():
+	if !yaml_content.has("tests"):  # || yaml_content["tests"].empty():
 		return null
 
 	var yaml_tests = yaml_content["tests"]
@@ -42,15 +42,25 @@ func get_tests(yaml_content):
 	return parsed_tests
 
 
-func parse_test_data(name: String, yaml_content: Dictionary) -> TypingExercise:
+func parse_test_data(name: String, yaml_content) -> TypingTest:
 	var keys = yaml_content.keys()
 
 	if !keys.has("content"):
 		return null
 
-	var exercise = TypingExercise.new(name, yaml_content["content"] as PoolStringArray)
+	var content = yaml_content["content"]
+
+	var test = _get_typing_test_class(content)
+	test.name = name
+	test.content = content
 
 	if keys.has("qwertz"):
-		exercise.qwertz = yaml_content["qwertz"]
+		test.qwertz = yaml_content["qwertz"]
 
-	return exercise
+	return test
+
+
+func _get_typing_test_class(content) -> TypingTest:
+	if content is String:
+		return SequenceTypingTest.new()
+	return TypingTest.new()

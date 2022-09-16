@@ -6,4 +6,6 @@ tests:
         content: ["q","w","e","r","t","y","u","i","o"]
     bottomrow:
         content: ["y","x","c","v","b","n","m",",","."]
+    brown_fox:
+        content: "The quick brown fox jumps over the lazy dog"
 ...
