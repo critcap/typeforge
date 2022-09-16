@@ -1,23 +1,28 @@
-class_name ExerciseDataLoader
-extends Node
+class_name YamlDataLoader
+extends Dataloader
 
-signal exercises_loaded(exericeses)
-
-var yaml = preload("res://addons/godot-yaml/gdyaml.gdns").new()
+var _yaml = preload("res://addons/godot-yaml/gdyaml.gdns").new()
 
 
-func load_exercises(file_path: String) -> int:
+func load_data(file_path: String) -> int:
 	var file = File.new()
 	var error = file.open(file_path, File.READ)
 	if error != 0:
 		print("Error opening file: " + file_path)
 		return error
 
-
 	var content = file.get_as_text()
-	var yaml_content = yaml.parse(content).result[0]
+	if content.empty():
+		print("Error reading file: " + file_path)
+		return ERR_INVALID_DATA
+
+	var yaml_content = _yaml.parse(content).result[0]
+	if !(yaml_content is Dictionary):
+		print("Error parsing file: " + file_path)
+		return ERR_INVALID_DATA
+
 	var exercises = get_tests(yaml_content)
-	emit_signal("exercises_loaded", exercises)
+	emit_signal("data_loaded", exercises)
 	return 0
 
 

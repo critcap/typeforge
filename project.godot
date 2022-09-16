@@ -10,9 +10,9 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Node",
-"class": "ExerciseDataLoader",
+"class": "Dataloader",
 "language": "GDScript",
-"path": "res://typewars/test_loader.gd"
+"path": "res://typewars/base/loader/data_loader.gd"
 }, {
 "base": "Control",
 "class": "KeystrokeVisualizer",
@@ -22,24 +22,24 @@ _global_script_classes=[ {
 "base": "Reference",
 "class": "Qwertzyfier",
 "language": "GDScript",
-"path": "res://typewars/base/qwertzyfier.gd"
+"path": "res://typewars/base/utility/qwertzyfier.gd"
 }, {
 "base": "Reference",
 "class": "ScancodeConverter",
 "language": "GDScript",
-"path": "res://typewars/base/scancode_converter.gd"
+"path": "res://typewars/base/utility/scancode_converter.gd"
 }, {
 "base": "Label",
 "class": "SelfDestructingLabel",
 "language": "GDScript",
 "path": "res://typewars/KeystrokeVisualizer/self_destructing_label.gd"
 }, {
-"base": "Reference",
+"base": "Node",
 "class": "State",
 "language": "GDScript",
 "path": "res://typewars/base/common/state.gd"
 }, {
-"base": "Reference",
+"base": "Node",
 "class": "StateMachine",
 "language": "GDScript",
 "path": "res://typewars/base/common/state_machine.gd"
@@ -62,7 +62,7 @@ _global_script_classes=[ {
 "base": "Reference",
 "class": "Umlaut",
 "language": "GDScript",
-"path": "res://typewars/base/umlaut.gd"
+"path": "res://typewars/base/utility/umlaut.gd"
 }, {
 "base": "Node",
 "class": "Validator",
@@ -73,9 +73,14 @@ _global_script_classes=[ {
 "class": "Visualizer",
 "language": "GDScript",
 "path": "res://typewars/base/vizualizer.gd"
+}, {
+"base": "Dataloader",
+"class": "YamlDataLoader",
+"language": "GDScript",
+"path": "res://typewars/base/loader/yaml_data_loader.gd"
 } ]
 _global_script_class_icons={
-"ExerciseDataLoader": "",
+"Dataloader": "",
 "KeystrokeVisualizer": "",
 "Qwertzyfier": "",
 "ScancodeConverter": "",
@@ -87,7 +92,8 @@ _global_script_class_icons={
 "TypingExercise": "",
 "Umlaut": "",
 "Validator": "",
-"Visualizer": ""
+"Visualizer": "",
+"YamlDataLoader": ""
 }
 
 [application]
