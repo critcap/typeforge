@@ -43,7 +43,7 @@ func create_test_data_from_raw(yaml_content):
 	return parsed_tests
 
 
-func parse_test_data(name: String, yaml_content) -> RawTestData:
+func parse_test_data(name: String, yaml_content) -> TypingTestData:
 	var keys = yaml_content.keys()
 
 	if !keys.has("content"):
@@ -51,7 +51,7 @@ func parse_test_data(name: String, yaml_content) -> RawTestData:
 
 	var content = yaml_content["content"]
 
-	var test = RawTestData.new()
+	var test = TypingTestData.new()
 	test.name = name
 	test.data = content
 	return test

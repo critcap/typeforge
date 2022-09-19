@@ -1,4 +1,4 @@
-class_name TestFactory
+class_name TypingTestFactory
 extends Node
 
 const LENGTH = 999
@@ -6,7 +6,7 @@ const MIN_SIZE = 3
 const MAX_SIZE = 8
 
 
-static func assemble_test_from_data(raw: RawTestData) -> TypingTest:
+static func assemble_test_from_data(raw: TypingTestData) -> TypingTest:
 	var test = TypingTest
 	test.name = raw.name
 	if !(raw.data is String):
@@ -24,11 +24,11 @@ static func assemble_test_from_data(raw: RawTestData) -> TypingTest:
 
 
 # random test generation
-static func generate_random_test(data: Array, length: int, min_size: int, max_size: int) -> PoolStringArray:
+static func generate_random_test(data: Array, l: int, _min: int, _max: int) -> PoolStringArray:
 	seed(OS.get_ticks_msec())
 	var words = []
-	for _i in range(length):
-		words.append(_generate_word(data, min_size, max_size))
+	for _i in range(l):
+		words.append(_generate_word(data, _min, _max))
 	return words
 
 

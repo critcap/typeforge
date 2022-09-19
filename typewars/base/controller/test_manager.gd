@@ -11,4 +11,4 @@ onready var prompt_display = $Control/CenterContainer/Label
 
 
 func _ready():
-	
+    pass

@@ -1,4 +1,4 @@
-class_name RawTestData
+class_name TypingTestData
 extends Reference
 # DataClass for loaded tests
 
