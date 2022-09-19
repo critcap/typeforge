@@ -2,6 +2,7 @@ extends Node
 
 var file_path = "res://dev/test.yaml"
 var data_loader: Dataloader = YamlDataLoader.new()
+var tests: Array
 
 onready var typing_test = $TypingTest
 onready var prompt = $Control/CenterContainer/Label
@@ -10,18 +11,29 @@ onready var prompt = $Control/CenterContainer/Label
 
 
 func _ready():
-	load_exercises()
-	typing_test.connect("test_started", self, "_on_test_started")
-	prompt.setup(typing_test.test_text)
+	add_child(data_loader)
+	load_startup(file_path)
+	print("world")
 
 
-func load_exercises():
+func startup(path: String) -> void:
+	load_tests(path)
+	yield(data_loader, "data_loaded")
+
+	#TODO add selection
+	var 
+
+func load_tests(path: String):
 	data_loader.connect("data_loaded", self, "_on_data_loaded")
-	var error = data_loader.load_data(file_path)
+	data_loader.load_data(path)
+
+
+func _on_data_loaded(error: int, tests: Array):
 	if error != 0:
-		print(error)
+		print("Error loading data with error code: ", error)
 		return
-
-
-func _on_data_loaded(exercises: Array):
-	print(exercises)
+	for test in tests:
+		print(test.names)
+		if tests == null:
+			tests = []
+		tests.append(test)

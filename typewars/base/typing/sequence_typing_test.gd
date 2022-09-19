@@ -6,9 +6,6 @@ var allow_qwertz: bool = false
 
 
 func set_content(value: String) -> void:
-	if sequence_content == value:
-		return
-
 	sequence_content = value
 	content = value.split(" ")
 

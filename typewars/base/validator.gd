@@ -6,14 +6,8 @@ signal wrong_letter_input
 signal correct_letter_input
 
 var _scancodes: Array
-var _index: int
-var _errors: int
-
-
-func _init(codes: Array):
-	_scancodes = codes
-	_index = 0
-	_errors = 0
+var _index: int = 0
+var _errors: int = 0
 
 
 func validate(code: int) -> void:

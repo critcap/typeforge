@@ -3,9 +3,8 @@ extends Node
 
 # TODO add standard tests as constants
 
-var test_name: String
 var content: PoolStringArray setget set_content, get_content
-var qwertz: Array setget , get_qwertz
+var qwertz: PoolStringArray setget , get_qwertz
 var force_qwertz: bool = false
 
 
@@ -18,19 +17,15 @@ func get_content() -> PoolStringArray:
 	return content
 
 
-# private methods
-
-
 # public methods
 func has_qwertz() -> bool:
 	return qwertz != null && !qwertz.empty()
 
 
-func get_qwertz(force: bool = force_qwertz) -> Array:
+func get_qwertz(force: bool = force_qwertz) -> PoolStringArray:
 	if !has_qwertz() && !force:
-		return []
+		return [] as PoolStringArray
 
 	if force && !has_qwertz():
-		return Qwertzyfier.qwertzyfy(content.join(" ")).split(" ") as Array
-
+		return Qwertzyfier.qwertzyfy(content.join(" ")).split(" ")
 	return qwertz
