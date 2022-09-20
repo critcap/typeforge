@@ -1,15 +1,16 @@
 class_name TypingTestFactory
 extends Node
 
-const LENGTH = 999
+const LENGTH = 100
 const MIN_SIZE = 3
 const MAX_SIZE = 8
 
 
 static func assemble_test_from_data(raw: TypingTestData) -> TypingTest:
-	var test = TypingTest
+	var test = TypingTest.new()
 	test.name = raw.name
 	if !(raw.data is String):
+		raw.data = raw.data as PoolStringArray
 		var data = (
 			raw.data
 			if is_qwerty_layout()
