@@ -10,6 +10,8 @@ func enter() -> void:
 func initialize() -> void:
 	owner.data_loader = YamlDataLoader.new()
 	owner.validator = Validator.new()
+	owner.add_child(owner.data_loader)
+	owner.add_child(owner.validator)
 
 	owner.data_loader.connect("data_loaded", self, "on_data_loaded")
 	owner.data_loader.load_data(owner.test_path)
@@ -23,6 +25,6 @@ func on_data_loaded(error: int, data: Array) -> void:
 		return
 	var loaded_tests = {}
 	for test in data:
-		print(test.names)
+		print(test.name)
 		loaded_tests[test.name] = test
 	owner.test_list = loaded_tests

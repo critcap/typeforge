@@ -16,3 +16,6 @@ func setup_test() -> void:
 	test.scancodes = ScancodeConverter.convert_text_to_scancodes(test.content)
 	# setup test classes
 	owner.validator = Validator.new()
+
+	# setup ui elements
+	prompt.setup(test_data)
