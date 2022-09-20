@@ -6,7 +6,8 @@ var prompt
 
 func enter() -> void:
 	.enter()
-	prompt = owner.prompt_display
+	prompt = owner.ui_prompt
+	setup_test()
 
 
 func setup_test() -> void:
