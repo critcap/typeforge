@@ -21,14 +21,10 @@ func setup_list_menu() -> void:
 	menu.setup_list(list.keys())
 
 	menu.connect("item_selected", self, "on_item_selected")
-	menu.connect("item_selected", owner, "set_selected_text")
+	menu.connect("item_selected", owner, "set_selected_test")
 	menu.open()
 
 
 func on_item_selected(item: int) -> void:
-	# TODO lock display
-	var tests = owner.test_list
-	if item >= tests.size():
-		print("Selection is out of bounds")
-
-	owner.change_state("PrepareTestState")
+	yield(get_tree(), "idle_frame")
+	owner.change_state("SetupTestState")

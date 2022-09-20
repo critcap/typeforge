@@ -15,6 +15,9 @@ onready var ui_list = $ListSelection
 
 
 func set_selected_test(value) -> void:
+	if value == null || !(value is int) || value >= test_list.size():
+		print("test index out of range")
+		return
 	_selected_index = value
 
 
