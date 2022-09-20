@@ -20,7 +20,8 @@ func set_selected_test(value) -> void:
 
 func get_selected_test() -> TypingTestData:
 	var index = _selected_index if _selected_index else 0
-	return test_list[index] as TypingTestData
+	var key = test_list.keys()[index]
+	return test_list[key] as TypingTestData
 
 
 func _ready():
