@@ -14,7 +14,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://typewars/Core/FileLoader/data_loader.gd"
 }, {
-"base": "Reference",
+"base": "State",
 "class": "InitState",
 "language": "GDScript",
 "path": "res://typewars/Core/Controller/init_state.gd"
@@ -34,7 +34,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://typewars/Core/Utility/scancode_converter.gd"
 }, {
-"base": "Reference",
+"base": "State",
 "class": "SelectTestState",
 "language": "GDScript",
 "path": "res://typewars/Core/Controller/select_test_state.gd"
@@ -44,32 +44,32 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://typewars/KeystrokeVisualizer/self_destructing_label.gd"
 }, {
-"base": "Reference",
+"base": "State",
 "class": "SetupTestState",
 "language": "GDScript",
 "path": "res://typewars/Core/Controller/setup_test_state.gd"
 }, {
-"base": "Reference",
+"base": "Node",
 "class": "State",
 "language": "GDScript",
 "path": "res://typewars/Core/Common/state.gd"
 }, {
-"base": "Reference",
+"base": "Node",
 "class": "StateMachine",
 "language": "GDScript",
 "path": "res://typewars/Core/Common/state_machine.gd"
 }, {
-"base": "Reference",
+"base": "Node",
 "class": "Stopwatch",
 "language": "GDScript",
 "path": "res://typewars/Core/Common/stopwatch.gd"
 }, {
-"base": "Reference",
+"base": "Node",
 "class": "TextGenerator",
 "language": "GDScript",
 "path": "res://typewars/Core/test_generator.gd"
 }, {
-"base": "Reference",
+"base": "Node",
 "class": "TypingTest",
 "language": "GDScript",
 "path": "res://typewars/Core/TypingTest/typing_test.gd"
@@ -79,7 +79,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://typewars/Core/TypingTest/typing_test_data.gd"
 }, {
-"base": "Reference",
+"base": "Node",
 "class": "TypingTestFactory",
 "language": "GDScript",
 "path": "res://typewars/Core/TypingTest/typing_test_factory.gd"
@@ -89,17 +89,17 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://typewars/Core/Utility/umlaut.gd"
 }, {
-"base": "Reference",
+"base": "Node",
 "class": "Validator",
 "language": "GDScript",
 "path": "res://typewars/Core/validator.gd"
 }, {
-"base": "Reference",
+"base": "Node",
 "class": "Visualizer",
 "language": "GDScript",
 "path": "res://typewars/Core/vizualizer.gd"
 }, {
-"base": "Reference",
+"base": "Dataloader",
 "class": "YamlDataLoader",
 "language": "GDScript",
 "path": "res://typewars/Core/FileLoader/yaml_data_loader.gd"
@@ -129,7 +129,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Typewars"
-run/main_scene="res://dev/Dev.tscn"
+run/main_scene="res://dev/MenuTest.tscn"
 config/icon="res://icon.png"
 
 [autoload]
