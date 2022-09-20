@@ -19,4 +19,4 @@ func setup_test() -> void:
 	owner.validator = Validator.new()
 
 	# setup ui elements
-	prompt.setup(test_data)
+	prompt.setup(test.content)
