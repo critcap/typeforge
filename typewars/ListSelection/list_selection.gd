@@ -22,7 +22,11 @@ func setup_list(items: Array) -> void:
 	for item in items:
 		var list_item = ListItem.instance()
 		add_child(list_item)
-		list_item.setup(item.name if "name" in item else str("item ", items.find(item)))
+
+		var _name = get_item_name_text(item)
+		_name = str("item ", items.find(item)) if _name == "" else _name
+		list_item.setup(_name)
+		
 		list_item.item.connect("pressed", self, "on_item_pressed", [items.find(item)])
 
 	# setting the first and last elements to wrap
@@ -37,3 +41,11 @@ func on_item_pressed(item_index: int) -> void:
 	if !visible:
 		return
 	emit_signal("item_selected", item_index)
+
+
+func get_item_name_text(item) -> String:
+	if item is String:
+		return item
+	if "name" in item:
+		return item.name
+	return ""
