@@ -129,7 +129,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Typewars"
-run/main_scene="res://dev/MenuTest.tscn"
+run/main_scene="res://typewars/TypingTest/TypingTest.tscn"
 config/icon="res://icon.png"
 
 [autoload]

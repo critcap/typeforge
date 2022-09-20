@@ -10,7 +10,8 @@ var validator: Validator
 var test_list: Dictionary
 var _selected_index: int
 
-onready var prompt_display = $Control/CenterContainer/Label
+onready var ui_prompt = $Label
+onready var ui_list = $ListSelection
 
 
 func set_selected_test(value) -> void:

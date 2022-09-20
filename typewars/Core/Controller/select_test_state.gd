@@ -1,18 +1,28 @@
 class_name SelectTestState
 extends State
 
-var list_display
+var menu: Control
 
 
 func enter() -> void:
 	.enter()
-	# TODO setup display
-	# TODO open display
+	setup_list_menu()
 
 
-func connect_signals() -> void:
-	list_display.connect("item_selected", self, "on_item_selected")
-	list_display.connect("item_selected", owner, "set_selected_text")
+func setup_list_menu() -> void:
+	menu = owner.ui_list
+
+	var list := owner.test_list as Dictionary
+
+	if list.size() == 0:
+		menu.setup_list(["No tests found"])
+		return
+
+	menu.setup_list(list.keys())
+
+	menu.connect("item_selected", self, "on_item_selected")
+	menu.connect("item_selected", owner, "set_selected_text")
+	menu.open()
 
 
 func on_item_selected(item: int) -> void:
