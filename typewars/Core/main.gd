@@ -1,7 +1,7 @@
 extends Node
 
 var file_path = "res://dev/test.yaml"
-var data_loader: Dataloader = YamlDataLoader.new()
+var data_loader: Dataloader = Dataloader.new()
 var tests: Array
 
 onready var typing_test = $TypingTest
@@ -12,7 +12,7 @@ onready var prompt = $Control/CenterContainer/Label
 
 func _ready():
 	add_child(data_loader)
-	load_startup(file_path)
+	startup(file_path)
 	print("world")
 
 
@@ -21,7 +21,7 @@ func startup(path: String) -> void:
 	yield(data_loader, "data_loaded")
 
 	#TODO add selection
-	var 
+
 
 func load_tests(path: String):
 	data_loader.connect("data_loaded", self, "_on_data_loaded")

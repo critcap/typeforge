@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://typewars/base/controller/init_state.gd" type="Script" id=1]
-[ext_resource path="res://typewars/base/controller/test_manager.gd" type="Script" id=2]
-[ext_resource path="res://typewars/base/controller/select_test_state.gd" type="Script" id=3]
-[ext_resource path="res://typewars/base/controller/setup_test_state.gd" type="Script" id=4]
+[ext_resource path="res://typewars/Core/Controller/init_state.gd" type="Script" id=1]
+[ext_resource path="res://typewars/Core/Controller/test_manager.gd" type="Script" id=2]
+[ext_resource path="res://typewars/Core/Controller/select_test_state.gd" type="Script" id=3]
+[ext_resource path="res://typewars/Core/Controller/setup_test_state.gd" type="Script" id=4]
 
 [node name="TestManager" type="Node"]
 script = ExtResource( 2 )
