@@ -15,6 +15,11 @@ _global_script_classes=[ {
 "path": "res://typewars/Core/FileLoader/data_loader.gd"
 }, {
 "base": "State",
+"class": "EndTestState",
+"language": "GDScript",
+"path": "res://typewars/Core/Controller/end_test_state.gd"
+}, {
+"base": "State",
 "class": "InitState",
 "language": "GDScript",
 "path": "res://typewars/Core/Controller/init_state.gd"
@@ -84,6 +89,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://typewars/Core/TypingTest/typing_test_factory.gd"
 }, {
+"base": "Reference",
+"class": "TypingTestResults",
+"language": "GDScript",
+"path": "res://typewars/Core/TypingTest/typing_test_results.gd"
+}, {
 "base": "State",
 "class": "TypingTestState",
 "language": "GDScript",
@@ -99,7 +109,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://typewars/Core/validator.gd"
 }, {
-"base": "Reference",
+"base": "Node",
 "class": "Visualizer",
 "language": "GDScript",
 "path": "res://typewars/KeystrokeVisualizer/vizualizer.gd"
@@ -111,6 +121,7 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "Dataloader": "",
+"EndTestState": "",
 "InitState": "",
 "KeystrokeVisualizer": "",
 "Qwertzyfier": "",
@@ -125,6 +136,7 @@ _global_script_class_icons={
 "TypingTest": "",
 "TypingTestData": "",
 "TypingTestFactory": "",
+"TypingTestResults": "",
 "TypingTestState": "",
 "Umlaut": "",
 "Validator": "",

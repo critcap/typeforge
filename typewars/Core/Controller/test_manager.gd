@@ -2,6 +2,7 @@ extends StateMachine
 
 var selected_test: TypingTestData setget set_selected_test, get_selected_test
 
+
 export(String, FILE) var test_path: String
 
 var typing_test: TypingTest
@@ -12,6 +13,7 @@ var _selected_index: int
 
 onready var ui_prompt = $Prompt
 onready var ui_list = $ListSelection
+onready var ui_statistics = $Statistics
 
 
 func set_selected_test(value) -> void:

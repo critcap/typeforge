@@ -20,14 +20,22 @@ func setup_test() -> void:
 	var test: = TypingTestFactory.assemble_test_from_data(test_data) as TypingTest
 	test.mode = DEFAULT_MODE
 	test.scancodes = ScancodeConverter.convert_text_to_scancodes(test.content)
+	
+
 	owner.typing_test = test
 	
 	# setup test classes
-	owner.validator = Validator.new()
-	owner.validator.scancodes = test.scancodes
+	var validator = Validator.new()
+	owner.validator = validator
+	validator.scancodes = test.scancodes
+
+	test.results = TypingTestResults.new()
+	validator.connect("correct_letter_input", test.results, "on_correct_letter_pressed")
+	validator.connect("wrong_letter_input", test.results, "on_wrong_letter_pressed")
+	validator.connect("word_passed", test.results, "on_word_passed")
 	
 	# ui setup
 	prompt.setup(test.content)
-	owner.validator.connect("correct_letter_input", prompt, "_on_TypingTest_correct_letter_input")
-	owner.validator.connect("wrong_letter_input", prompt, "_on_TypingTest_wrong_letter_input")
-	owner.validator.connect("word_passed", prompt, "_on_TypingTest_word_passed")
+	validator.connect("correct_letter_input", prompt, "_on_TypingTest_correct_letter_input")
+	validator.connect("wrong_letter_input", prompt, "_on_TypingTest_wrong_letter_input")
+	validator.connect("word_passed", prompt, "_on_TypingTest_word_passed")

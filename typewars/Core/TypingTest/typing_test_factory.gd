@@ -1,7 +1,7 @@
 class_name TypingTestFactory
 extends Node
 
-const LENGTH = 100
+const LENGTH = 20
 const MIN_SIZE = 3
 const MAX_SIZE = 8
 

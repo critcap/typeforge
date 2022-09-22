@@ -4,12 +4,13 @@ extends State
 var validator: Validator
 var test: TypingTest
 
-var timer 
+var timer
+
 
 func enter() -> void:
 	validator = owner.validator
 	create_timer_from_mode(owner.typing_test.mode)
-	
+	owner.ui_prompt.visible = true
 	.enter()
 
 
@@ -29,6 +30,10 @@ func unhandled_input(event):
 		return
 
 	var key_event := event as InputEventKey
+
+	if OS.is_debug_build() && key_event.scancode == KEY_ENTER && key_event.control:
+		on_test_finished()
+		return
 	if !key_event.pressed || key_event.echo:
 		return
 
@@ -36,13 +41,23 @@ func unhandled_input(event):
 
 
 func on_test_started() -> void:
-	# TODO add start timer
-	pass
+	timer.start()
 
 
 func on_test_finished() -> void:
-	# TODO add stop timer
-	pass
+	timer.stop()
+	var time = timer.get_time()
+	owner.typing_test.results.time = time
+	owner.change_state("EndTestState")
+
+
+func exit() -> void:
+	.exit()
+	yield(get_tree(), "idle_frame")
+	timer.free()
+	validator.queue_free()
+	owner.ui_prompt.visible = false
+
 
 func create_timer_from_mode(mode: int) -> void:
 	if mode == TypingTest.RACE:
