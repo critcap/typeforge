@@ -28,3 +28,8 @@ func setup_list_menu() -> void:
 func on_item_selected(item: int) -> void:
 	owner.selected_test = item
 	owner.change_state("SetupTestState")
+
+
+func exit() -> void:
+	.exit()
+	menu.visible = false

@@ -5,6 +5,8 @@ extends State
 func enter() -> void:
 	.enter()
 	initialize()
+	yield(owner.data_loader, "data_loaded")
+	owner.change_state("SelectTestState")
 
 
 func initialize() -> void:
@@ -14,9 +16,7 @@ func initialize() -> void:
 	owner.add_child(owner.validator)
 
 	owner.data_loader.connect("data_loaded", self, "on_data_loaded")
-	owner.data_loader.load_data(owner.test_path)
-	yield(owner.data_loader, "data_loaded")
-	owner.change_state("SelectTestState")
+	owner.data_loader.load_data(owner.test_path)		
 
 
 func on_data_loaded(error: int, data: Array) -> void:

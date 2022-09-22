@@ -10,7 +10,7 @@ var validator: Validator
 var test_list: Dictionary
 var _selected_index: int
 
-onready var ui_prompt = $Label
+onready var ui_prompt = $Prompt
 onready var ui_list = $ListSelection
 
 
