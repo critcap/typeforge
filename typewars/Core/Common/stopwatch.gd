@@ -39,5 +39,8 @@ func get_time() -> float:
 	return float(_total + _current) / 1000
 
 
+func get_current_time() -> float:
+	return -1 * float(_current - OS.get_ticks_msec()) / 1000
+
 func has_started() -> bool:
 	return _current != 0
