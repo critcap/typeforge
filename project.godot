@@ -84,6 +84,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://typewars/Core/TypingTest/typing_test_factory.gd"
 }, {
+"base": "State",
+"class": "TypingTestState",
+"language": "GDScript",
+"path": "res://typewars/Core/Controller/typing_test_state.gd"
+}, {
 "base": "Reference",
 "class": "Umlaut",
 "language": "GDScript",
@@ -94,10 +99,10 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://typewars/Core/validator.gd"
 }, {
-"base": "Node",
+"base": "Reference",
 "class": "Visualizer",
 "language": "GDScript",
-"path": "res://typewars/Core/vizualizer.gd"
+"path": "res://typewars/KeystrokeVisualizer/vizualizer.gd"
 }, {
 "base": "Dataloader",
 "class": "YamlDataLoader",
@@ -120,6 +125,7 @@ _global_script_class_icons={
 "TypingTest": "",
 "TypingTestData": "",
 "TypingTestFactory": "",
+"TypingTestState": "",
 "Umlaut": "",
 "Validator": "",
 "Visualizer": "",
