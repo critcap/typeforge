@@ -29,4 +29,3 @@ func get_selected_test() -> TypingTestData:
 
 func _ready():
 	change_state("InitState")
-	pass

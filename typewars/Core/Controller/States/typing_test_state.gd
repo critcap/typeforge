@@ -48,12 +48,11 @@ func on_test_finished() -> void:
 	timer.stop()
 	var time = timer.get_time()
 	owner.typing_test.results.time = time
-	owner.change_state("EndTestState")
+	change_state("EndTestState")
 
 
 func exit() -> void:
 	.exit()
-	yield(get_tree(), "idle_frame")
 	timer.free()
 	validator.queue_free()
 	owner.ui_prompt.visible = false
