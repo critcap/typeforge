@@ -1,0 +1,17 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://typewars/TypingTest/TestManager.tscn" type="PackedScene" id=1]
+[ext_resource path="res://typewars/ListSelection/ListSelection.tscn" type="PackedScene" id=2]
+[ext_resource path="res://typewars/PromptScreen/Prompt.tscn" type="PackedScene" id=3]
+[ext_resource path="res://typewars/StatisticsMenu/Statistics.tscn" type="PackedScene" id=4]
+
+[node name="Main" instance=ExtResource( 1 )]
+test_path = "res://dev/test.yaml"
+
+[node name="ListSelection" parent="." index="3" instance=ExtResource( 2 )]
+
+[node name="Prompt" parent="." index="6" instance=ExtResource( 3 )]
+visible = false
+
+[node name="Statistics" parent="." index="7" instance=ExtResource( 4 )]
+visible = false

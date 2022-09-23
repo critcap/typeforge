@@ -28,7 +28,13 @@ func connect_signals() -> void:
 
 
 func disconnect_signals() -> void:
-	pass
+	var all_signals = get_incoming_connections()
+
+	if all_signals.size() < 1:
+		return
+
+	for s in all_signals:
+		s.source.disconnect(s.signal_name, self, s.method_name)
 
 
 func unhandled_input(_event: InputEvent) -> void:

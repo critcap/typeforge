@@ -14,13 +14,13 @@ func setup(content: Array):
 	text = get_current()
 
 
-func _on_TypingTest_correct_letter_input():
+func _on_TypingTest_correct_letter_input(_code: int):
 	progress_indicator.color = correct_letter_color
 	index += 1
 	update_progress_indicator()
 
 
-func _on_TypingTest_wrong_letter_input():
+func _on_TypingTest_wrong_letter_input(_code: int):
 	progress_indicator.color = wrong_letter_color
 	update_progress_indicator(1)
 
