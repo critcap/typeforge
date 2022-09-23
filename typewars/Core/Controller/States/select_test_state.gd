@@ -1,5 +1,5 @@
 class_name SelectTestState
-extends State
+extends TestState
 
 var menu: Control
 

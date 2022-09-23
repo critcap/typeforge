@@ -1,5 +1,5 @@
 class_name TypingTestState
-extends State
+extends TestState
 
 var validator: Validator
 var test: TypingTest

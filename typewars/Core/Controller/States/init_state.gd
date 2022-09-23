@@ -1,5 +1,5 @@
 class_name InitState
-extends State
+extends TestState
 
 
 func enter() -> void:

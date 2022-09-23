@@ -1,5 +1,5 @@
 class_name SetupTestState
-extends State
+extends TestState
 
 const DEFAULT_MODE = TypingTest.RACE
 

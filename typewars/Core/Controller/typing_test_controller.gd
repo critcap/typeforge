@@ -1,10 +1,8 @@
 extends StateMachine
 
-var selected_test: TypingTestData setget set_selected_test, get_selected_test
-
-
 export(String, FILE) var test_path: String
 
+var selected_test: TypingTestData setget set_selected_test, get_selected_test
 var typing_test: TypingTest
 var data_loader: Dataloader
 var validator: Validator
