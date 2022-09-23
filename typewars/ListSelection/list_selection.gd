@@ -17,8 +17,11 @@ func open() -> void:
 		return
 	get_children()[0].select_item()
 
-
+# is quite lazy always creates a comple new list
+# but godot is fast with instancing objects and doenst benefit
+# that much from pooling.
 func setup_list(items: Array) -> void:
+	clear()
 	for item in items:
 		var list_item = ListItem.instance()
 		add_child(list_item)
@@ -49,3 +52,12 @@ func get_item_name_text(item) -> String:
 	if "name" in item:
 		return item.name
 	return ""
+
+
+func clear() -> void:
+	if get_children().size() == 0:
+		return
+
+	visible = false
+	for child in get_children():
+		child.queue_free()
