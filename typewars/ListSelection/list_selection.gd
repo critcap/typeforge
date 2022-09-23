@@ -23,15 +23,15 @@ func setup_list(items: Array) -> void:
 		var list_item = ListItem.instance()
 		add_child(list_item)
 
-		var _name = get_item_name_text(item)
-		_name = str("item ", items.find(item)) if _name == "" else _name
-		list_item.setup(_name)
-		
+		var item_name = get_item_name_text(item)
+		item_name = str("item ", items.find(item)) if item_name == "" else item_name
+		list_item.setup(item_name)
+
 		list_item.item.connect("pressed", self, "on_item_pressed", [items.find(item)])
 
 	# setting the first and last elements to wrap
-	var first: = get_children()[0].item as Button
-	var last: = get_children()[-1].item as Button
+	var first := get_children()[0].item as Button
+	var last := get_children()[-1].item as Button
 
 	first.set_focus_neighbour(MARGIN_TOP, last.get_path())
 	last.set_focus_neighbour(MARGIN_BOTTOM, first.get_path())
