@@ -1,66 +1,47 @@
-class_name TypingTestState
+class_name BaseTypingTestState
 extends TestState
 
 var validator: Validator
-var test: TypingTest
-
-var timer
+var allow_input: bool
 
 
 func enter() -> void:
 	validator = owner.validator
-	create_timer_from_mode(owner.typing_test.mode)
 	owner.ui_prompt.visible = true
 	.enter()
 
 
 func connect_signals() -> void:
+	.connect_signals()
 	validator.connect("started", self, "on_test_started")
 	validator.connect("finished", self, "on_test_finished")
 
-	if timer is Timer:
-		timer.connect("timeout", self, "on_test_finished")
+
+func on_test_started() -> void:
+	pass
+
+
+func on_test_finished() -> void:
+	pass
 
 
 func unhandled_input(event):
-	if event.is_action_pressed("ui_cancel"):
-		# TODO add abort
-		return
+	.unhandled_input(event)
 	if !(event is InputEventKey):
 		return
 
 	var key_event := event as InputEventKey
-
+	# short for quickly ending tests in debug mode
 	if OS.is_debug_build() && key_event.scancode == KEY_ENTER && key_event.control:
 		on_test_finished()
 		return
+	# filters cases of hold down keys
 	if !key_event.pressed || key_event.echo:
 		return
-
 	validator.validate(event.physical_scancode)
-
-
-func on_test_started() -> void:
-	timer.start()
-
-
-func on_test_finished() -> void:
-	timer.stop()
-	var time = timer.get_time()
-	owner.typing_test.results.time = time
-	change_state("EndTestState")
 
 
 func exit() -> void:
 	.exit()
-	timer.free()
 	validator.queue_free()
 	owner.ui_prompt.visible = false
-
-
-func create_timer_from_mode(mode: int) -> void:
-	if mode == TypingTest.RACE:
-		timer = Stopwatch.new()
-	if mode == TypingTest.TIME_ATTACK:
-		timer = Timer.new()
-	add_child(timer)

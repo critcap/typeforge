@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "TestState",
+"class": "BaseTypingTestState",
+"language": "GDScript",
+"path": "res://typewars/Core/Controller/States/typing_test_state.gd"
+}, {
 "base": "Node",
 "class": "Dataloader",
 "language": "GDScript",
@@ -79,6 +84,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://typewars/Core/test_generator.gd"
 }, {
+"base": "BaseTypingTestState",
+"class": "TimeAttackTestState",
+"language": "GDScript",
+"path": "res://typewars/Core/Controller/States/time_attack_test_state.gd"
+}, {
+"base": "BaseTypingTestState",
+"class": "TypeRaceTestState",
+"language": "GDScript",
+"path": "res://typewars/Core/Controller/States/type_race_test_state.gd"
+}, {
 "base": "Node",
 "class": "TypingTest",
 "language": "GDScript",
@@ -98,11 +113,6 @@ _global_script_classes=[ {
 "class": "TypingTestResults",
 "language": "GDScript",
 "path": "res://typewars/Core/TypingTest/typing_test_results.gd"
-}, {
-"base": "TestState",
-"class": "TypingTestState",
-"language": "GDScript",
-"path": "res://typewars/Core/Controller/States/typing_test_state.gd"
 }, {
 "base": "Reference",
 "class": "Umlaut",
@@ -125,6 +135,7 @@ _global_script_classes=[ {
 "path": "res://typewars/Core/FileLoader/yaml_data_loader.gd"
 } ]
 _global_script_class_icons={
+"BaseTypingTestState": "",
 "Dataloader": "",
 "EndTestState": "",
 "InitState": "",
@@ -139,11 +150,12 @@ _global_script_class_icons={
 "Stopwatch": "",
 "TestState": "",
 "TextGenerator": "",
+"TimeAttackTestState": "",
+"TypeRaceTestState": "",
 "TypingTest": "",
 "TypingTestData": "",
 "TypingTestFactory": "",
 "TypingTestResults": "",
-"TypingTestState": "",
 "Umlaut": "",
 "Validator": "",
 "Visualizer": "",
@@ -174,6 +186,14 @@ enter_command_mode={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777217,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
  ]
+}
+reload_test={
+"deadzone": 0.5,
+"events": [  ]
+}
+quit_test={
+"deadzone": 0.5,
+"events": [  ]
 }
 
 [physics]
