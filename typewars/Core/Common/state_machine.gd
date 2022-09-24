@@ -3,10 +3,9 @@ extends Node
 
 signal state_changed(state_name)
 
+var in_transition: bool
 var current_state: State setget _set_current_state, _get_current_state
 var _current_state: State
-
-var in_transition: bool
 
 
 # public methods

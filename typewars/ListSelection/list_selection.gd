@@ -1,8 +1,8 @@
 extends VBoxContainer
 
-var index: int
-
 signal item_selected(index)
+
+var index: int
 
 onready var ListItem = load("res://typewars/ListSelection/ListSelectionItem.tscn")
 
@@ -16,6 +16,7 @@ func open() -> void:
 	if get_children().empty():
 		return
 	get_children()[0].select_item()
+
 
 # is quite lazy always creates a comple new list
 # but godot is fast with instancing objects and doenst benefit
