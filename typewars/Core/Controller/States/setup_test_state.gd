@@ -10,7 +10,6 @@ func enter() -> void:
 	.enter()
 	prompt = owner.ui_prompt.prompt_display
 	setup_test()
-	change_state("TypingTestState")
 
 
 func setup_test() -> void:
@@ -37,3 +36,10 @@ func setup_test() -> void:
 	validator.connect("correct_letter_input", prompt, "_on_TypingTest_correct_letter_input")
 	validator.connect("wrong_letter_input", prompt, "_on_TypingTest_wrong_letter_input")
 	validator.connect("word_passed", prompt, "_on_TypingTest_word_passed")
+
+	if test.mode == TypingTest.RACE:
+		change_state("TypeRaceTestState")
+		return
+	elif test.mmode == TypingTest.TIME_ATTACK:
+		change_state("TimeAttackTestState")
+		return
