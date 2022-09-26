@@ -1,9 +1,19 @@
 class_name TypingStatsCollector
 extends Node
 
+var data: Dictionary setget , get_data
+
 var _data := {}
 var _words: int
 var _time_stamp: int
+
+
+# region Setters & Getters
+func get_data() -> Dictionary:
+	return _data.duplicate()
+
+
+# endregion
 
 
 # region Public methods
@@ -44,7 +54,13 @@ func on_word_passed() -> void:
 # region Private methods
 func _add_new_entry(code: int) -> void:
 	_data[code] = {
-		ETypingStats.CODE: code, ETypingStats.TOTAL_COUNT: 0, ETypingStats.TOTAL_TIME: 0, ETypingStats.CORRECT: 0, ETypingStats.ERRORS: 0, ETypingStats.FASTEST: 0, ETypingStats.LONGEST: 0
+		ETypingStats.CODE: code,
+		ETypingStats.TOTAL_COUNT: 0,
+		ETypingStats.TOTAL_TIME: 0,
+		ETypingStats.CORRECT: 0,
+		ETypingStats.ERRORS: 0,
+		ETypingStats.FASTEST: 0,
+		ETypingStats.LONGEST: 0
 	}
 
 
