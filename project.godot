@@ -44,6 +44,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://typewars/KeystrokeVisualizer/keystroke_visualizer.gd"
 }, {
+"base": "HBoxContainer",
+"class": "ListEntry",
+"language": "GDScript",
+"path": "res://typewars/Core/UI/ListMenu/list_entry.gd"
+}, {
+"base": "VBoxContainer",
+"class": "ListMenu",
+"language": "GDScript",
+"path": "res://typewars/Core/UI/ListMenu/list_menu.gd"
+}, {
 "base": "Reference",
 "class": "Qwertzyfier",
 "language": "GDScript",
@@ -167,6 +177,8 @@ _global_script_class_icons={
 "EndTestState": "",
 "InitState": "",
 "KeystrokeVisualizer": "",
+"ListEntry": "",
+"ListMenu": "",
 "Qwertzyfier": "",
 "ScancodeConverter": "",
 "SelectTestState": "",
