@@ -5,7 +5,7 @@ signal item_selected(index)
 
 var index: int
 
-onready var ListItem = load("res://typewars/ListSelection/ListSelectionItem.tscn")
+onready var ListItem = load("res://typewars/Core/UI/ListMenu/ListEntry.tscn")
 
 
 func _ready():
