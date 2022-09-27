@@ -4,9 +4,12 @@ extends TestState
 var analyzer
 var menu
 
+
 func _ready():
 	analyzer = TypingStatsAnalyzer.new()
 	add_child(analyzer)
+	can_quit = true
+	can_reload = true
 
 func enter() -> void:
 	.enter()

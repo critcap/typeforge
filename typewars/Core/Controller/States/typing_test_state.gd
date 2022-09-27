@@ -4,6 +4,10 @@ extends TestState
 var validator: Validator
 var allow_input: bool
 
+func _ready():
+	can_quit = true
+	can_reload = true
+
 
 func enter() -> void:
 	validator = owner.validator

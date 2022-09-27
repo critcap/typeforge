@@ -26,11 +26,6 @@ func setup_test() -> void:
 	owner.validator = validator
 	validator.scancodes = test.scancodes
 
-	test.results = TypingTestResults.new()
-	validator.connect("correct_letter_input", test.results, "on_correct_letter_pressed")
-	validator.connect("wrong_letter_input", test.results, "on_wrong_letter_pressed")
-	validator.connect("word_passed", test.results, "on_word_passed")
-
 	var collector = owner.stats_collector
 	validator.connect("correct_letter_input", collector, "on_correct_letter_pressed")
 	validator.connect("wrong_letter_input", collector, "on_wrong_letter_pressed")
