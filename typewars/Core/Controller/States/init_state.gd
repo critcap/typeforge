@@ -11,8 +11,10 @@ func enter() -> void:
 func initialize() -> void:
 	owner.data_loader = YamlDataLoader.new()
 	owner.validator = Validator.new()
+	owner.stats_collector = TypingStatsCollector.new()
 	owner.add_child(owner.data_loader)
 	owner.add_child(owner.validator)
+	owner.add_child(owner.stats_collector)
 
 	owner.data_loader.connect("data_loaded", self, "on_data_loaded")
 	owner.data_loader.load_data(owner.test_path)

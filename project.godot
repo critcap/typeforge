@@ -104,7 +104,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://typewars/Core/Controller/States/type_race_test_state.gd"
 }, {
-"base": "Reference",
+"base": "Node",
 "class": "TypingStatsAnalyzer",
 "language": "GDScript",
 "path": "res://typewars/Core/TypingTest/Analyzer/typing_stats_analyzer.gd"

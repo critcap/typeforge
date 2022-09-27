@@ -1,14 +1,23 @@
 class_name EndTestState
 extends TestState
 
+var analyzer
 var menu
 
+func _ready():
+	analyzer = TypingStatsAnalyzer.new()
+	add_child(analyzer)
 
 func enter() -> void:
 	.enter()
 	menu = owner.ui_statistics
 	menu.visible = true
-	print_results()
+	var collector = owner.stats_collector
+	analyzer.analyze_typing_stats(collector.data, collector.time, collector.words)
+
+
+func connect_signals() -> void:
+	analyzer.connect("stats_analyzed", self, "on_stats_analyzed")
 
 
 func exit() -> void:
@@ -16,21 +25,9 @@ func exit() -> void:
 	menu.visible = false
 
 
-func print_results() -> void:
-	var results = owner.typing_test.results
-	print(results._words)
-	print(results.time)
+func on_stats_analyzed(results: TypingStatsResult) -> void:
+	results = results
 	print(results.wpm)
-	print(str("Correct Letters input: ", get_correct_count(results)))
-
-
-func get_correct_count(_results: TypingTestResults) -> int:
-	var correct: int = 0
-	for letter in _results._register.keys():
-		letter = _results._register[letter]
-		if letter.correct_presses:
-			correct += letter.correct_presses
-	return correct
 
 
 func unhandled_input(event: InputEvent) -> void:
