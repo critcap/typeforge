@@ -12,8 +12,8 @@ func analyze_typing_stats(typing_stats: Dictionary, time: int, words: int) -> vo
 
 	for letter in typing_stats.keys():
 		var letter_stats = typing_stats[letter]
-		results.total_errors = letter_stats[ETypingStats.ERRORS]
-		results.total_correct = letter_stats[ETypingStats.ERRORS]
+		results.total_errors += letter_stats[ETypingStats.ERRORS]
+		results.total_correct += letter_stats[ETypingStats.CORRECT]
 
 		# get most accurate key
 		if !results.most_accurate_key:
