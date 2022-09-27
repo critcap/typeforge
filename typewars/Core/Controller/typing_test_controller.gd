@@ -7,6 +7,8 @@ var typing_test: TypingTest
 var data_loader: Dataloader
 var validator: Validator
 var test_list: Dictionary
+var stats_collector: TypingStatsCollector
+
 var _selected_index: int
 
 onready var ui_prompt = $Prompt

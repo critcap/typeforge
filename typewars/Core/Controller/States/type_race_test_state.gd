@@ -16,8 +16,8 @@ func on_test_started() -> void:
 
 func on_test_finished() -> void:
 	stopwatch.stop()
-	var results := owner.typing_test.results as TypingTestResults
-	results.time = stopwatch.get_time()
+	var collector := owner.stats_collector as TypingStatsCollector
+	collector.time = stopwatch.get_time()
 	change_state("EndTestState")
 
 

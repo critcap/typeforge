@@ -21,8 +21,8 @@ func on_test_started() -> void:
 
 
 func on_test_finished() -> void:
-	var results := owner.typing_test.results as TypingTestResults
-	results.time = DEFAULT_TIMEOUT
+	var collector := owner.stats_collector as TypingStatsCollector
+	collector.time = DEFAULT_TIMEOUT
 	change_state("EndTestState")
 
 

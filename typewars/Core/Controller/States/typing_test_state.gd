@@ -38,7 +38,7 @@ func unhandled_input(event):
 	# filters cases of hold down keys
 	if !key_event.pressed || key_event.echo:
 		return
-	validator.validate(event.physical_scancode)
+	validator.validate(event.scancode)
 
 
 func exit() -> void:

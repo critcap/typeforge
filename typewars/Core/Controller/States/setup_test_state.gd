@@ -31,6 +31,11 @@ func setup_test() -> void:
 	validator.connect("wrong_letter_input", test.results, "on_wrong_letter_pressed")
 	validator.connect("word_passed", test.results, "on_word_passed")
 
+	var collector = owner.stats_collector
+	validator.connect("correct_letter_input", collector, "on_correct_letter_pressed")
+	validator.connect("wrong_letter_input", collector, "on_wrong_letter_pressed")
+	validator.connect("word_passed", collector, "on_word_passed")
+
 	# ui setup
 	prompt.setup(test.content)
 	validator.connect("correct_letter_input", prompt, "_on_TypingTest_correct_letter_input")
