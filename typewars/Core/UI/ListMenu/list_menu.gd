@@ -60,6 +60,6 @@ func clear() -> void:
 	if get_children().size() == 0:
 		return
 
-	visible = false
 	for child in get_children():
-		child.queue_free()
+		remove_child(child)
+		child.free()
