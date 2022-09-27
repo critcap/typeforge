@@ -70,7 +70,7 @@ func analyze_typing_stats(typing_stats: Dictionary, time: int, words: int) -> vo
 				letter_stats,
 				typing_stats[results.slowest_key],
 				ETypingStats.FASTEST,
-				funcref(operators, "is_lesser")
+				funcref(operators, "is_greater")
 			)
 		)
 
