@@ -15,9 +15,10 @@ func setup(_name: String) -> void:
 
 
 func select_item():
+	item.visible = true
+	indicator.visible = true
 	if !item.has_focus():
 		item.grab_focus()
-	indicator.visible = true
 
 
 func deselect_item():
