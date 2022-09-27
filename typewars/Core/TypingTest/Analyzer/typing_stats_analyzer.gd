@@ -1,7 +1,10 @@
 class_name TypingStatsAnalyzer
+extends Node
+
+signal stats_analyzed(results)
 
 
-static func analyze_typing_stats(typing_stats: Dictionary, time: int, words: int) -> TypingStatsResult:
+func analyze_typing_stats(typing_stats: Dictionary, time: int, words: int) -> void:
 	var results = TypingStatsResult.new()
 	var operators = CompareOperators.new()
 	results.time = time
@@ -12,19 +15,19 @@ static func analyze_typing_stats(typing_stats: Dictionary, time: int, words: int
 		results.total_errors = letter_stats[ETypingStats.ERRORS]
 		results.total_correct = letter_stats[ETypingStats.ERRORS]
 
-		# get most accurate character
-		if !results.most_accurate_character:
-			results.most_accurate_character = letter
+		# get most accurate key
+		if !results.most_accurate_key:
+			results.most_accurate_key = letter
 		else:
-			results.most_accurate_character = compare_accuracy(
-				typing_stats[letter], typing_stats[results.most_accurate_character]
+			results.most_accurate_key = compare_accuracy(
+				typing_stats[letter], typing_stats[results.most_accurate_key]
 			)
-		# get most inaccurate character
-		if !results.most_inaccurate_character:
-			results.most_inaccurate_character = letter
-		elif letter != results.most_accurate_character:
-			results.most_inaccurate_character = compare_accuracy(
-				typing_stats[letter], typing_stats[results.most_accurate_character], true
+		# get most inaccurate key
+		if !results.least_accurate_key:
+			results.least_accurate_key = letter
+		elif letter != results.most_accurate_key:
+			results.least_accurate_key = compare_accuracy(
+				typing_stats[letter], typing_stats[results.most_accurate_key], true
 			)
 
 		results.most_pressed_key = (
@@ -81,11 +84,11 @@ static func analyze_typing_stats(typing_stats: Dictionary, time: int, words: int
 				funcref(operators, "is_greater")
 			)
 		)
+		yield(get_tree(), "idle_frame")
+	emit_signal("stats_analyzed", results)
 
-	return results
 
-
-static func compare_accuracy(a: Dictionary, b: Dictionary, inverse: bool = false) -> int:
+func compare_accuracy(a: Dictionary, b: Dictionary, inverse: bool = false) -> int:
 	var a_accuracy = get_accuracy(a[ETypingStats.CORRECT], a[ETypingStats.TOTAL_COUNT], inverse)
 	var b_accuracy = get_accuracy(b[ETypingStats.CORRECT], b[ETypingStats.TOTAL_COUNT], inverse)
 	if a_accuracy > b_accuracy:
@@ -98,11 +101,11 @@ static func compare_accuracy(a: Dictionary, b: Dictionary, inverse: bool = false
 		return b[ETypingStats.CODE]
 
 
-static func compare_stat(a: Dictionary, b: Dictionary, stat: int, operator: FuncRef) -> int:
+func compare_stat(a: Dictionary, b: Dictionary, stat: int, operator: FuncRef) -> int:
 	var a_stat = a[stat]
 	var b_stat = b[stat]
-	return a[ETypingStats.CODE] if operator.call(a_stat, b_stat) else b[ETypingStats.CODE]
+	return a[ETypingStats.CODE] if operator.call_func(a_stat, b_stat) else b[ETypingStats.CODE]
 
 
-static func get_accuracy(correct, total, inverse) -> float:
+func get_accuracy(correct, total, inverse) -> float:
 	return correct / total if !inverse else (total - correct) / total

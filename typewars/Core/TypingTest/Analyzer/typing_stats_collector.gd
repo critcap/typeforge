@@ -2,6 +2,8 @@ class_name TypingStatsCollector
 extends Node
 
 var data: Dictionary setget , get_data
+var words: int setget , get_words
+var time: int
 
 var _data := {}
 var _words: int
@@ -11,6 +13,9 @@ var _time_stamp: int
 # region Setters & Getters
 func get_data() -> Dictionary:
 	return _data.duplicate()
+
+func get_words() -> int:
+    return _words
 
 
 # endregion

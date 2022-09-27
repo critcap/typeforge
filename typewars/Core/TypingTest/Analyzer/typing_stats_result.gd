@@ -33,7 +33,7 @@ func get_cpm() -> float:
 
 
 func get_accuracy() -> float:
-	return float(total_correct / self.get_total_strokes)
+	return float(total_correct) / float(self.total_strokes)
 
 
 func get_total_strokes() -> int:
