@@ -29,7 +29,7 @@ static func convert_scancodes_to_text(scancodes: Array) -> Array:
 			text.append(word)
 			word = ""
 			continue
-		var letter := Umlaut.get_umlaut_from_scancode(scancode)
+		var letter := SpecialUtility.get_umlaut_from_scancode(scancode)
 		letter = OS.get_scancode_string(scancode) if letter.empty() else letter
 		word += letter.to_lower()
 
@@ -38,7 +38,7 @@ static func convert_scancodes_to_text(scancodes: Array) -> Array:
 
 static func _handle_german_layout(character: String) -> int:
 	var scancode = OS.find_scancode_from_string(character)
-	return scancode if scancode != 0 else Umlaut.get_scancode_from_umlaut(character)
+	return scancode if scancode != 0 else SpecialUtility.get_scancode_from_special_string(character)
 
 
 static func is_qwerty_layout() -> bool:

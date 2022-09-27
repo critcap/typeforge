@@ -1,4 +1,4 @@
-class_name Umlaut
+class_name SpecialUtility
 
 # physical umlaut scancodes
 const CODE_UE = 123  # ü
@@ -17,15 +17,19 @@ static func get_umlaut_from_scancode(scancode: int) -> String:
 	return ""
 
 
-static func get_scancode_from_umlaut(character: String) -> int:
+static func get_scancode_from_special_string(character: String) -> int:
 	if character == "ä":
 		return CODE_AE
 	elif character == "ö":
 		return CODE_OE
 	elif character == "ü":
 		return CODE_UE
+	elif character == ",":
+		return KEY_COMMA
+	elif character == ".":
+		return KEY_PERIOD
 	return 0
 
 
 static func is_umlaut(character: String) -> bool:
-	return get_scancode_from_umlaut(character) != 0
+	return get_scancode_from_special_string(character) != 0
