@@ -32,7 +32,7 @@ func setup_list(items: Array) -> void:
 		item_name = str("item ", items.find(item)) if item_name == "" else item_name
 		list_item.setup(item_name)
 
-		list_item.item.connect("pressed", self, "on_item_pressed", [items.find(item)])
+		list_item.connect("pressed", self, "on_item_pressed", [items.find(item)])
 
 	# setting the first and last elements to wrap
 	var first := get_children()[0].item as Button
