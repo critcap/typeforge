@@ -2,6 +2,12 @@
 tests:
     homerow: 
         content: ["a","s","d","f","j","k","l",";"]
+        args:
+          combine: 
+            - toprow
+            - bottomrow
+          mode: 1
+          size: 50
     toprow:
         content: ["q","w","e","r","t","y","u","i","o"]
     bottomrow:

@@ -1,7 +1,6 @@
 class_name YamlDataLoader
 extends Dataloader
 
-
 var _yaml = preload("res://addons/godot-yaml/gdyaml.gdns").new()
 
 
@@ -54,4 +53,16 @@ func parse_test_data(name: String, yaml_content) -> TypingTestData:
 	var test = TypingTestData.new()
 	test.name = name
 	test.data = content
+
+	if keys.has("args"):
+		test.arguments = parse_arguments(yaml_content["args"])
+
 	return test
+
+
+func parse_arguments(args_data: Dictionary) -> Dictionary:
+	var args := {}
+	for key in args_data.keys():
+		var value = args_data[key]
+		args[key] = value
+	return args
