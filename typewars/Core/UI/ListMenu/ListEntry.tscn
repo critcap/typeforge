@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://typewars/Core/UI/ListMenu/list_entry.gd" type="Script" id=1]
+[ext_resource path="res://typewars/Core/UI/ListMenu/Subentries/Arguments.tscn" type="PackedScene" id=2]
 
 [node name="ListEntry" type="HBoxContainer"]
 margin_right = 222.0
@@ -37,11 +38,10 @@ margin_right = 100.0
 margin_bottom = 24.0
 text = "asdasdasdasd"
 
-[node name="Subentry" type="AspectRatioContainer" parent="."]
+[node name="ArgumentsSubentry" parent="." instance=ExtResource( 2 )]
 visible = false
 margin_left = 104.0
 margin_right = 249.0
-margin_bottom = 24.0
 
 [connection signal="focus_entered" from="Item" to="." method="select_item"]
 [connection signal="focus_exited" from="Item" to="." method="deselect_item"]

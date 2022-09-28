@@ -3,10 +3,10 @@ extends HBoxContainer
 
 signal pressed
 
-
+# TODO add assginent in list_menu
+onready var subentry: = $ArgumentsSubentry as SubentryBase
 onready var indicator: Label = $IndicatorSelect
 onready var item: Control = $Item
-onready var subentry: Control = $Subentry
 
 
 func setup(_name: String) -> void:
@@ -30,6 +30,9 @@ func _on_item_pressed():
 	if !Input.is_key_pressed(KEY_SHIFT) || subentry == null || subentry.get_children().empty():
 		emit_signal("pressed")
 		return
-	var children: = subentry.get_children()[0] as Control
 	subentry.visible = true
-	children.grab_focus()
+	subentry.select_item()
+
+
+func has_subentry() -> bool:
+	return subentry != null
