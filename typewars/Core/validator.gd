@@ -8,7 +8,6 @@ signal word_passed
 signal wrong_letter_input(code)
 signal correct_letter_input(code)
 
-
 var scancodes: PoolIntArray
 var _index: int = 0
 var _errors: int = 0
@@ -16,8 +15,8 @@ var has_started: bool = false
 
 
 func validate(event: InputEventKey) -> void:
-	var code = get_scancode_from_event(event)
-	
+	var code = event.scancode
+
 	if _index == 0 && !has_started:
 		has_started = true
 		emit_signal("started")
@@ -39,10 +38,9 @@ func validate(event: InputEventKey) -> void:
 	if _index >= scancodes.size():
 		emit_signal("finished")
 
-
-func get_scancode_from_event(event: InputEventKey) -> int:
-	# TODO add cases for other OSes
-	match OS.get_name():
-		"Windows":
-			return event.physical_scancode
-	return event.scancode
+# func get_scancode_from_event(event: InputEventKey) -> int:
+# 	# TODO add cases for other OSes
+# 	match OS.get_name():
+# 		"Windows":
+# 			return event.scancode
+# 	return event.scancode
