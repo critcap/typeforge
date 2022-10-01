@@ -12,7 +12,8 @@ enum {TIME_ATTACK, RACE}
 var content: PoolStringArray setget set_content, get_content
 var scancodes: PoolIntArray
 var mode: int
-var results: TypingTestResults
+var args: Dictionary
+var results: Dictionary
 
 
 # setters & getters
