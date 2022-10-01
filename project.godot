@@ -102,12 +102,12 @@ _global_script_classes=[ {
 "base": "AspectRatioContainer",
 "class": "SubentryBase",
 "language": "GDScript",
-"path": "res://typewars/Core/UI/ListMenu/Subentries/subentry_base.gd"
+"path": "res://typewars/Core/UI/ListMenu/subentry_base.gd"
 }, {
 "base": "SubentryBase",
-"class": "SubentryInteractive",
+"class": "SubentryTestArguments",
 "language": "GDScript",
-"path": "res://typewars/Core/UI/ListMenu/Subentries/subentry_interactive.gd"
+"path": "res://typewars/ListMenus/TestSelectionMenu/subentry_arguments.gd"
 }, {
 "base": "State",
 "class": "TestState",
@@ -160,6 +160,11 @@ _global_script_classes=[ {
 "path": "res://typewars/Core/TypingTest/typing_test_factory.gd"
 }, {
 "base": "Reference",
+"class": "TypingTestModes",
+"language": "GDScript",
+"path": "res://typewars/Core/TypingTest/typing_test_modes.gd"
+}, {
+"base": "Reference",
 "class": "TypingTestResults",
 "language": "GDScript",
 "path": "res://typewars/Core/TypingTest/typing_test_results.gd"
@@ -199,7 +204,7 @@ _global_script_class_icons={
 "StateMachine": "",
 "Stopwatch": "",
 "SubentryBase": "",
-"SubentryInteractive": "",
+"SubentryTestArguments": "",
 "TestState": "",
 "TextGenerator": "",
 "TimeAttackTestState": "",
@@ -210,6 +215,7 @@ _global_script_class_icons={
 "TypingTest": "",
 "TypingTestData": "",
 "TypingTestFactory": "",
+"TypingTestModes": "",
 "TypingTestResults": "",
 "Validator": "",
 "Visualizer": "",

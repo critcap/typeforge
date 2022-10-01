@@ -4,9 +4,21 @@ extends AspectRatioContainer
 # first node to grab focus on show
 export(NodePath) var first_born: NodePath
 # Is not typed because different types of subentries have different types of data
-var data
+var data setget set_data, get_data
 
 onready var is_static: bool = first_born != null
+
+
+# region Setters & Getters
+func set_data(_new_data):
+	pass
+
+
+func get_data():
+	pass
+
+
+# endregion
 
 
 # region Methods
@@ -25,8 +37,10 @@ func select_item():
 func deselect_item():
 	if !visible || owner == null:
 		return
-	owner.select_item()
-	get_tree().set_input_as_handled()
+	
+	if owner:	
+		owner.select_item()
+		get_tree().set_input_as_handled()
 
 
 # endregion
