@@ -28,8 +28,8 @@ func setup(_args) -> void:
 
 func select_item():
 	var item = get_node(first_born)
+	visible = true
 	if item == null:
-		get_focus_owner().release_focus()
 		return
 	item.grab_focus()
 
@@ -37,7 +37,7 @@ func select_item():
 func deselect_item():
 	if !visible || owner == null:
 		return
-	
+	visible = false
 	if owner:	
 		owner.select_item()
 		get_tree().set_input_as_handled()
