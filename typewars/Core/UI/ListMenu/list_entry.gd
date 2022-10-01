@@ -1,7 +1,8 @@
 class_name ListEntry
 extends HBoxContainer
 
-signal pressed
+# emits when pressed and also passes the item's subentry data along if available 
+signal pressed(subentry_data)
 
 # TODO add assginent in list_menu
 onready var subentry: = $ArgumentsSubentry as SubentryBase
@@ -28,7 +29,7 @@ func deselect_item():
 
 func _on_item_pressed():
 	if !Input.is_key_pressed(KEY_SHIFT) || subentry == null || subentry.get_children().empty():
-		emit_signal("pressed")
+		emit_signal("pressed", subentry.data)
 		return
 	subentry.visible = true
 	subentry.select_item()
