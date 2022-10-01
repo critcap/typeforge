@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://typewars/Core/UI/ListMenu/Subentries/subentry_interactive.gd" type="Script" id=1]
+[ext_resource path="res://typewars/ListMenus/TestSelectionMenu/subentry_arguments.gd" type="Script" id=1]
 
 [node name="ArgumentsSubentry" type="AspectRatioContainer"]
 margin_left = 149.0
@@ -9,46 +9,46 @@ margin_bottom = 24.0
 script = ExtResource( 1 )
 
 [node name="Body" type="HBoxContainer" parent="."]
-margin_right = 145.0
-margin_bottom = 24.0
+margin_top = 12.0
+margin_bottom = 12.0
 size_flags_horizontal = 3
 
 [node name="Button" type="Button" parent="Body"]
+visible = false
 margin_right = 12.0
 margin_bottom = 24.0
 focus_previous = NodePath("../HBoxContainer/LineEdit")
 toggle_mode = true
 
 [node name="Button2" type="Button" parent="Body"]
-margin_left = 16.0
-margin_right = 28.0
+visible = false
+margin_right = 12.0
 margin_bottom = 24.0
 toggle_mode = true
 
 [node name="Label" type="Label" parent="Body"]
-margin_left = 32.0
+visible = false
 margin_top = 5.0
-margin_right = 32.0
 margin_bottom = 19.0
 
 [node name="Button3" type="Button" parent="Body"]
-margin_left = 36.0
-margin_right = 48.0
+visible = false
+margin_right = 12.0
 margin_bottom = 24.0
 toggle_mode = true
 
 [node name="Label2" type="Label" parent="Body"]
-margin_left = 52.0
+visible = false
 margin_top = 5.0
-margin_right = 52.0
 margin_bottom = 19.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Body"]
-margin_left = 56.0
-margin_right = 145.0
+visible = false
+margin_right = 89.0
 margin_bottom = 24.0
 
 [node name="Label" type="Label" parent="Body/HBoxContainer"]
+visible = false
 margin_top = 5.0
 margin_right = 27.0
 margin_bottom = 19.0
