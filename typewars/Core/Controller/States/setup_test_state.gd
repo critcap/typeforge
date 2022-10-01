@@ -1,7 +1,7 @@
 class_name SetupTestState
 extends TestState
 
-const DEFAULT_MODE = TypingTest.RACE
+const DEFAULT_MODE = TypingTestModes.RACE
 
 var prompt
 
@@ -37,7 +37,7 @@ func setup_test() -> void:
 	validator.connect("wrong_letter_input", prompt, "_on_TypingTest_wrong_letter_input")
 	validator.connect("word_passed", prompt, "_on_TypingTest_word_passed")
 
-	if test.mode == TypingTest.RACE:
+	if test.mode == TypingTestModes.RACE:
 		change_state("TypeRaceTestState")
 		return
 	elif test.mmode == TypingTest.TIME_ATTACK:
