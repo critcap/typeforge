@@ -16,13 +16,16 @@ func setup_list_menu() -> void:
 	if list.size() == 0:
 		menu.setup_list(["No tests found"])
 		return
-
-	menu.setup_list(list.keys())
+	
+	menu.setup_list(list.values())
 	menu.connect("item_selected", self, "on_item_selected")
 	menu.open()
 
 
-func on_item_selected(item: int) -> void:
+
+
+
+func on_item_selected(item: int, subentry: Dictionary) -> void:
 	owner.selected_test = item
 	change_state("SetupTestState")
 
