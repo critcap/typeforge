@@ -226,6 +226,10 @@ config/icon="res://icon.png"
 
 GUI="*res://addons/godot-immediate-gui/GUI.gd"
 
+[display]
+
+window/size/width=1040
+
 [global]
 
 export=false
