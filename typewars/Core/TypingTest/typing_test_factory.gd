@@ -16,7 +16,7 @@ static func assemble_test_from_data(raw: TypingTestData) -> TypingTest:
 			if is_qwerty_layout()
 			else Qwertzyfier.qwertzify(raw.data.join(" ")).split(" ")
 		)
-
+		print(data)
 		test.content = generate_random_test(data, LENGTH, MIN_SIZE, MAX_SIZE)
 		return test
 
@@ -54,4 +54,4 @@ static func is_word_finished(word: String, min_l, max_l) -> bool:
 
 
 static func is_qwerty_layout() -> bool:
-	return OS.get_latin_keyboard_variant() == "QWERTY"
+	return OS.get_latin_keyboard_variant() == "QWERTY" if OS.get_name() != "HTML5" else false

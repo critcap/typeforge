@@ -16,7 +16,10 @@ var has_started: bool = false
 
 func validate(event: InputEventKey) -> void:
 	var code = event.scancode
-
+	print(code, " ", scancodes[_index])
+	if OS.get_name() == "HTML5" && code >= 200:
+		code = event.physical_scancode
+	print(code)	
 	if _index == 0 && !has_started:
 		has_started = true
 		emit_signal("started")

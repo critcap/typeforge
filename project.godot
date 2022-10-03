@@ -178,11 +178,6 @@ _global_script_classes=[ {
 "class": "Visualizer",
 "language": "GDScript",
 "path": "res://typewars/KeystrokeVisualizer/vizualizer.gd"
-}, {
-"base": "Dataloader",
-"class": "YamlDataLoader",
-"language": "GDScript",
-"path": "res://typewars/Core/FileLoader/yaml_data_loader.gd"
 } ]
 _global_script_class_icons={
 "BaseTypingTestState": "",
@@ -218,8 +213,7 @@ _global_script_class_icons={
 "TypingTestModes": "",
 "TypingTestResults": "",
 "Validator": "",
-"Visualizer": "",
-"YamlDataLoader": ""
+"Visualizer": ""
 }
 
 [application]
@@ -232,9 +226,9 @@ config/icon="res://icon.png"
 
 GUI="*res://addons/godot-immediate-gui/GUI.gd"
 
-[editor_plugins]
+[global]
 
-enabled=PoolStringArray( "res://addons/Mono-Build-Toggler/plugin.cfg" )
+export=false
 
 [gui]
 

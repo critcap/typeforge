@@ -42,4 +42,4 @@ static func _handle_german_layout(character: String) -> int:
 
 
 static func is_qwerty_layout() -> bool:
-	return OS.get_latin_keyboard_variant() == "QWERTY"
+	return OS.get_latin_keyboard_variant() == "QWERTY" if OS.get_name() != "HTML5" else false
