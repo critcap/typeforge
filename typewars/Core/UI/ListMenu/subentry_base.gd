@@ -35,7 +35,7 @@ func select_item():
 
 
 func deselect_item():
-	if !visible || owner == null:
+	if !visible:
 		return
 	visible = false
 	if owner:	
@@ -47,7 +47,9 @@ func deselect_item():
 
 
 # region Private Methods
-func _input(event):
+func _unhandled_input(event):
+	if !contains_focus():
+		return
 	if !is_static:
 		return
 	if event.is_action_pressed("ui_cancel"):
@@ -55,7 +57,6 @@ func _input(event):
 	return
 
 
-func _unhandled_input(event):
-	if event.is_action_pressed("ui_cancel"):
-		deselect_item()
+func contains_focus() -> bool:
+	return has_focus()
 # endregion

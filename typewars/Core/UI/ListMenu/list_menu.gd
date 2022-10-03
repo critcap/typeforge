@@ -1,40 +1,18 @@
 class_name ListMenu
 extends VBoxContainer
 
-signal item_selected(index)
+signal item_selected(index, subentry)
 
-var index: int
-
-onready var ListItem = load("res://typewars/Core/UI/ListMenu/ListEntry.tscn")
+export (PackedScene) var Entry: PackedScene
 
 
-func _ready():
-	visible = false
+func setup_list(input) -> void:
+	pass
 
 
-func open() -> void:
-	visible = true
+func create_focus_wrapping() -> void:
 	if get_children().empty():
 		return
-	get_children()[0].select_item()
-
-
-# is quite lazy always creates a comple new list
-# but godot is fast with instancing objects and doenst benefit
-# that much from pooling.
-func setup_list(items: Array) -> void:
-	clear()
-	for item in items:
-		var list_item = ListItem.instance()
-		add_child(list_item)
-
-		var item_name = get_item_name_text(item)
-		item_name = str("item ", items.find(item)) if item_name == "" else item_name
-		list_item.setup(item_name)
-
-		list_item.connect("pressed", self, "on_item_pressed", [items.find(item)])
-
-	# setting the first and last elements to wrap
 	var first := get_children()[0].item as Button
 	var last := get_children()[-1].item as Button
 
@@ -42,18 +20,21 @@ func setup_list(items: Array) -> void:
 	last.set_focus_neighbour(MARGIN_BOTTOM, first.get_path())
 
 
-func on_item_pressed(item_index: int) -> void:
+func on_item_pressed(subentry: Dictionary, item_index: int) -> void:
 	if !visible:
 		return
-	emit_signal("item_selected", item_index)
+	emit_signal("item_selected", item_index, subentry)
 
 
-func get_item_name_text(item) -> String:
-	if item is String:
-		return item
-	if "name" in item:
-		return item.name
-	return ""
+func open() -> void:
+	visible = true
+	if get_children().empty():
+		return
+	get_children()[0].select_item()
+	
+	
+func close() -> void:
+	visible = false
 
 
 func clear() -> void:

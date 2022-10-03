@@ -5,18 +5,23 @@ extends HBoxContainer
 signal pressed(subentry_data)
 
 # TODO add assginent in list_menu
-onready var subentry: = $ArgumentsSubentry as SubentryBase
+var subentry: SubentryBase
+
 onready var indicator: Label = $IndicatorSelect
+onready var selector: Label = $IndicatorSubEntry
+onready var invalidator: Label = $IndicatorInvalid
 onready var item: Control = $Item
 
 
-func setup(_name: String) -> void:
+func setup(_name: String, subentry_args: Dictionary) -> void:
 	item.text = _name
+	if has_subentry():
+		subentry.setup(subentry_args)
 
 
 func select_item():
 	item.visible = true
-	indicator.visible = true
+	prefix(0)
 	if !item.has_focus():
 		item.grab_focus()
 
@@ -24,16 +29,47 @@ func select_item():
 func deselect_item():
 	if item.has_focus():
 		item.release_focus()
-	indicator.visible = false
+	prefix()
 
 
 func _on_item_pressed():
-	if !Input.is_key_pressed(KEY_SHIFT) || subentry == null || subentry.get_children().empty():
-		emit_signal("pressed", subentry.data)
+	if !Input.is_key_pressed(KEY_SHIFT):
+		on_ui_accept()
 		return
+	if !has_subentry():
+		prefix(2)
+		return
+	if subentry.visible:
+		return 
 	subentry.visible = true
 	subentry.select_item()
+	prefix(1)
 
 
 func has_subentry() -> bool:
-	return subentry != null
+	if subentry:
+		return true
+	# searches childs for subentry node and caches it when found
+	for child in get_children():
+		if child is SubentryBase:
+			subentry = child
+			return true
+	return false
+	
+func prefix(index: int = -1) -> void:
+	var prefixes = [indicator, selector, invalidator]
+	for i in prefixes:
+		i.visible = false
+	if index > prefixes.size() || index < 0:
+		return
+	prefixes[index].visible = true
+
+
+func _on_Subentry_gui_input(event):
+	_on_item_pressed()
+
+func on_ui_accept() -> void:
+	emit_signal("pressed", subentry.data)
+	prefix(0)
+	if has_subentry():
+		subentry.visible = false
