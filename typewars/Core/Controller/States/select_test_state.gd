@@ -22,9 +22,6 @@ func setup_list_menu() -> void:
 	menu.open()
 
 
-
-
-
 func on_item_selected(item: int, subentry: Dictionary) -> void:
 	owner.selected_test = item
 	change_state("SetupTestState")
