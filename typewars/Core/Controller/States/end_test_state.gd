@@ -29,8 +29,7 @@ func exit() -> void:
 
 
 func on_stats_analyzed(results: TypingStatsResult) -> void:
-	results = results
-	print(results.wpm)
+	menu.setup_statistics(results)
 
 
 func unhandled_input(event: InputEvent) -> void:

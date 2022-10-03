@@ -13,7 +13,7 @@ onready var invalidator: Label = $IndicatorInvalid
 onready var item: Control = $Item
 
 
-func setup(_name: String, subentry_args: Dictionary) -> void:
+func setup(_name: String, subentry_args: Dictionary = {}) -> void:
 	item.text = _name
 	if has_subentry():
 		subentry.setup(subentry_args)

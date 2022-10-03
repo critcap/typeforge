@@ -10,13 +10,13 @@ const CODE_SZ = 45  # ß
 
 
 static func get_umlaut_from_scancode(scancode: int) -> String:
-	if scancode == CODE_UE:
+	if scancode == CODE_UE || (dumb_os() && scancode == CODE_UE_WIN) :
 		return "ü"
-	elif scancode == CODE_OE:
+	elif scancode == CODE_OE || (dumb_os() && scancode ==  CODE_OE_WIN):
 		return "ö"
 	elif scancode == CODE_AE:
 		return "ä"
-	return ""
+	return OS.get_scancode_string(scancode)
 
 
 static func get_scancode_from_special_string(character: String) -> int:

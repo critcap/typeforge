@@ -13,8 +13,8 @@ var _selected_index: int
 
 onready var ui_prompt = $Prompt
 onready var ui_list = $ListSelection
-onready var ui_statistics = $Statistics
-
+onready var ui_statistics = $StatisticsMenu
+onready var ui_visualizer = $KeystrokeVisualizer
 
 func set_selected_test(value) -> void:
 	if value == null || !(value is int) || value >= test_list.size():

@@ -1,11 +1,12 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://typewars/TypingTest/TestManager.tscn" type="PackedScene" id=1]
 [ext_resource path="res://typewars/ListMenus/TestSelectionMenu/TestSelectionMenu.tscn" type="PackedScene" id=2]
 [ext_resource path="res://typewars/PromptScreen/Prompt.tscn" type="PackedScene" id=3]
-[ext_resource path="res://typewars/StatisticsMenu/Statistics.tscn" type="PackedScene" id=4]
+[ext_resource path="res://typewars/ListMenus/StatisticsMenu/StatisticsMenu.tscn" type="PackedScene" id=4]
 [ext_resource path="res://typewars/TypingTest/TypingTest.theme" type="Theme" id=5]
 [ext_resource path="res://typewars/TypingTest/CRTShader.shader" type="Shader" id=6]
+[ext_resource path="res://typewars/Visualizer/KeystrokeVisualizer.tscn" type="PackedScene" id=7]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 6 )
@@ -23,22 +24,24 @@ shader_param/lines_velocity = 5.0
 [node name="Main" instance=ExtResource( 1 )]
 test_path = "res://dev/test.yaml"
 
-[node name="Control" type="Control" parent="." index="0"]
+[node name="Background" type="Control" parent="." index="1"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+theme = ExtResource( 5 )
 
-[node name="ColorRect" type="ColorRect" parent="Control" index="0"]
+[node name="ColorRect" type="ColorRect" parent="Background" index="0"]
 show_behind_parent = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0.0196078, 0.0196078, 0.0196078, 1 )
 
-[node name="Prompt" parent="." index="6" instance=ExtResource( 3 )]
+[node name="Prompt" parent="." index="2" instance=ExtResource( 3 )]
 
-[node name="Statistics" parent="." index="7" instance=ExtResource( 4 )]
+[node name="StatisticsMenu" parent="." index="3" instance=ExtResource( 4 )]
 visible = false
 
-[node name="ListSelection" parent="." index="9" instance=ExtResource( 2 )]
+[node name="ListSelection" parent="." index="4" instance=ExtResource( 2 )]
+visible = false
 margin_left = 16.0
 margin_top = 14.0
 margin_right = -585.0
@@ -46,10 +49,15 @@ margin_bottom = -248.0
 rect_scale = Vector2( 1.2, 1.2 )
 theme = ExtResource( 5 )
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." index="10"]
+[node name="KeystrokeVisualizer" parent="." index="5" instance=ExtResource( 7 )]
+margin_left = 27.0
+margin_top = -47.0
+margin_right = -30.0
+margin_bottom = -14.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." index="6"]
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer" index="0"]
-visible = false
 material = SubResource( 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0

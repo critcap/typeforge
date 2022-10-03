@@ -3,7 +3,7 @@ extends Node
 
 
 static func visualize_input(scancode: int) -> String:
-	var key = OS.get_scancode_string(scancode)
+	var key = SpecialUtility.get_umlaut_from_scancode(scancode)
 	return key if key.length() == 1 else _parse_modifier_key_as_symbol(key)
 
 
