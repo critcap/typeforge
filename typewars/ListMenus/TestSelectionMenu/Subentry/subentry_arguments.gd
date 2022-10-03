@@ -72,9 +72,14 @@ func _setup_size_input(size: int) -> void:
 	_size_input.value = size
 	
 	
-#func _setup_focus_neighbours() -> void:
-#	var controls: = _combine if _combine else []
-#	controls += [_mode, _size_input]
+func _unhandled_input(event):
+	if !contains_focus():
+		return
+	if event is InputEventKey:
+		var key_event = event as InputEventKey
+		if key_event.is_action_pressed("ui_accept") && key_event.shift:
+			owner.on_ui_accept()
+			visible = false
 
 func contains_focus() -> bool:
 	if !visible:

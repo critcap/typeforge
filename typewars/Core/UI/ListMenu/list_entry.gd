@@ -65,9 +65,6 @@ func prefix(index: int = -1) -> void:
 	prefixes[index].visible = true
 
 
-func _on_Subentry_gui_input(event):
-	_on_item_pressed()
-
 func on_ui_accept() -> void:
 	emit_signal("pressed", subentry.data)
 	prefix(0)
