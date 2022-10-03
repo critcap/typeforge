@@ -107,7 +107,7 @@ _global_script_classes=[ {
 "base": "SubentryBase",
 "class": "SubentryTestArguments",
 "language": "GDScript",
-"path": "res://typewars/ListMenus/TestSelectionMenu/subentry_arguments.gd"
+"path": "res://typewars/ListMenus/TestSelectionMenu/Subentry/subentry_arguments.gd"
 }, {
 "base": "State",
 "class": "TestState",
