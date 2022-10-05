@@ -15,7 +15,8 @@ func enter() -> void:
 func setup_test() -> void:
 	# setup test data
 	var test_data := owner.selected_test as TypingTestData
-	var test := TypingTestFactory.assemble_test_from_data(test_data) as TypingTest
+	var combine = assemble_combined_test()
+	var test := TypingTestFactory.assemble_test_from_data(test_data, combine) as TypingTest
 	test.mode = DEFAULT_MODE
 	test.scancodes = ScancodeConverter.convert_text_to_scancodes(test.content)
 
@@ -43,3 +44,16 @@ func setup_test() -> void:
 	elif test.mmode == TypingTest.TIME_ATTACK:
 		change_state("TimeAttackTestState")
 		return
+
+
+func assemble_combined_test() -> Array:
+	var output = []
+	if (
+		owner.selected_test != null
+		&& owner.selected_test.arguments.has("combine")
+		&& !owner.selected_test.arguments["combine"].empty()
+	):
+		for i in owner.selected_test.arguments["combine"]:
+			var test_data = owner.test_list[i].data if owner.test_list.has(i) else []
+			output += test_data
+	return output
