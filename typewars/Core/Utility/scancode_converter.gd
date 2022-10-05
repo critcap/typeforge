@@ -19,6 +19,11 @@ static func convert_text_to_scancodes(text: Array) -> Array:
 
 	return scancodes
 
+static func convert_code_to_string(scancode: int) -> String:
+	var letter := SpecialUtility.get_umlaut_from_scancode(scancode)
+	letter = OS.get_scancode_string(scancode) if letter.empty() else letter
+	return letter
+
 
 static func convert_scancodes_to_text(scancodes: Array) -> Array:
 	var text = []
@@ -42,4 +47,4 @@ static func _handle_german_layout(character: String) -> int:
 
 
 static func is_qwerty_layout() -> bool:
-	return OS.get_latin_keyboard_variant() == "QWERTY"
+	return OS.get_latin_keyboard_variant() == "QWERTY" if OS.get_name() != "HTML5" else false

@@ -3,11 +3,17 @@ extends VBoxContainer
 
 signal item_selected(index, subentry)
 
-export (PackedScene) var Entry: PackedScene
+export(PackedScene) var Entry: PackedScene
 
 
 func setup_list(input) -> void:
 	pass
+
+
+func create_entry(text: String) -> void:
+	var entry = Entry.instance()
+	add_child(entry)
+	entry.setup(text)
 
 
 func create_focus_wrapping() -> void:
@@ -31,8 +37,8 @@ func open() -> void:
 	if get_children().empty():
 		return
 	get_children()[0].select_item()
-	
-	
+
+
 func close() -> void:
 	visible = false
 

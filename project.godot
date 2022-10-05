@@ -39,10 +39,10 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://typewars/Core/Controller/States/init_state.gd"
 }, {
-"base": "Control",
+"base": "Reference",
 "class": "KeystrokeVisualizer",
 "language": "GDScript",
-"path": "res://typewars/KeystrokeVisualizer/keystroke_visualizer.gd"
+"path": "res://typewars/Visualizer/keystroke_visualizer.gd"
 }, {
 "base": "HBoxContainer",
 "class": "ListEntry",
@@ -69,10 +69,10 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://typewars/Core/Controller/States/select_test_state.gd"
 }, {
-"base": "Label",
+"base": "Reference",
 "class": "SelfDestructingLabel",
 "language": "GDScript",
-"path": "res://typewars/KeystrokeVisualizer/self_destructing_label.gd"
+"path": "res://typewars/Visualizer/self_destructing_label.gd"
 }, {
 "base": "TestState",
 "class": "SetupTestState",
@@ -84,17 +84,17 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://typewars/Core/Utility/umlaut.gd"
 }, {
-"base": "Node",
+"base": "Reference",
 "class": "State",
 "language": "GDScript",
 "path": "res://typewars/Core/Common/state.gd"
 }, {
-"base": "Node",
+"base": "Reference",
 "class": "StateMachine",
 "language": "GDScript",
 "path": "res://typewars/Core/Common/state_machine.gd"
 }, {
-"base": "Node",
+"base": "Reference",
 "class": "Stopwatch",
 "language": "GDScript",
 "path": "res://typewars/Core/Common/stopwatch.gd"
@@ -114,7 +114,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://typewars/Core/Controller/States/test_state.gd"
 }, {
-"base": "Node",
+"base": "Reference",
 "class": "TextGenerator",
 "language": "GDScript",
 "path": "res://typewars/Core/test_generator.gd"
@@ -174,15 +174,10 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://typewars/Core/validator.gd"
 }, {
-"base": "Node",
+"base": "Reference",
 "class": "Visualizer",
 "language": "GDScript",
-"path": "res://typewars/KeystrokeVisualizer/vizualizer.gd"
-}, {
-"base": "Dataloader",
-"class": "YamlDataLoader",
-"language": "GDScript",
-"path": "res://typewars/Core/FileLoader/yaml_data_loader.gd"
+"path": "res://typewars/Visualizer/vizualizer.gd"
 } ]
 _global_script_class_icons={
 "BaseTypingTestState": "",
@@ -218,8 +213,7 @@ _global_script_class_icons={
 "TypingTestModes": "",
 "TypingTestResults": "",
 "Validator": "",
-"Visualizer": "",
-"YamlDataLoader": ""
+"Visualizer": ""
 }
 
 [application]
@@ -242,39 +236,18 @@ common/drop_mouse_on_gui_input_disabled=true
 
 [input]
 
-ui_up={
+enter_command_mode={
 "deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777232,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
-, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":12,"pressure":0.0,"pressed":false,"script":null)
-, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":74,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
- ]
-}
-ui_down={
-"deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777234,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
-, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":13,"pressure":0.0,"pressed":false,"script":null)
-, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":75,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
- ]
-}
-ui_page_up={
-"deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777235,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
- ]
-}
-ui_page_down={
-"deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777236,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777217,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
  ]
 }
 reload_test={
 "deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":true,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":82,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
- ]
+"events": [  ]
 }
 quit_test={
 "deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":true,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":81,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
- ]
+"events": [  ]
 }
 
 [physics]

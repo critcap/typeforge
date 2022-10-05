@@ -63,6 +63,7 @@ func _create_combine_buttons(combines: Array) -> void:
 
 func _setup_mode_button(mode_text: int) -> void:
 	_mode.text = TypingTestModes.mode_to_string(mode_text)
+	_mode.set_pressed_no_signal(mode_text == TypingTestModes.RACE)
 	if !first_born:
 		first_born = _mode.get_path()
 		
@@ -72,9 +73,14 @@ func _setup_size_input(size: int) -> void:
 	_size_input.value = size
 	
 	
-#func _setup_focus_neighbours() -> void:
-#	var controls: = _combine if _combine else []
-#	controls += [_mode, _size_input]
+func _unhandled_input(event):
+	if !contains_focus():
+		return
+	if event is InputEventKey:
+		var key_event = event as InputEventKey
+		if key_event.is_action_pressed("ui_accept") && key_event.shift:
+			owner.on_ui_accept()
+			visible = false
 
 func contains_focus() -> bool:
 	if !visible:

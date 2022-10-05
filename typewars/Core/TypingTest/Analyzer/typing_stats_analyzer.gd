@@ -9,6 +9,7 @@ func analyze_typing_stats(typing_stats: Dictionary, time: int, words: int) -> vo
 	var operators = CompareOperators.new()
 	results.time = time
 	results.words = words
+	results._data = typing_stats
 
 	for letter in typing_stats.keys():
 		var letter_stats = typing_stats[letter]
@@ -51,17 +52,17 @@ func analyze_typing_stats(typing_stats: Dictionary, time: int, words: int) -> vo
 				funcref(operators, "is_lesser")
 			)
 		)
-
-		results.fastest_key = (
-			letter
-			if !results.fastest_key
-			else compare_stat(
-				letter_stats,
-				typing_stats[results.fastest_key],
-				ETypingStats.FASTEST,
-				funcref(operators, "is_lesser")
+		if letter_stats[ETypingStats.FASTEST] != 0:
+			results.fastest_key = (
+				letter
+				if !results.fastest_key
+				else compare_stat(
+					letter_stats,
+					typing_stats[results.fastest_key],
+					ETypingStats.FASTEST,
+					funcref(operators, "is_lesser")
+				)
 			)
-		)
 
 		results.slowest_key = (
 			letter

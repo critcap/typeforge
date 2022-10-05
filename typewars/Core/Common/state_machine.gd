@@ -10,7 +10,7 @@ var _current_state: State
 
 # public methods
 func get_state(value):
-	return get_node(value)
+	return $States.get_node(value)
 
 
 func change_state(value) -> void:

@@ -13,7 +13,7 @@ onready var invalidator: Label = $IndicatorInvalid
 onready var item: Control = $Item
 
 
-func setup(_name: String, subentry_args: Dictionary) -> void:
+func setup(_name: String, subentry_args: Dictionary = {}) -> void:
 	item.text = _name
 	if has_subentry():
 		subentry.setup(subentry_args)
@@ -64,9 +64,6 @@ func prefix(index: int = -1) -> void:
 		return
 	prefixes[index].visible = true
 
-
-func _on_Subentry_gui_input(event):
-	_on_item_pressed()
 
 func on_ui_accept() -> void:
 	emit_signal("pressed", subentry.data)

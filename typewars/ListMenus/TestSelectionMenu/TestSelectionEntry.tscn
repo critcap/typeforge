@@ -14,7 +14,7 @@ visible = false
 margin_top = 3.0
 margin_right = 8.0
 margin_bottom = 17.0
-text = ">"
+text = ">>"
 
 [node name="IndicatorInvalid" type="Label" parent="."]
 visible = false
@@ -23,7 +23,7 @@ margin_top = 3.0
 margin_right = 20.0
 margin_bottom = 17.0
 rect_min_size = Vector2( 8, 0 )
-text = "!"
+text = ">!"
 
 [node name="IndicatorSubEntry" type="Label" parent="."]
 visible = false
@@ -32,7 +32,7 @@ margin_top = 3.0
 margin_right = 32.0
 margin_bottom = 17.0
 rect_min_size = Vector2( 8, 0 )
-text = "?"
+text = ">?"
 
 [node name="Item" type="Button" parent="."]
 margin_right = 100.0

@@ -38,7 +38,7 @@ func deselect_item():
 	if !visible:
 		return
 	visible = false
-	if owner:	
+	if owner:
 		owner.select_item()
 		get_tree().set_input_as_handled()
 
