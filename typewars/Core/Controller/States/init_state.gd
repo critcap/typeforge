@@ -12,7 +12,9 @@ const TESTS = {
 		"j",
 		"k",
 		"l",
-		";"
+		";",
+		"g",
+		"h"
 	  ],
 	  "args": {
 		"combine": [
