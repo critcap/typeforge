@@ -46,3 +46,4 @@ margin_bottom = 24.0
 script = ExtResource( 3 )
 
 [connection signal="toggled" from="Body/Mode" to="." method="_on_mode_toggled"]
+[connection signal="toggled" from="Body/Mode" to="Body/Mode" method="_on_Mode_toggled"]
