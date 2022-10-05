@@ -63,6 +63,7 @@ func _create_combine_buttons(combines: Array) -> void:
 
 func _setup_mode_button(mode_text: int) -> void:
 	_mode.text = TypingTestModes.mode_to_string(mode_text)
+	_mode.set_pressed_no_signal(mode_text == TypingTestModes.RACE)
 	if !first_born:
 		first_born = _mode.get_path()
 		

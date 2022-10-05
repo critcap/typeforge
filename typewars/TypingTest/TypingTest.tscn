@@ -24,7 +24,16 @@ shader_param/lines_velocity = 5.0
 [node name="Main" instance=ExtResource( 1 )]
 test_path = "res://dev/test.yaml"
 
-[node name="Background" type="Control" parent="." index="1"]
+[node name="CanvasLayer" type="CanvasLayer" parent="." index="1"]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" index="0"]
+material = SubResource( 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -2.0
+mouse_filter = 2
+
+[node name="Background" type="Control" parent="." index="2"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 5 )
@@ -35,15 +44,15 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0.0196078, 0.0196078, 0.0196078, 1 )
 
-[node name="Prompt" parent="." index="2" instance=ExtResource( 3 )]
+[node name="Prompt" parent="." index="3" instance=ExtResource( 3 )]
 
-[node name="StatisticsMenu" parent="." index="3" instance=ExtResource( 4 )]
+[node name="StatisticsMenu" parent="." index="4" instance=ExtResource( 4 )]
 margin_left = 39.0
 margin_top = 32.0
 margin_right = -309.0
 margin_bottom = 32.0
 
-[node name="ListSelection" parent="." index="4" instance=ExtResource( 2 )]
+[node name="ListSelection" parent="." index="5" instance=ExtResource( 2 )]
 margin_left = 34.0
 margin_top = 29.0
 margin_right = -567.0
@@ -51,16 +60,8 @@ margin_bottom = -233.0
 rect_scale = Vector2( 1.2, 1.2 )
 theme = ExtResource( 5 )
 
-[node name="KeystrokeVisualizer" parent="." index="5" instance=ExtResource( 7 )]
+[node name="KeystrokeVisualizer" parent="." index="6" instance=ExtResource( 7 )]
 margin_left = 27.0
 margin_top = -47.0
 margin_right = -30.0
 margin_bottom = -14.0
-
-[node name="CanvasLayer" type="CanvasLayer" parent="." index="6"]
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer" index="0"]
-material = SubResource( 1 )
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_right = -2.0
