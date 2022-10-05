@@ -11,8 +11,3 @@ margin_right = -348.0
 theme = ExtResource( 3 )
 script = ExtResource( 1 )
 Entry = ExtResource( 2 )
-
-[node name="Title" type="Label" parent="."]
-margin_right = 676.0
-margin_bottom = 28.0
-text = "Typing"

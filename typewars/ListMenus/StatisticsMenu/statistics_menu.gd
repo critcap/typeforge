@@ -4,8 +4,8 @@ extends ListMenu
 func setup_statistics(result: TypingStatsResult) -> void:
 	if !get_children().empty():
 		clear()
-		
-	var title = Label.new() 
+
+	var title = Label.new()
 	title.text = "Typing Statistics"
 	add_child(title)
 	create_entry(str("Total Words:  ", result.words))

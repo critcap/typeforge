@@ -11,6 +11,7 @@ func _ready():
 	can_quit = true
 	can_reload = true
 
+
 func enter() -> void:
 	.enter()
 	menu = owner.ui_statistics
@@ -29,7 +30,10 @@ func exit() -> void:
 
 
 func on_stats_analyzed(results: TypingStatsResult) -> void:
-	menu.setup_statistics(results)
+	if menu.get_children().empty():
+		menu.setup_statistics(results)
+		return
+	menu.refresh_statistics(results)
 
 
 func unhandled_input(event: InputEvent) -> void:
