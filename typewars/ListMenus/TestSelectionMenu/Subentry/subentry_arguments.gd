@@ -2,17 +2,20 @@ class_name SubentryTestArguments
 extends SubentryBase
 # Subentry for Typing Test arguments
 
-# TODO add to base args 
+# TODO add to base args
 const BASE_SIZE = 60
 const BASE_MODE = 1
 
 var _base_data: Dictionary
 var _combine: Array
 
-onready var ToggleButton = load("res://typewars/ListMenus/TestSelectionMenu/Subentry/toggle_button.gd")
+onready var ToggleButton = load(
+	"res://typewars/ListMenus/TestSelectionMenu/Subentry/toggle_button.gd"
+)
 onready var _mode: Button = $Body/Mode
 onready var _size_label: Label = $Body/SizeLabel
 onready var _size_input: SpinBox = $Body/SizeInput
+
 
 # region Setters and Getters
 func get_data() -> Dictionary:
@@ -22,7 +25,7 @@ func get_data() -> Dictionary:
 	data["size"] = int(_size_input.value)
 	return data
 
-	
+
 func get_combine_values() -> Array:
 	var values = []
 	if !_combine || _combine.empty():
@@ -31,7 +34,10 @@ func get_combine_values() -> Array:
 		if i.pressed:
 			values.append(i.text)
 	return values
+
+
 # endregion
+
 
 # region Public Methods
 func setup(args: Dictionary) -> void:
@@ -40,13 +46,14 @@ func setup(args: Dictionary) -> void:
 	_setup_mode_button(args["mode"] if args.has("mode") else BASE_MODE)
 	_setup_size_input(args["size"] if args.has("size") else BASE_SIZE)
 
-
 	get_node(first_born).set_focus_previous(_size_input.get_line_edit().get_path())
 	get_node(first_born).focus_neighbour_left = _size_input.get_line_edit().get_path()
 	_size_input.get_line_edit().set_focus_next(first_born)
 	_size_input.get_line_edit().focus_neighbour_right = first_born
 
+
 # endregion
+
 
 # region Private Methods
 func _create_combine_buttons(combines: Array) -> void:
@@ -66,21 +73,26 @@ func _setup_mode_button(mode_text: int) -> void:
 	_mode.set_pressed_no_signal(mode_text == TypingTestModes.RACE)
 	if !first_born:
 		first_born = _mode.get_path()
-		
-		
+
+
 func _setup_size_input(size: int) -> void:
 	_size_label.text = "Length:" if int(_mode.pressed) == 1 else "Time:"
 	_size_input.value = size
-	
-	
+
+
 func _unhandled_input(event):
 	if !contains_focus():
 		return
 	if event is InputEventKey:
 		var key_event = event as InputEventKey
 		if key_event.is_action_pressed("ui_accept") && key_event.shift:
-			owner.on_ui_accept()
-			visible = false
+			on_ui_accept()
+
+
+func on_ui_accept():
+	owner.on_ui_accept()
+	visible = false
+
 
 func contains_focus() -> bool:
 	if !visible:
@@ -89,11 +101,13 @@ func contains_focus() -> bool:
 		if child is Control && child.has_focus():
 			return true
 	return false
+
+
 # endregion
 
 
 # region Callback Methods
 func _on_mode_toggled(status: bool) -> void:
 	_size_label.text = "Length:" if status else "Time:"
-	
+
 # endregion
