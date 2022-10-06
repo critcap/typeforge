@@ -6,18 +6,16 @@ const MIN_SIZE = 3
 const MAX_SIZE = 8
 
 
-static func assemble_test_from_data(raw: TypingTestData, combine: Array = []) -> TypingTest:
+static func assemble_test(raw: TypingTestData, args: Dictionary, tests: Dictionary) -> TypingTest:
 	var test = TypingTest.new()
-	var size: int = raw.arguments["size"] if raw.arguments["size"] != 0 else SIZE
+	test.arguments = args if args else {}
 	test.name = raw.name if raw.name != "" else "Test"
-	test.mode = raw.arguments["mode"] if raw.arguments["mode"] != 0 else TypingTestModes.RACE
 
 	if raw.data is Array && !raw.data.empty():
-		var data = generate_random_test_content(raw.data, combine)
-		test.content = generate_random_test(data, size, MIN_SIZE, MAX_SIZE)
-		return test
+		return generate_random_test(raw.data, test, tests)
 	elif raw.data is String and (raw.data != ""):
-		test.content = generate_content_from_string(raw.data, size)
+		var length = int(test.time / 5) if test.mode == TypingTestModes.TIME_ATTACK else test.length
+		test.content = generate_content_from_string(raw.data, length)
 		return test
 
 	push_error("No data found for test: " + test.name)
@@ -35,16 +33,17 @@ static func generate_content_from_string(data: String, repeats: int = 0) -> Pool
 
 # endregion
 
-
 # region Random Test Generation
-static func generate_random_test_content(data: PoolStringArray, combine: Array) -> PoolStringArray:
-	data = data as PoolStringArray
-	data += combine as PoolStringArray
+
+
+static func generate_random_test(data: PoolStringArray, test: TypingTest, tests: Dictionary) -> TypingTest:
+	data = combine_contents(data, test.arguments, tests)
 	var new_data = data if is_qwerty_layout() else Qwertzyfier.qwertzify(data.join(" ")).split(" ")
-	return new_data
+	test.content = generate_random_test_content(new_data, test.length, MIN_SIZE, MAX_SIZE)
+	return test
 
 
-static func generate_random_test(data: Array, l: int, _min: int, _max: int) -> PoolStringArray:
+static func generate_random_test_content(data: Array, l: int, _min: int, _max: int) -> PoolStringArray:
 	seed(OS.get_ticks_msec() + OS.get_unix_time())
 	var words = []
 	for _i in range(l):
@@ -65,11 +64,15 @@ static func _generate_word(data: Array, min_l, max_l) -> String:
 
 static func is_word_finished(word: String, min_l, max_l) -> bool:
 	randomize()
-	if word.length() < min_l:
+	var randomf: float = randf()
+	if randomf < 0.2:
+		return word.length() >= min_l
+	elif randomf < 0.8:
+		return word.length() >= min_l + 1 && word.length() <= max_l - 1
+	elif randomf >= 0.8:
+		return word.length() >= max_l
+	else:
 		return false
-	if word.length() >= max_l:
-		return true
-	return true if round(randf()) == 1 else false
 
 
 # endregion
@@ -78,5 +81,15 @@ static func is_word_finished(word: String, min_l, max_l) -> bool:
 # region Utils
 static func is_qwerty_layout() -> bool:
 	return OS.get_latin_keyboard_variant() == "QWERTY" if OS.get_name() != "HTML5" else false
+
+
+static func combine_contents(data: PoolStringArray, args: Dictionary, tests: Dictionary) -> PoolStringArray:
+	if !args.has("combine") || args["combine"].empty() || tests == null || tests.keys().empty():
+		return data
+	data = data as PoolStringArray
+	for i in args["combine"]:
+		var test_data = tests[i].data if tests.has(i) else []
+		data += test_data as PoolStringArray
+	return data
 
 # endregion
