@@ -43,3 +43,8 @@ func update_progress_indicator(offset: int = 0):
 		progress_indicator.rect_size.x = 0
 		return
 	progress_indicator.rect_size.x = rect_size.x / get_current().length() * (index + offset)
+
+
+func _on_Label_visibility_changed():
+	index = 0
+	progress_indicator.rect_size.x = 0
