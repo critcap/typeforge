@@ -1,7 +1,6 @@
 class_name TimeAttackTestState
 extends BaseTypingTestState
 
-const DEFAULT_TIMEOUT: int = 5
 var timer: Timer
 
 
@@ -17,15 +16,15 @@ func connect_signals() -> void:
 
 
 func on_test_started() -> void:
-	timer.start(DEFAULT_TIMEOUT)
+	timer.start(owner.typing_test.arguments["size"])
 
 
 func on_test_finished() -> void:
 	var collector := owner.stats_collector as TypingStatsCollector
-	collector.time = DEFAULT_TIMEOUT
+	collector.time = owner.typing_test.time
 	change_state("EndTestState")
 
 
 func exit() -> void:
-    .exit()
-    timer.queue_free()
+	.exit()
+	timer.queue_free()
