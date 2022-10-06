@@ -13,17 +13,11 @@ func enter() -> void:
 
 
 func setup_test() -> void:
-	# setup test data
-	var test_data := owner.selected_test as TypingTestData
-	var test := TypingTestFactory.assemble_test(test_data, test_data.arguments, owner.test_list)
-	test.mode = owner.selected_test.arguments["mode"]
-	test.scancodes = ScancodeConverter.convert_text_to_scancodes(test.content)
-
-	owner.typing_test = test
-
 	# setup test classes
+	var test: = owner.typing_test as TypingTest
 	var validator = Validator.new()
 	owner.validator = validator
+	owner.add_child(validator)
 	validator.scancodes = test.scancodes
 
 	var collector = owner.stats_collector

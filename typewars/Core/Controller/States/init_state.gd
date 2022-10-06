@@ -18,7 +18,9 @@ const TESTS = {
 		"args": {"combine": ["toprow", "homerow"], "mode": 1, "size": 50}
 	},
 	"brown_fox":
-	{"content": "The quick brown fox jumps over the lazy dog", "args": {"mode": 1, "size": 5}}
+	{"content": "The quick brown fox jumps over the lazy dog", "args": {"mode": 1, "size": 5}},
+	"common_german": {"content": CommonWords.GERMAN, "args": {"mode": 1, "size": 60}},
+	"common_english": {"content": CommonWords.ENGLISH, "args": {"mode": 1, "size": 60}},
 }
 
 
@@ -31,7 +33,6 @@ func enter() -> void:
 func initialize() -> void:
 	owner.validator = Validator.new()
 	owner.stats_collector = TypingStatsCollector.new()
-	owner.add_child(owner.data_loader)
 	owner.add_child(owner.validator)
 	owner.add_child(owner.stats_collector)
 
