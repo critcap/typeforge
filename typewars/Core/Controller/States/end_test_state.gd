@@ -27,16 +27,22 @@ func connect_signals() -> void:
 func exit() -> void:
 	.exit()
 	menu.visible = false
+	owner.ui_press_start.visible = false
+	can_reload = false
+	can_quit = false
 
 
 func on_stats_analyzed(results: TypingStatsResult) -> void:
 	if menu.get_children().empty():
 		menu.setup_statistics(results)
-		return
-	menu.refresh_statistics(results)
+	else:
+		menu.refresh_statistics(results)
+	owner.ui_press_start.visible = true
+	can_reload = true
+	can_quit = true
 
 
 func unhandled_input(event: InputEvent) -> void:
 	.unhandled_input(event)
 	if event.is_action_pressed("ui_accept"):
-		change_state("SelectTestState")
+		self.on_quit_test()

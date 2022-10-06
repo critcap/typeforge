@@ -25,10 +25,25 @@ func unhandled_input(event: InputEvent) -> void:
 func on_reload_test() -> void:
 	if owner == null:
 		return
+	owner.stats_collector.reset()
+	var validator = owner.validator
+	owner.remove_child(validator)
+	validator.queue_free()
 	change_state("SetupTestState")
+	can_reload = false
+	can_quit = false
+
 
 
 func on_quit_test() -> void:
 	if owner == null:
 		return
+	var test = owner.typing_test
+	owner.remove_child(test)
+	test.queue_free()
+	var validator = owner.validator
+	owner.remove_child(validator)
+	owner.stats_collector.reset()
 	change_state("SelectTestState")
+	can_reload = false
+	can_quit = false

@@ -6,6 +6,7 @@ var menu: Control
 
 func enter() -> void:
 	.enter()
+	owner.ui_prompt.get_node("CenterContainer/Label").text = "Typealot"
 	setup_list_menu()
 
 
@@ -22,9 +23,13 @@ func setup_list_menu() -> void:
 	menu.open()
 
 
-func on_item_selected(item: int, subentry: Dictionary) -> void:
-	owner.selected_test = item
-	owner.selected_test.arguments = subentry
+func on_item_selected(item: int, args: Dictionary) -> void:
+	var test_data := owner.test_list.values()[item] as TypingTestData
+	var test_list := owner.test_list as Dictionary
+	var test := TypingTestFactory.assemble_test(test_data, args, test_list)
+	test.scancodes = ScancodeConverter.convert_text_to_scancodes(test.content)
+	owner.typing_test = test
+	owner.add_child(test)
 	change_state("SetupTestState")
 
 

@@ -15,6 +15,11 @@ _global_script_classes=[ {
 "path": "res://typewars/Core/Controller/States/typing_test_state.gd"
 }, {
 "base": "Reference",
+"class": "CommonWords",
+"language": "GDScript",
+"path": "res://typewars/TypingTest/common_words.gd"
+}, {
+"base": "Reference",
 "class": "CompareOperators",
 "language": "GDScript",
 "path": "res://typewars/Core/Utility/compare_operators.gd"
@@ -39,7 +44,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://typewars/Core/Controller/States/init_state.gd"
 }, {
-"base": "Reference",
+"base": "Control",
 "class": "KeystrokeVisualizer",
 "language": "GDScript",
 "path": "res://typewars/Visualizer/keystroke_visualizer.gd"
@@ -181,6 +186,7 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "BaseTypingTestState": "",
+"CommonWords": "",
 "CompareOperators": "",
 "Dataloader": "",
 "ETypingStats": "",
@@ -222,13 +228,9 @@ config/name="Typewars"
 run/main_scene="res://typewars/TypingTest/TypingTest.tscn"
 config/icon="res://icon.png"
 
-[autoload]
-
-GUI="*res://addons/godot-immediate-gui/GUI.gd"
-
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/Mono-Build-Toggler/plugin.cfg" )
+enabled=PoolStringArray(  )
 
 [gui]
 

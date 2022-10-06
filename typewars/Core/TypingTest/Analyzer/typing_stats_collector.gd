@@ -14,8 +14,15 @@ var _time_stamp: int
 func get_data() -> Dictionary:
 	return _data.duplicate()
 
+
 func get_words() -> int:
-    return _words
+	return _words
+
+
+func reset() -> void:
+	_data = {}
+	_words = 0
+	_time_stamp = OS.get_ticks_msec()
 
 
 # endregion

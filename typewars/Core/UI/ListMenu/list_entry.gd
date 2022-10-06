@@ -1,7 +1,7 @@
 class_name ListEntry
 extends HBoxContainer
 
-# emits when pressed and also passes the item's subentry data along if available 
+# emits when pressed and also passes the item's subentry data along if available
 signal pressed(subentry_data)
 
 # TODO add assginent in list_menu
@@ -40,7 +40,7 @@ func _on_item_pressed():
 		prefix(2)
 		return
 	if subentry.visible:
-		return 
+		return
 	subentry.visible = true
 	subentry.select_item()
 	prefix(1)
@@ -55,7 +55,8 @@ func has_subentry() -> bool:
 			subentry = child
 			return true
 	return false
-	
+
+
 func prefix(index: int = -1) -> void:
 	var prefixes = [indicator, selector, invalidator]
 	for i in prefixes:

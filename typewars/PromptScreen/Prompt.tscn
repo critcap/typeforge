@@ -1,11 +1,12 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
+[ext_resource path="res://typewars/TypingTest/TypingTest.theme" type="Theme" id=1]
 [ext_resource path="res://typewars/Fonts/SFMonoSemibold.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://typewars/PromptScreen/PromptDisplay.tscn" type="PackedScene" id=3]
 [ext_resource path="res://typewars/PromptScreen/PromptUI.gd" type="Script" id=4]
 
 [sub_resource type="DynamicFont" id=1]
-size = 26
+size = 30
 font_data = ExtResource( 2 )
 
 [node name="Prompt" type="Control"]
@@ -14,6 +15,7 @@ anchor_right = 0.5
 anchor_bottom = 1.0
 margin_left = -169.0
 margin_right = 169.0
+theme = ExtResource( 1 )
 script = ExtResource( 4 )
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
@@ -24,4 +26,9 @@ margin_top = -65.0
 margin_bottom = 68.0
 
 [node name="Label" parent="CenterContainer" instance=ExtResource( 3 )]
+margin_left = 91.0
+margin_top = 44.0
+margin_right = 246.0
+margin_bottom = 89.0
 custom_fonts/font = SubResource( 1 )
+text = "Typealot"
