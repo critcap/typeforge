@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://typewars/TypingTest/TestManager.tscn" type="PackedScene" id=1]
 [ext_resource path="res://typewars/ListMenus/TestSelectionMenu/TestSelectionMenu.tscn" type="PackedScene" id=2]
@@ -6,6 +6,23 @@
 [ext_resource path="res://typewars/ListMenus/StatisticsMenu/StatisticsMenu.tscn" type="PackedScene" id=4]
 [ext_resource path="res://typewars/TypingTest/TypingTest.theme" type="Theme" id=5]
 [ext_resource path="res://typewars/Visualizer/KeystrokeVisualizer.tscn" type="PackedScene" id=7]
+
+[sub_resource type="Animation" id=4]
+resource_name = "Blinking"
+length = 4.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:self_modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2, 4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0, 0.0 ]
+}
 
 [sub_resource type="Shader" id=2]
 code = "/*
@@ -277,28 +294,48 @@ anchor_bottom = 1.0
 color = Color( 0.0666667, 0.0666667, 0.0666667, 1 )
 
 [node name="StatisticsMenu" parent="." index="2" instance=ExtResource( 4 )]
-margin_left = 89.0
-margin_top = 85.0
-margin_right = -259.0
-margin_bottom = 85.0
+margin_left = 73.0
+margin_top = 58.0
+margin_right = -275.0
+margin_bottom = 58.0
+rect_scale = Vector2( 1, 1.5 )
 
 [node name="ListSelection" parent="." index="3" instance=ExtResource( 2 )]
 margin_left = 69.0
 margin_top = 60.0
 margin_right = -532.0
 margin_bottom = -202.0
-rect_scale = Vector2( 1.5, 1.5 )
+rect_scale = Vector2( 1.5, 2 )
 theme = ExtResource( 5 )
 
-[node name="Prompt" parent="." index="4" instance=ExtResource( 3 )]
+[node name="PressStart" type="Label" parent="." index="4"]
+visible = false
+self_modulate = Color( 1, 1, 1, 0 )
+margin_left = 340.0
+margin_top = 491.0
+margin_right = 1016.0
+margin_bottom = 519.0
+rect_scale = Vector2( 1.5, 2 )
+theme = ExtResource( 5 )
+text = "Press ENTER to restart"
 
-[node name="KeystrokeVisualizer" parent="." index="5" instance=ExtResource( 7 )]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PressStart" index="0"]
+autoplay = "Blinking"
+playback_speed = 1.5
+anims/Blinking = SubResource( 4 )
+
+[node name="Prompt" parent="." index="5" instance=ExtResource( 3 )]
+
+[node name="Label" parent="Prompt/CenterContainer" index="0"]
+rect_scale = Vector2( 1, 1.5 )
+
+[node name="KeystrokeVisualizer" parent="." index="6" instance=ExtResource( 7 )]
 margin_left = 60.0
 margin_top = -75.0
 margin_right = 3.0
 margin_bottom = -42.0
 
-[node name="PostProcessing" type="CanvasLayer" parent="." index="6"]
+[node name="PostProcessing" type="CanvasLayer" parent="." index="7"]
 
 [node name="ColorRect2" type="ColorRect" parent="PostProcessing" index="0"]
 material = SubResource( 3 )
@@ -310,5 +347,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = -373.0
 color = Color( 1, 1, 1, 0 )
+
+[connection signal="visibility_changed" from="Prompt/CenterContainer/Label" to="Prompt/CenterContainer/Label" method="_on_Label_visibility_changed"]
 
 [editable path="Prompt"]

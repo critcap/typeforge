@@ -52,7 +52,7 @@ func analyze_typing_stats(typing_stats: Dictionary, time: int, words: int) -> vo
 				funcref(operators, "is_lesser")
 			)
 		)
-		if letter_stats[ETypingStats.FASTEST] != 0:
+		if letter_stats[ETypingStats.FASTEST] != 0 && letter_stats[ETypingStats.CODE] != KEY_SPACE:
 			results.fastest_key = (
 				letter
 				if !results.fastest_key
