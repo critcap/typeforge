@@ -228,7 +228,7 @@ GUI="*res://addons/godot-immediate-gui/GUI.gd"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/Mono-Build-Toggler/plugin.cfg" )
+enabled=PoolStringArray(  )
 
 [gui]
 
