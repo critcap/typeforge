@@ -34,7 +34,7 @@ func _on_action_pressed_vertical(event: InputEvent) -> void:
 func _on_action_pressed_horizontal(event: InputEvent) -> void:
 	var line_edit = get_line_edit()
 	if event.is_action_pressed("ui_left"):
-		var focus_left = get_node(line_edit.focus_neighbour_left)
+		var focus_left = get_node(focus_neighbour_left)
 		if focus_left:
 			focus_left.grab_focus()
 	if event.is_action_pressed("ui_right"):

@@ -43,6 +43,7 @@ size_flags_horizontal = 3
 margin_left = 156.0
 margin_right = 230.0
 margin_bottom = 24.0
+focus_neighbour_left = NodePath("../Mode")
 script = ExtResource( 3 )
 
 [connection signal="toggled" from="Body/Mode" to="." method="_on_mode_toggled"]
