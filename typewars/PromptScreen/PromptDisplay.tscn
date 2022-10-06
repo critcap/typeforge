@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://typewars/Fonts/SFMonoSemibold.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://typewars/PromptScreen/prompt_display.gd" type="Script" id=2]
+[ext_resource path="res://typewars/TypingTest/TypingTest.theme" type="Theme" id=3]
 
 [sub_resource type="DynamicFont" id=1]
 size = 26
@@ -12,11 +13,13 @@ margin_left = 41.0
 margin_top = 50.0
 margin_right = 297.0
 margin_bottom = 82.0
+theme = ExtResource( 3 )
 custom_fonts/font = SubResource( 1 )
 text = "sdfgdfgsdfsdfsdf"
 script = ExtResource( 2 )
+correct_letter_color = Color( 0.117647, 0.592157, 0.117647, 1 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
 show_behind_parent = true
 margin_bottom = 35.0
-color = Color( 0.462745, 0.615686, 0.027451, 1 )
+color = Color( 0.478431, 0.556863, 0.258824, 1 )

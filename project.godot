@@ -9,83 +9,203 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Node",
-"class": "ExerciseDataLoader",
+"base": "TestState",
+"class": "BaseTypingTestState",
 "language": "GDScript",
-"path": "res://typewars/test_loader.gd"
+"path": "res://typewars/Core/Controller/States/typing_test_state.gd"
+}, {
+"base": "Reference",
+"class": "CommonWords",
+"language": "GDScript",
+"path": "res://typewars/TypingTest/common_words.gd"
+}, {
+"base": "Reference",
+"class": "CompareOperators",
+"language": "GDScript",
+"path": "res://typewars/Core/Utility/compare_operators.gd"
+}, {
+"base": "Reference",
+"class": "ETypingStats",
+"language": "GDScript",
+"path": "res://typewars/Core/TypingTest/Analyzer/typing_stats_enum.gd"
+}, {
+"base": "TestState",
+"class": "EndTestState",
+"language": "GDScript",
+"path": "res://typewars/Core/Controller/States/end_test_state.gd"
+}, {
+"base": "TestState",
+"class": "InitState",
+"language": "GDScript",
+"path": "res://typewars/Core/Controller/States/init_state.gd"
 }, {
 "base": "Control",
 "class": "KeystrokeVisualizer",
 "language": "GDScript",
-"path": "res://typewars/KeystrokeVisualizer/keystroke_visualizer.gd"
+"path": "res://typewars/Visualizer/keystroke_visualizer.gd"
+}, {
+"base": "HBoxContainer",
+"class": "ListEntry",
+"language": "GDScript",
+"path": "res://typewars/Core/UI/ListMenu/list_entry.gd"
+}, {
+"base": "VBoxContainer",
+"class": "ListMenu",
+"language": "GDScript",
+"path": "res://typewars/Core/UI/ListMenu/list_menu.gd"
 }, {
 "base": "Reference",
 "class": "Qwertzyfier",
 "language": "GDScript",
-"path": "res://typewars/base/qwertzyfier.gd"
+"path": "res://typewars/Core/Utility/qwertzyfier.gd"
 }, {
 "base": "Reference",
 "class": "ScancodeConverter",
 "language": "GDScript",
-"path": "res://typewars/base/scancode_converter.gd"
+"path": "res://typewars/Core/Utility/scancode_converter.gd"
+}, {
+"base": "TestState",
+"class": "SelectTestState",
+"language": "GDScript",
+"path": "res://typewars/Core/Controller/States/select_test_state.gd"
 }, {
 "base": "Label",
 "class": "SelfDestructingLabel",
 "language": "GDScript",
-"path": "res://typewars/KeystrokeVisualizer/self_destructing_label.gd"
+"path": "res://typewars/Visualizer/self_destructing_label.gd"
+}, {
+"base": "TestState",
+"class": "SetupTestState",
+"language": "GDScript",
+"path": "res://typewars/Core/Controller/States/setup_test_state.gd"
 }, {
 "base": "Reference",
+"class": "SpecialUtility",
+"language": "GDScript",
+"path": "res://typewars/Core/Utility/umlaut.gd"
+}, {
+"base": "Node",
 "class": "State",
 "language": "GDScript",
-"path": "res://typewars/base/common/state.gd"
+"path": "res://typewars/Core/Common/state.gd"
 }, {
-"base": "Reference",
+"base": "Node",
 "class": "StateMachine",
 "language": "GDScript",
-"path": "res://typewars/base/common/state_machine.gd"
+"path": "res://typewars/Core/Common/state_machine.gd"
 }, {
 "base": "Node",
 "class": "Stopwatch",
 "language": "GDScript",
-"path": "res://typewars/base/common/stopwatch.gd"
+"path": "res://typewars/Core/Common/stopwatch.gd"
+}, {
+"base": "AspectRatioContainer",
+"class": "SubentryBase",
+"language": "GDScript",
+"path": "res://typewars/Core/UI/ListMenu/subentry_base.gd"
+}, {
+"base": "SubentryBase",
+"class": "SubentryTestArguments",
+"language": "GDScript",
+"path": "res://typewars/ListMenus/TestSelectionMenu/Subentry/subentry_arguments.gd"
+}, {
+"base": "State",
+"class": "TestState",
+"language": "GDScript",
+"path": "res://typewars/Core/Controller/States/test_state.gd"
 }, {
 "base": "Node",
 "class": "TextGenerator",
 "language": "GDScript",
-"path": "res://typewars/base/test_generator.gd"
+"path": "res://typewars/Core/test_generator.gd"
+}, {
+"base": "BaseTypingTestState",
+"class": "TimeAttackTestState",
+"language": "GDScript",
+"path": "res://typewars/Core/Controller/States/time_attack_test_state.gd"
+}, {
+"base": "BaseTypingTestState",
+"class": "TypeRaceTestState",
+"language": "GDScript",
+"path": "res://typewars/Core/Controller/States/type_race_test_state.gd"
 }, {
 "base": "Node",
-"class": "TypingExercise",
+"class": "TypingStatsAnalyzer",
 "language": "GDScript",
-"path": "res://typewars/base/typing_excercise.gd"
+"path": "res://typewars/Core/TypingTest/Analyzer/typing_stats_analyzer.gd"
+}, {
+"base": "Node",
+"class": "TypingStatsCollector",
+"language": "GDScript",
+"path": "res://typewars/Core/TypingTest/Analyzer/typing_stats_collector.gd"
 }, {
 "base": "Reference",
-"class": "Umlaut",
+"class": "TypingStatsResult",
 "language": "GDScript",
-"path": "res://typewars/base/umlaut.gd"
+"path": "res://typewars/Core/TypingTest/Analyzer/typing_stats_result.gd"
+}, {
+"base": "Node",
+"class": "TypingTest",
+"language": "GDScript",
+"path": "res://typewars/Core/TypingTest/typing_test.gd"
+}, {
+"base": "Reference",
+"class": "TypingTestData",
+"language": "GDScript",
+"path": "res://typewars/Core/TypingTest/typing_test_data.gd"
+}, {
+"base": "Node",
+"class": "TypingTestFactory",
+"language": "GDScript",
+"path": "res://typewars/Core/TypingTest/typing_test_factory.gd"
+}, {
+"base": "Reference",
+"class": "TypingTestModes",
+"language": "GDScript",
+"path": "res://typewars/Core/TypingTest/typing_test_modes.gd"
 }, {
 "base": "Node",
 "class": "Validator",
 "language": "GDScript",
-"path": "res://typewars/base/validator.gd"
+"path": "res://typewars/Core/validator.gd"
 }, {
 "base": "Node",
 "class": "Visualizer",
 "language": "GDScript",
-"path": "res://typewars/base/vizualizer.gd"
+"path": "res://typewars/Visualizer/vizualizer.gd"
 } ]
 _global_script_class_icons={
-"ExerciseDataLoader": "",
+"BaseTypingTestState": "",
+"CommonWords": "",
+"CompareOperators": "",
+"ETypingStats": "",
+"EndTestState": "",
+"InitState": "",
 "KeystrokeVisualizer": "",
+"ListEntry": "",
+"ListMenu": "",
 "Qwertzyfier": "",
 "ScancodeConverter": "",
+"SelectTestState": "",
 "SelfDestructingLabel": "",
+"SetupTestState": "",
+"SpecialUtility": "",
 "State": "",
 "StateMachine": "",
 "Stopwatch": "",
+"SubentryBase": "",
+"SubentryTestArguments": "",
+"TestState": "",
 "TextGenerator": "",
-"TypingExercise": "",
-"Umlaut": "",
+"TimeAttackTestState": "",
+"TypeRaceTestState": "",
+"TypingStatsAnalyzer": "",
+"TypingStatsCollector": "",
+"TypingStatsResult": "",
+"TypingTest": "",
+"TypingTestData": "",
+"TypingTestFactory": "",
+"TypingTestModes": "",
 "Validator": "",
 "Visualizer": ""
 }
@@ -93,16 +213,12 @@ _global_script_class_icons={
 [application]
 
 config/name="Typewars"
-run/main_scene="res://dev/Dev.tscn"
+run/main_scene="res://typewars/TypingTest/TypingTest.tscn"
 config/icon="res://icon.png"
-
-[autoload]
-
-GUI="*res://addons/godot-immediate-gui/GUI.gd"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/Mono-Build-Toggler/plugin.cfg" )
+enabled=PoolStringArray(  )
 
 [gui]
 
@@ -114,6 +230,14 @@ enter_command_mode={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777217,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
  ]
+}
+reload_test={
+"deadzone": 0.5,
+"events": [  ]
+}
+quit_test={
+"deadzone": 0.5,
+"events": [  ]
 }
 
 [physics]
