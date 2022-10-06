@@ -1,25 +1,26 @@
 extends Label
 
-export (Color) var correct_letter_color = Color.green
-export (Color) var wrong_letter_color = Color.red
+export(Color) var correct_letter_color = Color.green
+export(Color) var wrong_letter_color = Color.red
 
 var test_content: Array
 var index := 0
 
 onready var progress_indicator := $ColorRect
 
+
 func setup(content: Array):
 	test_content = content
 	text = get_current()
 
 
-func _on_TypingTest_correct_letter_input():
+func _on_TypingTest_correct_letter_input(_code: int):
 	progress_indicator.color = correct_letter_color
 	index += 1
 	update_progress_indicator()
 
 
-func _on_TypingTest_wrong_letter_input():
+func _on_TypingTest_wrong_letter_input(_code: int):
 	progress_indicator.color = wrong_letter_color
 	update_progress_indicator(1)
 
@@ -42,3 +43,8 @@ func update_progress_indicator(offset: int = 0):
 		progress_indicator.rect_size.x = 0
 		return
 	progress_indicator.rect_size.x = rect_size.x / get_current().length() * (index + offset)
+
+
+func _on_Label_visibility_changed():
+	index = 0
+	progress_indicator.rect_size.x = 0
