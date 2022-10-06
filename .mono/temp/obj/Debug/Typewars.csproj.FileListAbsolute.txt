@@ -1,0 +1,9 @@
+C:\Users\Guille\Projects\typeforge\.mono\temp\bin\Debug\Typewars.dll
+C:\Users\Guille\Projects\typeforge\.mono\temp\bin\Debug\Typewars.pdb
+C:\Users\Guille\Projects\typeforge\.mono\temp\obj\Debug\Typewars.csproj.AssemblyReference.cache
+C:\Users\Guille\Projects\typeforge\.mono\temp\obj\Debug\Typewars.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Guille\Projects\typeforge\.mono\temp\obj\Debug\Typewars.AssemblyInfoInputs.cache
+C:\Users\Guille\Projects\typeforge\.mono\temp\obj\Debug\Typewars.AssemblyInfo.cs
+C:\Users\Guille\Projects\typeforge\.mono\temp\obj\Debug\Typewars.csproj.CoreCompileInputs.cache
+C:\Users\Guille\Projects\typeforge\.mono\temp\obj\Debug\Typewars.dll
+C:\Users\Guille\Projects\typeforge\.mono\temp\obj\Debug\Typewars.pdb
