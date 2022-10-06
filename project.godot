@@ -222,10 +222,6 @@ config/name="Typewars"
 run/main_scene="res://typewars/TypingTest/TypingTest.tscn"
 config/icon="res://icon.png"
 
-[autoload]
-
-GUI="*res://addons/godot-immediate-gui/GUI.gd"
-
 [editor_plugins]
 
 enabled=PoolStringArray(  )
