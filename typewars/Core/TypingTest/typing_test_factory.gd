@@ -12,7 +12,7 @@ static func assemble_test(raw: TypingTestData, args: Dictionary, tests: Dictiona
 	test.name = raw.name if raw.name != "" else "Test"
 
 	if raw.data is Array && !raw.data.empty():
-		return generate_random_test(raw.data, test, tests)
+		return generate_random_test(raw.data, test, tests, raw.data[0].length() >= 2)
 	elif raw.data is String and (raw.data != ""):
 		var length = int(test.time / 5) if test.mode == TypingTestModes.TIME_ATTACK else test.length
 		test.content = generate_content_from_string(raw.data, length)
@@ -36,10 +36,13 @@ static func generate_content_from_string(data: String, repeats: int = 0) -> Pool
 # region Random Test Generation
 
 
-static func generate_random_test(data: PoolStringArray, test: TypingTest, tests: Dictionary) -> TypingTest:
-	data = combine_contents(data, test.arguments, tests)
-	var new_data = data if is_qwerty_layout() else Qwertzyfier.qwertzify(data.join(" ")).split(" ")
-	test.content = generate_random_test_content(new_data, test.length, MIN_SIZE, MAX_SIZE)
+static func generate_random_test(data: PoolStringArray, test: TypingTest, tests: Dictionary, is_words: bool = false) -> TypingTest:
+	if !is_words:
+		data = combine_contents(data, test.arguments, tests)
+		var new_data = data if is_qwerty_layout() else Qwertzyfier.qwertzify(data.join(" ")).split(" ")
+		test.content = generate_random_test_content(new_data, test.length, MIN_SIZE, MAX_SIZE)
+	else:
+		test.content = _generate_common_word(data, test.length)
 	return test
 
 
@@ -60,6 +63,14 @@ static func _generate_word(data: Array, min_l, max_l) -> String:
 		word += data[randi() % data.size()]
 
 	return word
+
+
+static func _generate_common_word(data: Array, l: int) -> PoolStringArray:
+	var words = []
+	for _i in range(l):
+		randomize()
+		words.append( data[randi() % data.size()])
+	return words as PoolStringArray
 
 
 static func is_word_finished(word: String, min_l, max_l) -> bool:
