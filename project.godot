@@ -15,11 +15,6 @@ _global_script_classes=[ {
 "path": "res://typewars/Core/Controller/States/typing_test_state.gd"
 }, {
 "base": "Reference",
-"class": "CommonGermanWords",
-"language": "GDScript",
-"path": "res://typewars/TypingTest/common_german.gd"
-}, {
-"base": "Reference",
 "class": "CommonWords",
 "language": "GDScript",
 "path": "res://typewars/TypingTest/common_words.gd"
@@ -49,7 +44,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://typewars/Core/Controller/States/init_state.gd"
 }, {
-"base": "Reference",
+"base": "Control",
 "class": "KeystrokeVisualizer",
 "language": "GDScript",
 "path": "res://typewars/Visualizer/keystroke_visualizer.gd"
@@ -191,7 +186,6 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "BaseTypingTestState": "",
-"CommonGermanWords": "",
 "CommonWords": "",
 "CompareOperators": "",
 "Dataloader": "",
