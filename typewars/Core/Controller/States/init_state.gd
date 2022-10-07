@@ -31,11 +31,7 @@ func enter() -> void:
 
 
 func initialize() -> void:
-	owner.validator = Validator.new()
-	owner.stats_collector = TypingStatsCollector.new()
-	owner.add_child(owner.validator)
-	owner.add_child(owner.stats_collector)
-
+	# ? possibly add back properties (Single responsibility)
 	var tests = {}
 	for key in TESTS.keys():
 		var test = TypingTestData.new()
