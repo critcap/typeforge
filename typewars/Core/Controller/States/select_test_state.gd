@@ -14,9 +14,8 @@ func enter() -> void:
 func setup_list_menu() -> void:
 	menu = owner.ui_select
 	var list := owner.test_list as Dictionary
-
 	if list.size() == 0:
-		menu.setup_list(["No tests found"])
+		push_error("No tests loaded!")
 		return
 
 	menu.setup_list(list.values())
