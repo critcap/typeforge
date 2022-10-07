@@ -57,7 +57,6 @@ func validate(event: InputEventKey) -> void:
 
 	if code != scancodes[_index]:
 		emit_signal("wrong_letter_input", code)
-		_errors += 1
 		return
 
 	emit_signal("correct_letter_input", code)
