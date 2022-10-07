@@ -1,10 +1,10 @@
 extends ListMenu
 
 
-func setup_statistics(result: TypingStatsResult) -> void:
+func setup(result: TypingStatsResult) -> void:
 	if !get_children().empty():
-		clear()
-
+		refresh_statistics(result)
+	# only runs once
 	var title = Label.new()
 	title.text = "Typing Statistics"
 	add_child(title)

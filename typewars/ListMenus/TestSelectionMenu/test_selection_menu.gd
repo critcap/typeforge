@@ -1,7 +1,7 @@
 extends ListMenu
 
 
-func setup_list(list: Array) -> void:
+func setup(list: Array) -> void:
 	clear()
 	for item in list:
 		var test_data: = item as TypingTestData
