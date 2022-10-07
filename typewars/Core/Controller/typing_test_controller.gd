@@ -7,7 +7,7 @@ var typing_test: TypingTest
 var stats_collector: TypingStatsCollector
 
 onready var ui_prompt = $Prompt
-onready var ui_list = $ListSelection
+onready var ui_select = $ListSelection
 onready var ui_statistics = $StatisticsMenu
 onready var ui_visualizer = $KeystrokeVisualizer
 onready var ui_press_start = $PressStart

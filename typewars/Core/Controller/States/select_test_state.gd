@@ -6,12 +6,13 @@ var menu: Control
 
 func enter() -> void:
 	.enter()
+	owner.ui_prompt.visible = true
 	owner.ui_prompt.get_node("CenterContainer/Label").text = "Typealot"
 	setup_list_menu()
 
 
 func setup_list_menu() -> void:
-	menu = owner.ui_list
+	menu = owner.ui_select
 	var list := owner.test_list as Dictionary
 
 	if list.size() == 0:
