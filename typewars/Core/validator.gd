@@ -1,36 +1,63 @@
 class_name Validator
 extends Node
 
-signal started
-signal finished
+# region signals
 
+# on the test has started
+signal started
+# when the test has finished
+signal finished
+# when the word is completed
 signal word_passed
+
 signal wrong_letter_input(code)
 signal correct_letter_input(code)
 
+# endregion
+
+# region Properties
+var index: int setget , get_index
 var scancodes: PoolIntArray
-var _index: int = 0
-var _errors: int = 0
 var has_started: bool = false
+var _index: int = 0
+
+# endregion
+
+# region Setters & Getters
+
+
+func get_index() -> int:
+	return _index
+
+
+# endregion
+
+
+func setup(codes: PoolIntArray) -> void:
+	scancodes = codes
+	_index = 0
+	has_started = false
 
 
 func validate(event: InputEventKey) -> void:
+	if scancodes == null || scancodes.empty() || _index >= scancodes.size():
+		return
+
 	var code = event.scancode
-	print(code, " ", scancodes[_index])
+
+	# workaround when using browser with different language
+	# TODO layout setting
 	if OS.get_name() == "HTML5" && code >= 200:
 		code = event.physical_scancode
-	print(code)	
+
+	# fires on first key input
 	if _index == 0 && !has_started:
 		has_started = true
 		emit_signal("started")
 
-	if scancodes == null || scancodes.empty():
-		return
-
 	if code != scancodes[_index]:
 		emit_signal("wrong_letter_input", code)
 		_errors += 1
-		print("Error: " + str(_errors))
 		return
 
 	emit_signal("correct_letter_input", code)
@@ -40,10 +67,3 @@ func validate(event: InputEventKey) -> void:
 
 	if _index >= scancodes.size():
 		emit_signal("finished")
-
-# func get_scancode_from_event(event: InputEventKey) -> int:
-# 	# TODO add cases for other OSes
-# 	match OS.get_name():
-# 		"Windows":
-# 			return event.scancode
-# 	return event.scancode
