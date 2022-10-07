@@ -24,11 +24,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://typewars/Core/Utility/compare_operators.gd"
 }, {
-"base": "Node",
-"class": "Dataloader",
-"language": "GDScript",
-"path": "res://typewars/Core/FileLoader/data_loader.gd"
-}, {
 "base": "Reference",
 "class": "ETypingStats",
 "language": "GDScript",
@@ -74,7 +69,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://typewars/Core/Controller/States/select_test_state.gd"
 }, {
-"base": "Reference",
+"base": "Label",
 "class": "SelfDestructingLabel",
 "language": "GDScript",
 "path": "res://typewars/Visualizer/self_destructing_label.gd"
@@ -89,17 +84,17 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://typewars/Core/Utility/umlaut.gd"
 }, {
-"base": "Reference",
+"base": "Node",
 "class": "State",
 "language": "GDScript",
 "path": "res://typewars/Core/Common/state.gd"
 }, {
-"base": "Reference",
+"base": "Node",
 "class": "StateMachine",
 "language": "GDScript",
 "path": "res://typewars/Core/Common/state_machine.gd"
 }, {
-"base": "Reference",
+"base": "Node",
 "class": "Stopwatch",
 "language": "GDScript",
 "path": "res://typewars/Core/Common/stopwatch.gd"
@@ -119,7 +114,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://typewars/Core/Controller/States/test_state.gd"
 }, {
-"base": "Reference",
+"base": "Node",
 "class": "TextGenerator",
 "language": "GDScript",
 "path": "res://typewars/Core/test_generator.gd"
@@ -169,17 +164,12 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://typewars/Core/TypingTest/typing_test_modes.gd"
 }, {
-"base": "Reference",
-"class": "TypingTestResults",
-"language": "GDScript",
-"path": "res://typewars/Core/TypingTest/typing_test_results.gd"
-}, {
 "base": "Node",
 "class": "Validator",
 "language": "GDScript",
 "path": "res://typewars/Core/validator.gd"
 }, {
-"base": "Reference",
+"base": "Node",
 "class": "Visualizer",
 "language": "GDScript",
 "path": "res://typewars/Visualizer/vizualizer.gd"
@@ -188,7 +178,6 @@ _global_script_class_icons={
 "BaseTypingTestState": "",
 "CommonWords": "",
 "CompareOperators": "",
-"Dataloader": "",
 "ETypingStats": "",
 "EndTestState": "",
 "InitState": "",
@@ -217,7 +206,6 @@ _global_script_class_icons={
 "TypingTestData": "",
 "TypingTestFactory": "",
 "TypingTestModes": "",
-"TypingTestResults": "",
 "Validator": "",
 "Visualizer": ""
 }
