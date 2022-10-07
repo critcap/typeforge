@@ -8,15 +8,14 @@ var menu
 func _ready():
 	analyzer = TypingStatsAnalyzer.new()
 	add_child(analyzer)
-	can_quit = true
-	can_reload = true
 
 
 func enter() -> void:
 	.enter()
 	menu = owner.ui_statistics
 	menu.visible = true
-	var collector = owner.stats_collector
+
+	var collector := owner.stats_collector as TypingStatsCollector
 	analyzer.analyze_typing_stats(collector.data, collector.time, collector.words)
 
 
@@ -33,10 +32,7 @@ func exit() -> void:
 
 
 func on_stats_analyzed(results: TypingStatsResult) -> void:
-	if menu.get_children().empty():
-		menu.setup_statistics(results)
-	else:
-		menu.refresh_statistics(results)
+	menu.setup(results)
 	owner.ui_press_start.visible = true
 	can_reload = true
 	can_quit = true
