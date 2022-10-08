@@ -32,6 +32,8 @@ func enter() -> void:
 
 func initialize() -> void:
 	# ? possibly add back properties (Single responsibility)
+	owner.stats_collector = TypingStatsCollector.new()
+	owner.add_child(owner.stats_collector)
 	var tests = {}
 	for key in TESTS.keys():
 		var test = TypingTestData.new()

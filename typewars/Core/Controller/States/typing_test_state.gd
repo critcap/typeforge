@@ -47,5 +47,4 @@ func unhandled_input(event):
 
 func exit() -> void:
 	.exit()
-	validator.queue_free()
 	owner.ui_prompt.visible = false
