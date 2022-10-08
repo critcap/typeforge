@@ -15,10 +15,8 @@ func enter() -> void:
 func setup_test() -> void:
 	# setup test classes
 	var test: = owner.typing_test as TypingTest
-	var validator = Validator.new()
-	owner.validator = validator
-	owner.add_child(validator)
-	validator.scancodes = test.scancodes
+	var validator = owner.validator
+	validator.setup(test.scancodes)
 
 	var collector = owner.stats_collector
 	validator.connect("correct_letter_input", collector, "on_correct_letter_pressed")

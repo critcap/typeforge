@@ -34,6 +34,8 @@ func initialize() -> void:
 	# ? possibly add back properties (Single responsibility)
 	owner.stats_collector = TypingStatsCollector.new()
 	owner.add_child(owner.stats_collector)
+	owner.validator = Validator.new()
+
 	var tests = {}
 	for key in TESTS.keys():
 		var test = TypingTestData.new()
