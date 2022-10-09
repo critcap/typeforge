@@ -3,8 +3,10 @@ extends Control
 
 export(float, 0.0, 1.0) var max_content_width: float = 0.6
 export(float, 0.0, 99.0, 0.1) var lingering_time: float = 2.0
+export(float, 0, 99.0, 0.5) var idle_time_before_dispose: float = 1.0
 
 var active: Label setget , get_active
+var _idle_tracker: int = 0
 
 onready var body := $Body
 
@@ -16,12 +18,12 @@ func get_active() -> Label:
 func _process(delta):
 	if body.get_children().size() < 6:
 		return
+	if OS.get_ticks_msec() - _idle_tracker >= int(1000 * idle_time_before_dispose):
+		var child := body.get_children()[0] as SelfDestructingLabel
+		if child.is_destructing():
+			return
 
-	var child := body.get_children()[0] as SelfDestructingLabel
-	if child.is_destructing():
-		return
-
-	child.commit_sudoku(lingering_time)
+		child.commit_sudoku(lingering_time)
 
 
 func _unhandled_input(event):
@@ -32,7 +34,8 @@ func _unhandled_input(event):
 
 	if !key_event.pressed || key_event.echo:
 		return
-
+	# creates a timestamp for idle detection
+	_idle_tracker = OS.get_ticks_msec()
 	if key_event.scancode == KEY_SPACE:
 		add_new_block()
 		var letter = Visualizer.visualize_input(key_event.scancode)
@@ -51,7 +54,10 @@ func write(letter: String) -> void:
 	active.text += letter
 
 	if get_content_size().x > body.rect_size.x * max_content_width:
-		body.get_child(0).free()
+		var child = body.get_child(0) as SelfDestructingLabel
+		if child.is_destructing():
+			return
+		child.free()
 
 
 # TODO remove add_new_block functions + references
