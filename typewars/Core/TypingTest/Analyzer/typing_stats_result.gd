@@ -47,6 +47,7 @@ func get_total_strokes() -> int:
 func get_character_stats(character: int):
 	if !_data.has(character):
 		push_error(str("Error no data for keycode: ", character))
+		return
 	return _data[character]
 
 # endregion

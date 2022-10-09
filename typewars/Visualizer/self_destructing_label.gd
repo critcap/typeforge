@@ -14,6 +14,7 @@ func self_destroy(timer: float) -> void:
 	_is_destructing = true
 	animate_destruction(timer)
 
+
 func commit_sudoku(timer: float) -> void:
 	self_destroy(timer)
 

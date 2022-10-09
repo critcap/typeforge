@@ -14,7 +14,7 @@ func enter() -> void:
 
 func setup_test() -> void:
 	# setup test classes
-	var test: = owner.typing_test as TypingTest
+	var test := owner.typing_test as TypingTest
 	var validator = owner.validator
 	validator.setup(test.scancodes)
 
