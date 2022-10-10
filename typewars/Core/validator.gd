@@ -40,15 +40,14 @@ func setup(codes: PoolIntArray) -> void:
 
 
 func validate(event: InputEventKey) -> void:
-	if scancodes == null || scancodes.empty() || _index >= scancodes.size():
+	if !has_scancodes() || is_ignored_key(event):
 		return
 
-	var code = event.scancode
-
-	# workaround when using browser with different language
-	# TODO layout setting
-	if OS.get_name() == "HTML5" && code >= 200:
-		code = event.physical_scancode
+	var code = (
+		event.physical_scancode
+		if OS.get_name() == "HTML5" && event.scancode >= 200
+		else event.scancode
+	)
 
 	# fires on first key input
 	if _index == 0 && !has_started:
@@ -66,3 +65,17 @@ func validate(event: InputEventKey) -> void:
 
 	if _index >= scancodes.size():
 		emit_signal("finished")
+
+
+func has_scancodes() -> bool:
+	return scancodes != null && !scancodes.empty() && _index < scancodes.size()
+
+
+func is_ignored_key(event: InputEventKey) -> bool:
+	if event.command || event.control || event.shift || event.alt:
+		return true
+	var stringcode = OS.get_scancode_string(event.get_scancode_with_modifiers())
+	match stringcode.to_lower():
+		"shift", "command", "control", "alt":
+			return true
+	return false
