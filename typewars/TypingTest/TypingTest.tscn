@@ -39,7 +39,6 @@ shader_param/scanline_alpha = 0.9
 shader_param/lines_velocity = 30.0
 
 [node name="Main" instance=ExtResource( 1 )]
-test_path = "res://dev/test.yaml"
 
 [node name="Background" type="Control" parent="." index="1"]
 anchor_right = 1.0

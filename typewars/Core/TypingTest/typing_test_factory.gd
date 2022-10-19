@@ -36,10 +36,16 @@ static func generate_content_from_string(data: String, repeats: int = 0) -> Pool
 # region Random Test Generation
 
 
-static func generate_random_test(data: PoolStringArray, test: TypingTest, tests: Dictionary, is_words: bool = false) -> TypingTest:
+static func generate_random_test(
+	data: PoolStringArray, test: TypingTest, tests: Dictionary, is_words: bool = false
+) -> TypingTest:
 	if !is_words:
 		data = combine_contents(data, test.arguments, tests)
-		var new_data = data if is_qwerty_layout() else Qwertzyfier.qwertzify(data.join(" ")).split(" ")
+		var new_data = (
+			data
+			if is_qwerty_layout()
+			else Qwertzyfier.qwertzify(data.join(" ")).split(" ")
+		)
 		test.content = generate_random_test_content(new_data, test.length, MIN_SIZE, MAX_SIZE)
 	else:
 		test.content = _generate_common_word(data, test.length)
@@ -69,7 +75,7 @@ static func _generate_common_word(data: Array, l: int) -> PoolStringArray:
 	var words = []
 	for _i in range(l):
 		randomize()
-		words.append( data[randi() % data.size()])
+		words.append(data[randi() % data.size()])
 	return words as PoolStringArray
 
 
