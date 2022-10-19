@@ -12,8 +12,6 @@ func self_destroy(timer: float) -> void:
 	if _is_destructing:
 		return
 	_is_destructing = true
-	timer = timer / 2
-	yield(get_tree().create_timer(timer), "timeout")
 	animate_destruction(timer)
 
 
@@ -24,6 +22,8 @@ func commit_sudoku(timer: float) -> void:
 func animate_destruction(timer: float) -> void:
 	var tween = Tween.new()
 	add_child(tween)
+	timer = timer / 2
+	yield(get_tree().create_timer(timer), "timeout")
 	tween.interpolate_property(
 		self,
 		"modulate",

@@ -6,24 +6,25 @@ signal item_selected(index, subentry)
 export(PackedScene) var Entry: PackedScene
 
 
-func setup_list(input) -> void:
+func setup(_input) -> void:
 	pass
 
 
-func create_entry(text: String) -> void:
-	var entry = Entry.instance()
+func create_entry(value) -> void:
+	var entry := Entry.instance() as ListEntry
 	add_child(entry)
-	entry.setup(text)
+	entry.setup(str(value))
 
 
 func create_focus_wrapping() -> void:
-	if get_children().empty():
+	var children := get_children()
+	if children.empty() || children.size() == 1:
 		return
-	var first := get_children()[0].item as Button
-	var last := get_children()[-1].item as Button
 
-	first.set_focus_neighbour(MARGIN_TOP, last.get_path())
-	last.set_focus_neighbour(MARGIN_BOTTOM, first.get_path())
+	var first := children[0].item as Button
+	var last := children[-1].item as Button
+	first.set_focus_neighbour(margin_top, last.get_path())
+	last.set_focus_neighbour(margin_bottom, first.get_path())
 
 
 func on_item_pressed(subentry: Dictionary, item_index: int) -> void:
@@ -37,10 +38,6 @@ func open() -> void:
 	if get_children().empty():
 		return
 	get_children()[0].select_item()
-
-
-func close() -> void:
-	visible = false
 
 
 func clear() -> void:

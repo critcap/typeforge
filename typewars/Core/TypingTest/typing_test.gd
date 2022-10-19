@@ -37,7 +37,7 @@ func get_time() -> int:
 
 func get_length() -> int:
 	if self.mode != 1:
-		return int(212 * 60 / time) # current world record times time
+		return int(212 * 60 / time)  # current world record times time
 	return arguments["size"] if arguments.has("size") else DEFAULT_LENGTH
 
 # endregion
