@@ -26,14 +26,16 @@ func connect_signals() -> void:
 func exit() -> void:
 	.exit()
 	menu.visible = false
-	owner.ui_press_start.visible = false
+	if owner.ui_press_start:
+		owner.ui_press_start.visible = false
 	can_reload = false
 	can_quit = false
 
 
 func on_stats_analyzed(results: TypingStatsResult) -> void:
 	menu.setup(results)
-	owner.ui_press_start.visible = true
+	if owner.ui_press_start:
+		owner.ui_press_start.visible = true
 	can_reload = true
 	can_quit = true
 
