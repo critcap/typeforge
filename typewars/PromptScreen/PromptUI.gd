@@ -1,3 +1,3 @@
 extends Control
 
-onready var prompt_display := $CenterContainer/Label
+onready var prompt_display: = $CenterContainer/Label

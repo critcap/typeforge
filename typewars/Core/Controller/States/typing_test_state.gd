@@ -4,7 +4,6 @@ extends TestState
 var validator: Validator
 var allow_input: bool
 
-
 func _ready():
 	can_quit = true
 	can_reload = true
@@ -48,4 +47,5 @@ func unhandled_input(event):
 
 func exit() -> void:
 	.exit()
+	validator.queue_free()
 	owner.ui_prompt.visible = false

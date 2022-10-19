@@ -19,7 +19,6 @@ static func convert_text_to_scancodes(text: Array) -> Array:
 
 	return scancodes
 
-
 static func convert_code_to_string(scancode: int) -> String:
 	var letter := SpecialUtility.get_umlaut_from_scancode(scancode)
 	letter = OS.get_scancode_string(scancode) if letter.empty() else letter

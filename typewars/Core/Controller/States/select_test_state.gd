@@ -1,24 +1,24 @@
 class_name SelectTestState
 extends TestState
 
-var menu: ListMenu
+var menu: Control
 
 
 func enter() -> void:
 	.enter()
-	owner.ui_prompt.visible = true
 	owner.ui_prompt.get_node("CenterContainer/Label").text = "Typealot"
 	setup_list_menu()
 
 
 func setup_list_menu() -> void:
-	menu = owner.ui_select as ListMenu
+	menu = owner.ui_list
 	var list := owner.test_list as Dictionary
+
 	if list.size() == 0:
-		push_error("No tests loaded!")
+		menu.setup_list(["No tests found"])
 		return
 
-	menu.setup(list.values())
+	menu.setup_list(list.values())
 	menu.connect("item_selected", self, "on_item_selected")
 	menu.open()
 

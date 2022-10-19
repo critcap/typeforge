@@ -4,7 +4,6 @@ extends State
 var can_reload: bool = false
 var can_quit: bool = false
 
-
 # wrapper method for changing states
 func change_state(state: String) -> void:
 	if owner == null || !owner.has_method("change_state"):
@@ -29,9 +28,11 @@ func on_reload_test() -> void:
 	owner.stats_collector.reset()
 	var validator = owner.validator
 	owner.remove_child(validator)
+	validator.queue_free()
 	change_state("SetupTestState")
 	can_reload = false
 	can_quit = false
+
 
 
 func on_quit_test() -> void:
