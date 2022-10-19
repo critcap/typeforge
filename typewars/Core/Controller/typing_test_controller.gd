@@ -33,6 +33,4 @@ func set_validator(_validator: Validator) -> void:
 		remove_child(validator)
 		validator.queue_free()
 	validator = _validator
-	add_child(validator)
-
 # endregion

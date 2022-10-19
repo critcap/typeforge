@@ -28,7 +28,8 @@ const TESTS = {
 
 func enter() -> void:
 	.enter()
-	initialize()
+	init_members()
+	init_test_list()
 
 	# TODO Remove this
 	if OS.is_debug_build():
@@ -40,12 +41,26 @@ func enter() -> void:
 	change_state("SelectTestState")
 
 
-func initialize() -> void:
-	# ? possibly add back properties (Single responsibility)
+func init_members() -> void:
+	# Setup members
 	owner.stats_collector = TypingStatsCollector.new()
 	owner.add_child(owner.stats_collector)
 	owner.validator = Validator.new()
+	owner.add_child(owner.validator)
 
+
+	# connect to collector
+	owner.validator.connect("correct_letter_input", owner.stats_collector, "on_correct_letter_pressed")
+	owner.validator.connect("wrong_letter_input", owner.stats_collector, "on_wrong_letter_pressed")
+	owner.validator.connect("word_passed", owner.stats_collector, "on_word_passed")
+	# connect to prompt display
+	var prompt = owner.ui_prompt.prompt_display
+	owner.validator.connect("correct_letter_input", prompt, "_on_TypingTest_correct_letter_input")
+	owner.validator.connect("wrong_letter_input", prompt, "_on_TypingTest_wrong_letter_input")
+	owner.validator.connect("word_passed", prompt, "_on_TypingTest_word_passed")
+
+
+func init_test_list() -> void:
 	var tests = {}
 	for key in TESTS.keys():
 		var test = TypingTestData.new()

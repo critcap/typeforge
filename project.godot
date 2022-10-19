@@ -59,11 +59,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://typewars/Core/PlayerStats/player_stats.gd"
 }, {
-"base": "Resource",
-"class": "PlayerStatsA",
-"language": "GDScript",
-"path": "res://typewars/Core/TypingTest/PlayerStats/player_stats.gd"
-}, {
 "base": "Node",
 "class": "PlayerStatsManager",
 "language": "GDScript",
@@ -205,7 +200,6 @@ _global_script_class_icons={
 "ListEntry": "",
 "ListMenu": "",
 "PlayerStats": "",
-"PlayerStatsA": "",
 "PlayerStatsManager": "",
 "Qwertzyfier": "",
 "ScancodeConverter": "",
