@@ -1,0 +1,163 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://typewars/ListMenus/StatisticsMenu/StatisticsMenu.tscn" type="PackedScene" id=1]
+[ext_resource path="res://typewars/ListMenus/TestSelectionMenu/TestSelectionMenu.tscn" type="PackedScene" id=2]
+[ext_resource path="res://typewars/TypingTest/TestManager.tscn" type="PackedScene" id=3]
+[ext_resource path="res://dev/main.gd" type="Script" id=4]
+[ext_resource path="res://typewars/PromptScreen/Prompt.tscn" type="PackedScene" id=5]
+[ext_resource path="res://typewars/TypingTest/CRTShader.shader" type="Shader" id=6]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 6 )
+shader_param/screen_width = 1024.0
+shader_param/screen_height = 600.0
+shader_param/BarrelPower = 1.1
+shader_param/color_bleeding = 1.2
+shader_param/bleeding_range_x = 3.0
+shader_param/bleeding_range_y = 3.0
+shader_param/lines_distance = 4.0
+shader_param/scan_size = 2.0
+shader_param/scanline_alpha = 0.9
+shader_param/lines_velocity = 30.0
+
+[node name="Main" type="Node"]
+script = ExtResource( 4 )
+
+[node name="TestController" parent="." instance=ExtResource( 3 )]
+
+[node name="Background" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.0509804, 0.0509804, 0.0509804, 1 )
+
+[node name="PostProcessing" type="CanvasLayer" parent="."]
+follow_viewport_enable = true
+
+[node name="CRTShader" type="ColorRect" parent="PostProcessing"]
+visible = false
+show_behind_parent = true
+material = SubResource( 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 1
+
+[node name="GUI" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 2.0
+margin_right = -0.976013
+grow_horizontal = 2
+grow_vertical = 2
+custom_constants/margin_right = 20
+custom_constants/margin_top = 20
+custom_constants/margin_left = 20
+custom_constants/margin_bottom = 20
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GUI"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 1001.0
+margin_bottom = 580.0
+
+[node name="Header" type="MarginContainer" parent="GUI/VBoxContainer"]
+margin_right = 981.0
+margin_bottom = 151.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GUI/VBoxContainer/Header"]
+margin_right = 981.0
+margin_bottom = 151.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GUI/VBoxContainer/Header/VBoxContainer"]
+margin_right = 981.0
+margin_bottom = 151.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MetaInfo" type="Label" parent="GUI/VBoxContainer/Header/VBoxContainer/HBoxContainer"]
+margin_right = 488.0
+margin_bottom = 151.0
+size_flags_horizontal = 3
+size_flags_vertical = 5
+text = "asdasdasdas"
+
+[node name="Label2" type="Label" parent="GUI/VBoxContainer/Header/VBoxContainer/HBoxContainer"]
+margin_left = 492.0
+margin_right = 981.0
+margin_bottom = 151.0
+size_flags_horizontal = 3
+size_flags_vertical = 5
+text = "asdasdasdas"
+
+[node name="Body" type="Container" parent="GUI/VBoxContainer"]
+margin_top = 155.0
+margin_right = 981.0
+margin_bottom = 405.0
+rect_min_size = Vector2( 0, 250 )
+rect_pivot_offset = Vector2( 55, 493 )
+size_flags_vertical = 3
+
+[node name="TestSelectionMenu" parent="GUI/VBoxContainer/Body" instance=ExtResource( 2 )]
+unique_name_in_owner = true
+custom_constants/separation = 4
+
+[node name="StatisticsMenu" parent="GUI/VBoxContainer/Body" instance=ExtResource( 1 )]
+unique_name_in_owner = true
+
+[node name="PromptDisplay" parent="GUI/VBoxContainer/Body" instance=ExtResource( 5 )]
+unique_name_in_owner = true
+
+[node name="Footer" type="MarginContainer" parent="GUI/VBoxContainer"]
+margin_top = 409.0
+margin_right = 981.0
+margin_bottom = 560.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/margin_top = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GUI/VBoxContainer/Footer"]
+margin_right = 981.0
+margin_bottom = 151.0
+alignment = 2
+
+[node name="Line1" type="Label" parent="GUI/VBoxContainer/Footer/VBoxContainer"]
+margin_top = 65.0
+margin_right = 981.0
+margin_bottom = 79.0
+
+[node name="Line2" type="Label" parent="GUI/VBoxContainer/Footer/VBoxContainer"]
+margin_top = 83.0
+margin_right = 981.0
+margin_bottom = 97.0
+
+[node name="Line4" type="Label" parent="GUI/VBoxContainer/Footer/VBoxContainer"]
+margin_top = 101.0
+margin_right = 981.0
+margin_bottom = 115.0
+
+[node name="Line3" type="Label" parent="GUI/VBoxContainer/Footer/VBoxContainer"]
+margin_top = 119.0
+margin_right = 981.0
+margin_bottom = 133.0
+
+[node name="Hints" type="HBoxContainer" parent="GUI/VBoxContainer/Footer/VBoxContainer"]
+margin_top = 137.0
+margin_right = 981.0
+margin_bottom = 151.0
+alignment = 2
+
+[node name="Label" type="Label" parent="GUI/VBoxContainer/Footer/VBoxContainer/Hints"]
+margin_left = 683.0
+margin_right = 838.0
+margin_bottom = 14.0
+text = "ctrl+enter:show settings"
+
+[node name="Label2" type="Label" parent="GUI/VBoxContainer/Footer/VBoxContainer/Hints"]
+margin_left = 842.0
+margin_right = 981.0
+margin_bottom = 14.0
+text = "enter:start typing test"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://typewars/TypingTest/TestManager.tscn" type="PackedScene" id=1]
 [ext_resource path="res://typewars/ListMenus/TestSelectionMenu/TestSelectionMenu.tscn" type="PackedScene" id=2]
@@ -7,23 +7,6 @@
 [ext_resource path="res://typewars/TypingTest/TypingTest.theme" type="Theme" id=5]
 [ext_resource path="res://typewars/TypingTest/CRTShader.shader" type="Shader" id=6]
 [ext_resource path="res://typewars/Visualizer/KeystrokeVisualizer.tscn" type="PackedScene" id=7]
-
-[sub_resource type="Animation" id=4]
-resource_name = "Blinking"
-length = 4.0
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:self_modulate:a")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 2, 4 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ 0.0, 1.0, 0.0 ]
-}
 
 [sub_resource type="ShaderMaterial" id=3]
 shader = ExtResource( 6 )
@@ -66,31 +49,15 @@ margin_bottom = -243.0
 rect_scale = Vector2( 1.5, 2 )
 theme = ExtResource( 5 )
 
-[node name="PressStart" type="Label" parent="." index="4"]
-visible = false
-self_modulate = Color( 1, 1, 1, 0 )
-margin_left = 340.0
-margin_top = 491.0
-margin_right = 1016.0
-margin_bottom = 519.0
-rect_scale = Vector2( 1.5, 2 )
-theme = ExtResource( 5 )
-text = "Press ENTER to restart"
+[node name="Prompt" parent="." index="4" instance=ExtResource( 3 )]
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="PressStart" index="0"]
-autoplay = "Blinking"
-playback_speed = 1.5
-anims/Blinking = SubResource( 4 )
-
-[node name="Prompt" parent="." index="5" instance=ExtResource( 3 )]
-
-[node name="KeystrokeVisualizer" parent="." index="6" instance=ExtResource( 7 )]
+[node name="KeystrokeVisualizer" parent="." index="5" instance=ExtResource( 7 )]
 margin_left = 60.0
 margin_top = -75.0
 margin_right = 3.0
 margin_bottom = -42.0
 
-[node name="PostProcessing" type="CanvasLayer" parent="." index="7"]
+[node name="PostProcessing" type="CanvasLayer" parent="." index="6"]
 
 [node name="ColorRect2" type="ColorRect" parent="PostProcessing" index="0"]
 visible = false

@@ -15,7 +15,7 @@ margin_right = 8.0
 margin_bottom = 17.0
 text = ">>"
 
-[node name="IndicatorEnter" type="Label" parent="."]
+[node name="IndicatorInvalid" type="Label" parent="."]
 visible = false
 margin_left = 12.0
 margin_top = 3.0
