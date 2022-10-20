@@ -6,14 +6,12 @@ var validator: Validator setget set_validator
 var typing_test: TypingTest
 var stats_collector: TypingStatsCollector
 
-onready var ui_prompt = $Prompt
-onready var ui_select = $ListSelection
-onready var ui_statistics = $StatisticsMenu
-onready var ui_visualizer = $KeystrokeVisualizer
-onready var ui_press_start = $PressStart
+var ui_prompt: Control
+var ui_select: ListMenu
+var ui_statistics: ListMenu
 
 
-func _ready():
+func start():
 	change_state("InitState")
 
 
