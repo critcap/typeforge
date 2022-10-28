@@ -234,6 +234,10 @@ config/name="Typewars"
 run/main_scene="res://dev/Main.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+PlayerManager="*res://typewars/Core/PlayerStats/player_stats_manager.gd"
+
 [editor_plugins]
 
 enabled=PoolStringArray(  )

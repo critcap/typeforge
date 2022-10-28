@@ -7,4 +7,6 @@ func _ready():
 	controller.ui_statistics = get_node("%StatisticsMenu")
 	controller.ui_prompt = get_node("%PromptDisplay")
 	
-	controller.start()
+
+	
+	#controller.start()
