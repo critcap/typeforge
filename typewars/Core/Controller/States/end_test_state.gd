@@ -13,7 +13,6 @@ func _ready():
 func enter() -> void:
 	.enter()
 	menu = owner.ui_statistics
-	menu.visible = true
 
 	var collector := owner.stats_collector as TypingStatsCollector
 	analyzer.analyze_typing_stats(collector.data, collector.time, collector.words)
@@ -26,16 +25,19 @@ func connect_signals() -> void:
 func exit() -> void:
 	.exit()
 	menu.visible = false
-	if owner.ui_press_start:
-		owner.ui_press_start.visible = false
+	# FIXME
+	# if owner.ui_press_start:
+	# 	owner.ui_press_start.visible = false
 	can_reload = false
 	can_quit = false
 
 
 func on_stats_analyzed(results: TypingStatsResult) -> void:
 	menu.setup(results)
-	if owner.ui_press_start:
-		owner.ui_press_start.visible = true
+	menu.visible = true
+	# FIXME: Add back ui_press_start
+	# if owner.ui_press_start:
+	# 	owner.ui_press_start.visible = true
 	can_reload = true
 	can_quit = true
 
