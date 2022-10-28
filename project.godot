@@ -54,6 +54,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://typewars/Core/UI/ListMenu/list_menu.gd"
 }, {
+"base": "Node",
+"class": "Player",
+"language": "GDScript",
+"path": "res://typewars/Core/PlayerStats/player.gd"
+}, {
+"base": "TypingStatsResult",
+"class": "PlayerResults",
+"language": "GDScript",
+"path": "res://typewars/Core/PlayerStats/player_results.gd"
+}, {
 "base": "Resource",
 "class": "PlayerStats",
 "language": "GDScript",
@@ -199,6 +209,8 @@ _global_script_class_icons={
 "KeystrokeVisualizer": "",
 "ListEntry": "",
 "ListMenu": "",
+"Player": "",
+"PlayerResults": "",
 "PlayerStats": "",
 "PlayerStatsManager": "",
 "Qwertzyfier": "",

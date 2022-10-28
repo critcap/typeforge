@@ -38,6 +38,7 @@ func on_stats_analyzed(results: TypingStatsResult) -> void:
 	# FIXME: Add back ui_press_start
 	# if owner.ui_press_start:
 	# 	owner.ui_press_start.visible = true
+	PlayerManager.add_result(results)
 	can_reload = true
 	can_quit = true
 

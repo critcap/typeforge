@@ -5,21 +5,43 @@ extends Node
 const DEFAULT_USERNAME = "local"
 const DEFAULT_DIRECTORY = "user://"
 
-var user_name
+var username: String setget , get_username
 var results
-var settings
 
 var _data: PlayerStats
+var _clear_debug: bool = false
 
 # endregion
 
 # region Public Methods
 
 
+func get_username() -> String:
+	if !_data:
+		return ""
+	return _data.username
+
+
 func get_current_user_path() -> String:
 	if OS.is_debug_build():
 		return str("res://dev/", DEFAULT_USERNAME)
 	return str(DEFAULT_DIRECTORY, DEFAULT_USERNAME)
+
+
+func add_result(result: TypingStatsResult) -> void:
+	if !result || !result._data:
+		print("Error: Invalid result data")
+		return
+
+	var data = result._data
+	# add timestamp
+	data["DATE"] = OS.get_unix_time()
+	_data.results.append(data)
+	_save_player_data()
+
+
+func save_player_data() -> void:
+	_save_player_data()
 
 
 # endregion
@@ -29,13 +51,14 @@ func get_current_user_path() -> String:
 
 func _ready():
 	# clear player data in debug before player data look up
-	if OS.is_debug_build():
+	if OS.is_debug_build() && _clear_debug:
 		_delete_player_data()
 
 	var data = _load_player_data(DEFAULT_USERNAME)
 	if !data:
 		data = _create_new_player_data(DEFAULT_USERNAME)
-	print(data.username)
+	_data = data
+
 
 func _load_player_data(_name: String):
 	var resource_loader = ResourceLoader
