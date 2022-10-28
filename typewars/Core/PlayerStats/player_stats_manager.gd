@@ -1,17 +1,36 @@
 class_name PlayerStatsManager
 extends Node
 
-const TEST_USER_NAME = "test"
+# region PROPERTIES
+
+const DEBUG_USER_NAME: String = "DEBUG"
+const DEBUG_DIRECTORY: String = "res://dev/"
+const CLEAR_DEBUG: bool = true
+
+var _current_user: String
+
+# endregion
+
+# region Methods
 
 
 func _ready():
-	if OS.is_debug_build():
-		if ResourceLoader.exists(str("res://dev/", TEST_USER_NAME, ".tres")):
+	if OS.is_debug_build() && CLEAR_DEBUG:
+		var path = str(get_current_user_path(), ".tres")
+		if ResourceLoader.exists(path):
 			var dir = Directory.new()
-			dir.remove(str("res://dev/", TEST_USER_NAME, ".tres"))
+			dir.remove(path)
 
 
-func get_files(path):
+func get_current_user_path() -> String:
+	if OS.is_debug_build():
+		return str(DEBUG_DIRECTORY, DEBUG_USER_NAME)
+
+	# TODO
+	return ""
+
+
+func do_user_lookup(path):
 	var files = []
 	var dir = Directory.new()
 	dir.open(path)
@@ -30,13 +49,13 @@ func get_files(path):
 func load_player_stats() -> void:
 	var resource_loader = ResourceLoader
 	var player_stats: PlayerStats
-	var path: String = str("res://dev/", TEST_USER_NAME, ".tres")
+	var path: String = str(get_current_user_path(), ".tres")
 
 	if !resource_loader.exists(path):
 		player_stats = PlayerStats.new()
-		player_stats.username = TEST_USER_NAME
+		player_stats.username = DEBUG_USER_NAME
 		var error_code = ResourceSaver.save(
-			str("res://dev/", player_stats.username, ".tres"), player_stats
+			str(DEBUG_DIRECTORY, player_stats.username, ".tres"), player_stats
 		)
 
 		if error_code == 0:
@@ -46,3 +65,5 @@ func load_player_stats() -> void:
 
 	player_stats = ResourceLoader.load(path)
 	print(player_stats.username)
+
+# endregion
