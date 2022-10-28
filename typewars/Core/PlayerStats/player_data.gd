@@ -1,4 +1,4 @@
-class_name PlayerStats
+class_name PlayerData
 extends Resource
 
 export(String) var username: String

@@ -6,3 +6,4 @@ typewars/.DS_Store
 .idea/.idea.Typewars/.idea
 .vscode
 releases
+dev/local.tres

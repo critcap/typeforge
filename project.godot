@@ -54,25 +54,20 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://typewars/Core/UI/ListMenu/list_menu.gd"
 }, {
-"base": "Node",
-"class": "Player",
+"base": "Resource",
+"class": "PlayerData",
 "language": "GDScript",
-"path": "res://typewars/Core/PlayerStats/player.gd"
+"path": "res://typewars/Core/PlayerStats/player_data.gd"
+}, {
+"base": "Node",
+"class": "PlayerDataManager",
+"language": "GDScript",
+"path": "res://typewars/Core/PlayerStats/player_data_manager.gd"
 }, {
 "base": "TypingStatsResult",
 "class": "PlayerResults",
 "language": "GDScript",
 "path": "res://typewars/Core/PlayerStats/player_results.gd"
-}, {
-"base": "Resource",
-"class": "PlayerStats",
-"language": "GDScript",
-"path": "res://typewars/Core/PlayerStats/player_stats.gd"
-}, {
-"base": "Node",
-"class": "PlayerStatsManager",
-"language": "GDScript",
-"path": "res://typewars/Core/PlayerStats/player_stats_manager.gd"
 }, {
 "base": "Reference",
 "class": "Qwertzyfier",
@@ -209,10 +204,9 @@ _global_script_class_icons={
 "KeystrokeVisualizer": "",
 "ListEntry": "",
 "ListMenu": "",
-"Player": "",
+"PlayerData": "",
+"PlayerDataManager": "",
 "PlayerResults": "",
-"PlayerStats": "",
-"PlayerStatsManager": "",
 "Qwertzyfier": "",
 "ScancodeConverter": "",
 "Score": "",
@@ -248,7 +242,7 @@ config/icon="res://icon.png"
 
 [autoload]
 
-PlayerManager="*res://typewars/Core/PlayerStats/player_stats_manager.gd"
+PlayerManager="*res://typewars/Core/PlayerStats/player_data_manager.gd"
 
 [editor_plugins]
 

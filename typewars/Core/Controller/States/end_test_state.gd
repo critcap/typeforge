@@ -35,10 +35,11 @@ func exit() -> void:
 func on_stats_analyzed(results: TypingStatsResult) -> void:
 	menu.setup(results)
 	menu.visible = true
+	owner.typing_test.result = results
 	# FIXME: Add back ui_press_start
 	# if owner.ui_press_start:
 	# 	owner.ui_press_start.visible = true
-	PlayerManager.add_result(results)
+	PlayerManager.add_result(owner.typing_test)
 	can_reload = true
 	can_quit = true
 

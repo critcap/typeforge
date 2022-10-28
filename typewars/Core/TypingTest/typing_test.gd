@@ -8,7 +8,7 @@ const DEFAULT_MODE: int = 1
 var content: PoolStringArray setget set_content, get_content
 var scancodes: PoolIntArray
 var arguments: Dictionary
-var results: Dictionary
+var result: TypingStatsResult
 
 # Properties
 var mode: int setget , get_mode
