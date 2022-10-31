@@ -4,12 +4,14 @@ extends Node
 # Singleton that handles the saving and loading of typing test results
 # also provides the collected results for further processing
 
-# region PROPERTIES
+# region Properties
 const DEFAULT_USERNAME = "local"
 const DEFAULT_DIRECTORY = "user://"
 
 # username of the current player
 var username: String setget , get_username
+# list of results from current player
+var results: Array setget, get_results_list
 
 var _data: PlayerData
 var _results: Array
@@ -30,6 +32,12 @@ func get_current_user_path() -> String:
 	if OS.is_debug_build():
 		return str("res://dev/", DEFAULT_USERNAME)
 	return str(DEFAULT_DIRECTORY, DEFAULT_USERNAME)
+
+
+func get_results_list() -> Array:
+	if !_data || !_results:
+		return []
+	return _results.duplicate()
 
 
 func add_result(test: TypingTest) -> void:
