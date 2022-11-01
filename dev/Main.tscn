@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://typewars/ListMenus/StatisticsMenu/StatisticsMenu.tscn" type="PackedScene" id=1]
 [ext_resource path="res://typewars/ListMenus/TestSelectionMenu/TestSelectionMenu.tscn" type="PackedScene" id=2]
@@ -19,6 +19,29 @@ shader_param/lines_distance = 4.0
 shader_param/scan_size = 2.0
 shader_param/scanline_alpha = 0.9
 shader_param/lines_velocity = 30.0
+
+[sub_resource type="GDScript" id=3]
+script/source = "extends Label
+
+
+func _ready():
+	text = PlayerManager.username
+	PlayerManager.connect(\"changed\", self, \"on_player_changed\")
+	
+	
+func on_player_changed() -> void:
+	text = PlayerManager.username
+"
+
+[sub_resource type="GDScript" id=2]
+script/source = "extends Label
+
+
+func _process(delta):
+	if text == OS.get_latin_keyboard_variant():
+		return
+	text = OS.get_latin_keyboard_variant() 
+"
 
 [node name="Main" type="Node"]
 script = ExtResource( 4 )
@@ -74,24 +97,40 @@ margin_bottom = 151.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="GUI/VBoxContainer/Header/VBoxContainer"]
 margin_right = 981.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+
+[node name="MetaInfo" type="Label" parent="GUI/VBoxContainer/Header/VBoxContainer/HBoxContainer"]
+margin_right = 488.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+size_flags_vertical = 5
+text = "version 0.2"
+
+[node name="Username" type="Label" parent="GUI/VBoxContainer/Header/VBoxContainer/HBoxContainer"]
+margin_left = 492.0
+margin_right = 981.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+size_flags_vertical = 5
+text = "asdasdasdas"
+align = 2
+script = SubResource( 3 )
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="GUI/VBoxContainer/Header/VBoxContainer"]
+margin_top = 18.0
+margin_right = 981.0
 margin_bottom = 151.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="MetaInfo" type="Label" parent="GUI/VBoxContainer/Header/VBoxContainer/HBoxContainer"]
-margin_right = 488.0
-margin_bottom = 151.0
-size_flags_horizontal = 3
-size_flags_vertical = 5
-text = "asdasdasdas"
-
-[node name="Label2" type="Label" parent="GUI/VBoxContainer/Header/VBoxContainer/HBoxContainer"]
-margin_left = 492.0
+[node name="KeyboardVariant" type="Label" parent="GUI/VBoxContainer/Header/VBoxContainer/HBoxContainer2"]
 margin_right = 981.0
-margin_bottom = 151.0
+margin_bottom = 133.0
 size_flags_horizontal = 3
 size_flags_vertical = 5
 text = "asdasdasdas"
+script = SubResource( 2 )
 
 [node name="Body" type="Container" parent="GUI/VBoxContainer"]
 margin_top = 155.0

@@ -4,6 +4,8 @@ extends Node
 # Singleton that handles the saving and loading of typing test results
 # also provides the collected results for further processing
 
+signal changed()
+
 # region Properties
 const DEFAULT_USERNAME = "local"
 const DEFAULT_DIRECTORY = "user://"
@@ -64,6 +66,7 @@ func _ready():
 		data = _create_new_player_data(DEFAULT_USERNAME) as PlayerData
 	_data = data
 	_results = data.results
+	emit_signal("changed")
 
 
 func _load_player_data(_name: String):
