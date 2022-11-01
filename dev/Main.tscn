@@ -109,13 +109,12 @@ margin_bottom = 580.0
 
 [node name="Header" type="MarginContainer" parent="GUI/VBoxContainer"]
 margin_right = 981.0
-margin_bottom = 151.0
-size_flags_horizontal = 3
+margin_bottom = 101.0
 size_flags_vertical = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="GUI/VBoxContainer/Header"]
 margin_right = 981.0
-margin_bottom = 151.0
+margin_bottom = 101.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="GUI/VBoxContainer/Header/VBoxContainer"]
 margin_right = 981.0
@@ -158,10 +157,10 @@ text = "asdasdasdas"
 script = SubResource( 4 )
 
 [node name="Body" type="Container" parent="GUI/VBoxContainer"]
-margin_top = 155.0
+margin_top = 105.0
 margin_right = 981.0
-margin_bottom = 405.0
-rect_min_size = Vector2( 0, 250 )
+margin_bottom = 455.0
+rect_min_size = Vector2( 0, 350 )
 rect_pivot_offset = Vector2( 55, 493 )
 size_flags_vertical = 3
 
@@ -176,42 +175,27 @@ unique_name_in_owner = true
 unique_name_in_owner = true
 
 [node name="Footer" type="MarginContainer" parent="GUI/VBoxContainer"]
-margin_top = 409.0
+margin_top = 459.0
 margin_right = 981.0
 margin_bottom = 560.0
+rect_min_size = Vector2( 0, 100 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/margin_top = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="GUI/VBoxContainer/Footer"]
 margin_right = 981.0
-margin_bottom = 151.0
-alignment = 2
+margin_bottom = 101.0
 
-[node name="Line1" type="Label" parent="GUI/VBoxContainer/Footer/VBoxContainer"]
-margin_top = 65.0
+[node name="Spacer" type="Label" parent="GUI/VBoxContainer/Footer/VBoxContainer"]
 margin_right = 981.0
-margin_bottom = 79.0
-
-[node name="Line2" type="Label" parent="GUI/VBoxContainer/Footer/VBoxContainer"]
-margin_top = 83.0
-margin_right = 981.0
-margin_bottom = 97.0
-
-[node name="Line4" type="Label" parent="GUI/VBoxContainer/Footer/VBoxContainer"]
-margin_top = 101.0
-margin_right = 981.0
-margin_bottom = 115.0
-
-[node name="Line3" type="Label" parent="GUI/VBoxContainer/Footer/VBoxContainer"]
-margin_top = 119.0
-margin_right = 981.0
-margin_bottom = 133.0
+margin_bottom = 83.0
+size_flags_vertical = 3
 
 [node name="Hints" type="HBoxContainer" parent="GUI/VBoxContainer/Footer/VBoxContainer"]
-margin_top = 137.0
+margin_top = 87.0
 margin_right = 981.0
-margin_bottom = 151.0
+margin_bottom = 101.0
 alignment = 2
 
 [node name="Label" type="Label" parent="GUI/VBoxContainer/Footer/VBoxContainer/Hints"]
