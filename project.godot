@@ -243,7 +243,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Typewars"
-run/main_scene="res://dev/Main.tscn"
+run/main_scene="res://typewars/Main.tscn"
 config/icon="res://icon.png"
 
 [autoload]
