@@ -5,17 +5,17 @@ extends TestState
 const TESTS = {
 	"homerow":
 	{
-		"content": ["a", "s", "d", "f", "j", "k", "l", ";", "g", "h"],
+		"content": KeyboardRows.HOMEROW,
 		"args": {"combine": ["toprow", "bottomrow"], "mode": 1, "size": 50}
 	},
 	"toprow":
 	{
-		"content": ["q", "w", "e", "r", "t", "y", "u", "i", "o"],
+		"content": KeyboardRows.TOPROW,
 		"args": {"combine": ["homerow", "bottomrow"], "mode": 1, "size": 50}
 	},
 	"bottomrow":
 	{
-		"content": ["z", "x", "c", "v", "b", "n", "m", ",", "."],
+		"content": KeyboardRows.BOTTOMROW,
 		"args": {"combine": ["toprow", "homerow"], "mode": 1, "size": 50}
 	},
 	"brown_fox":
