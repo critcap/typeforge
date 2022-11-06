@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://typewars/TypingTest/CRTShader.shader" type="Shader" id=1]
 [ext_resource path="res://typewars/main.gd" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://typewars/PromptScreen/Prompt.tscn" type="PackedScene" id=4]
 [ext_resource path="res://typewars/ListMenus/StatisticsMenu/StatisticsMenu.tscn" type="PackedScene" id=5]
 [ext_resource path="res://typewars/TypingTest/TestManager.tscn" type="PackedScene" id=6]
+[ext_resource path="res://typewars/TypingTest/TypingTest.theme" type="Theme" id=7]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 1 )
@@ -93,6 +94,7 @@ margin_left = 2.0
 margin_right = -0.976013
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource( 7 )
 custom_constants/margin_right = 20
 custom_constants/margin_top = 20
 custom_constants/margin_left = 20
@@ -105,33 +107,40 @@ __meta__ = {
 margin_left = 20.0
 margin_top = 20.0
 margin_right = 1001.0
-margin_bottom = 580.0
+margin_bottom = 598.0
 
 [node name="Header" type="MarginContainer" parent="GUI/VBoxContainer"]
 margin_right = 981.0
-margin_bottom = 101.0
+margin_bottom = 120.0
+rect_min_size = Vector2( 0, 120 )
 size_flags_vertical = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="GUI/VBoxContainer/Header"]
 margin_right = 981.0
-margin_bottom = 101.0
+margin_bottom = 120.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="GUI/VBoxContainer/Header/VBoxContainer"]
 margin_right = 981.0
-margin_bottom = 14.0
+margin_bottom = 28.0
 size_flags_horizontal = 3
 
+[node name="GameName" type="Label" parent="GUI/VBoxContainer/Header/VBoxContainer/HBoxContainer"]
+margin_bottom = 28.0
+size_flags_vertical = 5
+text = "typealot"
+
 [node name="MetaInfo" type="Label" parent="GUI/VBoxContainer/Header/VBoxContainer/HBoxContainer"]
-margin_right = 488.0
-margin_bottom = 14.0
+margin_left = 91.0
+margin_right = 534.0
+margin_bottom = 28.0
 size_flags_horizontal = 3
 size_flags_vertical = 5
 text = "version 0.2"
 
 [node name="Username" type="Label" parent="GUI/VBoxContainer/Header/VBoxContainer/HBoxContainer"]
-margin_left = 492.0
+margin_left = 538.0
 margin_right = 981.0
-margin_bottom = 14.0
+margin_bottom = 28.0
 size_flags_horizontal = 3
 size_flags_vertical = 5
 text = "asdasdasdas"
@@ -139,34 +148,30 @@ align = 2
 script = SubResource( 3 )
 
 [node name="KeyboardVariant" type="Label" parent="GUI/VBoxContainer/Header/VBoxContainer"]
-margin_top = 18.0
+margin_top = 32.0
 margin_right = 981.0
-margin_bottom = 32.0
+margin_bottom = 60.0
 size_flags_horizontal = 3
 size_flags_vertical = 5
 text = "asdasdasdas"
 script = SubResource( 2 )
 
 [node name="KeyboardLanguage" type="Label" parent="GUI/VBoxContainer/Header/VBoxContainer"]
-margin_top = 36.0
+margin_top = 64.0
 margin_right = 981.0
-margin_bottom = 50.0
+margin_bottom = 92.0
 size_flags_horizontal = 3
 size_flags_vertical = 5
 text = "asdasdasdas"
 script = SubResource( 4 )
 
 [node name="Body" type="Container" parent="GUI/VBoxContainer"]
-margin_top = 105.0
+margin_top = 124.0
 margin_right = 981.0
-margin_bottom = 455.0
+margin_bottom = 474.0
 rect_min_size = Vector2( 0, 350 )
 rect_pivot_offset = Vector2( 55, 493 )
 size_flags_vertical = 3
-
-[node name="TestSelectionMenu" parent="GUI/VBoxContainer/Body" instance=ExtResource( 3 )]
-unique_name_in_owner = true
-custom_constants/separation = 4
 
 [node name="StatisticsMenu" parent="GUI/VBoxContainer/Body" instance=ExtResource( 5 )]
 unique_name_in_owner = true
@@ -174,10 +179,35 @@ unique_name_in_owner = true
 [node name="PromptDisplay" parent="GUI/VBoxContainer/Body" instance=ExtResource( 4 )]
 unique_name_in_owner = true
 
+[node name="SelectScreen" type="Control" parent="GUI/VBoxContainer/Body"]
+margin_right = 40.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GUI/VBoxContainer/Body/SelectScreen"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Label" type="Label" parent="GUI/VBoxContainer/Body/SelectScreen/VBoxContainer"]
+margin_right = 194.0
+margin_bottom = 28.0
+text = "Select Typing Test:"
+
+[node name="TestSelectionMenu" parent="GUI/VBoxContainer/Body/SelectScreen/VBoxContainer" instance=ExtResource( 3 )]
+unique_name_in_owner = true
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 40.0
+margin_top = 32.0
+margin_right = 234.0
+margin_bottom = 32.0
+custom_constants/separation = 4
+
 [node name="Footer" type="MarginContainer" parent="GUI/VBoxContainer"]
-margin_top = 459.0
+margin_top = 478.0
 margin_right = 981.0
-margin_bottom = 560.0
+margin_bottom = 578.0
 rect_min_size = Vector2( 0, 100 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -185,27 +215,27 @@ custom_constants/margin_top = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="GUI/VBoxContainer/Footer"]
 margin_right = 981.0
-margin_bottom = 101.0
+margin_bottom = 100.0
 
 [node name="Spacer" type="Label" parent="GUI/VBoxContainer/Footer/VBoxContainer"]
 margin_right = 981.0
-margin_bottom = 83.0
+margin_bottom = 68.0
 size_flags_vertical = 3
 
 [node name="Hints" type="HBoxContainer" parent="GUI/VBoxContainer/Footer/VBoxContainer"]
-margin_top = 87.0
+margin_top = 72.0
 margin_right = 981.0
-margin_bottom = 101.0
+margin_bottom = 100.0
 alignment = 2
 
 [node name="Label" type="Label" parent="GUI/VBoxContainer/Footer/VBoxContainer/Hints"]
-margin_left = 683.0
-margin_right = 838.0
-margin_bottom = 14.0
+margin_left = 500.0
+margin_right = 743.0
+margin_bottom = 28.0
 text = "ctrl+enter:show settings"
 
 [node name="Label2" type="Label" parent="GUI/VBoxContainer/Footer/VBoxContainer/Hints"]
-margin_left = 842.0
+margin_left = 747.0
 margin_right = 981.0
-margin_bottom = 14.0
+margin_bottom = 28.0
 text = "enter:start typing test"
