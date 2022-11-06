@@ -11,6 +11,9 @@ func _ready():
 
 
 func enter() -> void:
+	can_quit = true
+	can_reload = true
+
 	validator = owner.validator
 	owner.ui_prompt.visible = true
 	.enter()

@@ -15,6 +15,8 @@ var mode: int setget , get_mode
 var time: int setget , get_time
 var length: int setget , get_length
 
+var is_reload: bool
+
 
 # region setters & getters
 func set_content(value) -> void:

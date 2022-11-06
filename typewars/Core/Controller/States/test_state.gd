@@ -27,8 +27,7 @@ func on_reload_test() -> void:
 	if owner == null:
 		return
 	owner.stats_collector.reset()
-	var validator = owner.validator
-	owner.remove_child(validator)
+	owner.typing_test.is_reload = true
 	change_state("SetupTestState")
 	can_reload = false
 	can_quit = false
