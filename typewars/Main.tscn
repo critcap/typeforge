@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://typewars/TypingTest/M_CRT.shader" type="Shader" id=1]
 [ext_resource path="res://typewars/main.gd" type="Script" id=2]
@@ -8,19 +8,20 @@
 [ext_resource path="res://typewars/TypingTest/TestManager.tscn" type="PackedScene" id=6]
 [ext_resource path="res://typewars/TypingTest/TypingTest.theme" type="Theme" id=7]
 [ext_resource path="res://typewars/TypingTest/KeyHints.gd" type="Script" id=8]
+[ext_resource path="res://typewars/TypingTest/Background/Background.tscn" type="PackedScene" id=9]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 1 )
 shader_param/screen_width = 1024.0
 shader_param/screen_height = 600.0
-shader_param/BarrelPower = 1.1
-shader_param/color_bleeding = 1.2
-shader_param/bleeding_range_x = 3.0
-shader_param/bleeding_range_y = 3.0
+shader_param/BarrelPower = 1.0
+shader_param/color_bleeding = 1.0
+shader_param/bleeding_range_x = 1.1
+shader_param/bleeding_range_y = 1.1
 shader_param/lines_distance = 4.0
 shader_param/scan_size = 2.0
 shader_param/scanline_alpha = 0.9
-shader_param/lines_velocity = 30.0
+shader_param/lines_velocity = 10.0
 
 [sub_resource type="GDScript" id=3]
 script/source = "extends Label
@@ -40,11 +41,6 @@ script = ExtResource( 2 )
 
 [node name="TestController" parent="." instance=ExtResource( 6 )]
 
-[node name="Background" type="ColorRect" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-color = Color( 0.0509804, 0.0509804, 0.0509804, 1 )
-
 [node name="PostProcessing" type="CanvasLayer" parent="."]
 follow_viewport_enable = true
 
@@ -55,6 +51,8 @@ material = SubResource( 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 1
+
+[node name="Background" parent="." instance=ExtResource( 9 )]
 
 [node name="GUI" type="MarginContainer" parent="."]
 anchor_right = 1.0
