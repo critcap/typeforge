@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://typewars/TypingTest/M_CRT.shader" type="Shader" id=1]
 [ext_resource path="res://typewars/main.gd" type="Script" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://typewars/ListMenus/StatisticsMenu/StatisticsMenu.tscn" type="PackedScene" id=5]
 [ext_resource path="res://typewars/TypingTest/TestManager.tscn" type="PackedScene" id=6]
 [ext_resource path="res://typewars/TypingTest/TypingTest.theme" type="Theme" id=7]
+[ext_resource path="res://typewars/TypingTest/KeyHints.gd" type="Script" id=8]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 1 )
@@ -160,6 +161,7 @@ margin_top = 72.0
 margin_right = 981.0
 margin_bottom = 100.0
 alignment = 2
+script = ExtResource( 8 )
 
 [node name="Label" type="Label" parent="GUI/VBoxContainer/Footer/VBoxContainer/Hints"]
 margin_left = 500.0
@@ -172,3 +174,5 @@ margin_left = 747.0
 margin_right = 981.0
 margin_bottom = 28.0
 text = "enter:start typing test"
+
+[connection signal="state_changed" from="TestController" to="GUI/VBoxContainer/Footer/VBoxContainer/Hints" method="_on_TestController_state_changed"]
