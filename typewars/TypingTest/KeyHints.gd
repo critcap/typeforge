@@ -2,6 +2,8 @@ extends HBoxContainer
 
 var debug_hints: = {"debug": "debug"}
 var selection_hints: = {"subentry":"", "ui_accept":""}
+var test_hints: = {"reload_test":"", "quit_test":""}
+var end_hints: = {"reload_test":"", "quit_test":"", "ui_accept": ""}
 
 # region Methods
 func create_hints_from_mapping(hints: Dictionary) -> Array:
@@ -42,10 +44,20 @@ func refresh(labels: Array) -> void:
 			
 	for hint in labels:
 		add_child(hint)
+	visible = true
 # endregion
 
 # region Signal Listeners
 func _on_TestController_state_changed(state_name):
 	if state_name == "SelectTestState":
-		refresh(create_hints_from_mapping(selection_hints))		
+		refresh(create_hints_from_mapping(selection_hints))
+		return
+	elif state_name == "TypeRaceTestState" || state_name == "TimeAttackTestState":
+		refresh(create_hints_from_mapping(test_hints))
+		return
+	elif state_name == "EndTestState":
+		refresh(create_hints_from_mapping(end_hints))
+		return
+	else:
+		visible = false
 #endregion
