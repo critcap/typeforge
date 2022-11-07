@@ -1,6 +1,6 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://typewars/TypingTest/CRTShader.shader" type="Shader" id=1]
+[ext_resource path="res://typewars/TypingTest/M_CRT.shader" type="Shader" id=1]
 [ext_resource path="res://typewars/main.gd" type="Script" id=2]
 [ext_resource path="res://typewars/ListMenus/TestSelectionMenu/TestSelectionMenu.tscn" type="PackedScene" id=3]
 [ext_resource path="res://typewars/PromptScreen/Prompt.tscn" type="PackedScene" id=4]
@@ -32,38 +32,6 @@ func _ready():
 	
 func on_player_changed() -> void:
 	text = PlayerManager.username
-"
-
-[sub_resource type="GDScript" id=2]
-script/source = "extends Label
-
-
-func _process(delta):
-	if text == OS.get_latin_keyboard_variant():
-		return
-	text = OS.get_latin_keyboard_variant() 
-"
-
-[sub_resource type="GDScript" id=4]
-script/source = "extends Label
-
-var _prefix: String = \"Language\"
-var _text: String
-
-func _process(delta):
-	var language = OS.keyboard_get_layout_language(OS.keyboard_get_current_layout())
-	if _text == language:
-		return
-	_text = language
-	text = str(_prefix, \" \", _abbreviation(_text))
-
-# converts abbreviation into full language name
-func _abbreviation(short: String) -> String:
-	if short.to_lower() == \"de\":
-		return \"GERMAN1994\"
-	if short.to_lower() == \"en\":
-		return \"ENGLISH1455\"
-	return short
 "
 
 [node name="Main" type="Node"]
@@ -125,6 +93,7 @@ margin_bottom = 28.0
 size_flags_horizontal = 3
 
 [node name="GameName" type="Label" parent="GUI/VBoxContainer/Header/VBoxContainer/HBoxContainer"]
+margin_right = 87.0
 margin_bottom = 28.0
 size_flags_vertical = 5
 text = "typealot"
@@ -147,24 +116,6 @@ text = "asdasdasdas"
 align = 2
 script = SubResource( 3 )
 
-[node name="KeyboardVariant" type="Label" parent="GUI/VBoxContainer/Header/VBoxContainer"]
-margin_top = 32.0
-margin_right = 981.0
-margin_bottom = 60.0
-size_flags_horizontal = 3
-size_flags_vertical = 5
-text = "asdasdasdas"
-script = SubResource( 2 )
-
-[node name="KeyboardLanguage" type="Label" parent="GUI/VBoxContainer/Header/VBoxContainer"]
-margin_top = 64.0
-margin_right = 981.0
-margin_bottom = 92.0
-size_flags_horizontal = 3
-size_flags_vertical = 5
-text = "asdasdasdas"
-script = SubResource( 4 )
-
 [node name="Body" type="Container" parent="GUI/VBoxContainer"]
 margin_top = 124.0
 margin_right = 981.0
@@ -179,29 +130,11 @@ unique_name_in_owner = true
 [node name="PromptDisplay" parent="GUI/VBoxContainer/Body" instance=ExtResource( 4 )]
 unique_name_in_owner = true
 
-[node name="SelectScreen" type="Control" parent="GUI/VBoxContainer/Body"]
-margin_right = 40.0
-margin_bottom = 40.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="VBoxContainer" type="VBoxContainer" parent="GUI/VBoxContainer/Body/SelectScreen"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-
-[node name="Label" type="Label" parent="GUI/VBoxContainer/Body/SelectScreen/VBoxContainer"]
-margin_right = 194.0
-margin_bottom = 28.0
-text = "Select Typing Test:"
-
-[node name="TestSelectionMenu" parent="GUI/VBoxContainer/Body/SelectScreen/VBoxContainer" instance=ExtResource( 3 )]
+[node name="TestSelectionMenu" parent="GUI/VBoxContainer/Body" instance=ExtResource( 3 )]
 unique_name_in_owner = true
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 40.0
-margin_top = 32.0
-margin_right = 234.0
-margin_bottom = 32.0
+margin_right = 40.0
 custom_constants/separation = 4
 
 [node name="Footer" type="MarginContainer" parent="GUI/VBoxContainer"]
