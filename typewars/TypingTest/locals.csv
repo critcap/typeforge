@@ -1,0 +1,6 @@
+key,en
+HINT_RELOAD,reload test
+HINT_QUIT,quit test
+HINT_SUBENTRY,open/close subentry
+HINT_PROCEED,return to selection
+HINT_START_TEST, start test
