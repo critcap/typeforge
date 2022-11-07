@@ -288,7 +288,7 @@ debug={
 
 [locale]
 
-translations=PoolStringArray(  )
+translations=PoolStringArray( "res://typewars/TypingTest/locals.en.translation" )
 
 [physics]
 

@@ -1,9 +1,9 @@
 extends HBoxContainer
 
 var debug_hints: = {"debug": "debug"}
-var selection_hints: = {"subentry":"", "ui_accept":""}
-var test_hints: = {"reload_test":"", "quit_test":""}
-var end_hints: = {"reload_test":"", "quit_test":"", "ui_accept": ""}
+onready var selection_hints: = {"subentry": tr("HINT_SUBENTRY"), "ui_accept": tr("HINT_START")}
+onready var test_hints: = {"reload_test":tr("HINT_RELOAD"), "quit_test": tr("HINT_QUIT")}
+onready var end_hints: = {"reload_test":tr("HINT_RELOAD"), "quit_test": tr("HINT_QUIT"), "ui_accept":tr("HINT_PROCEED")}
 
 # region Methods
 func create_hints_from_mapping(hints: Dictionary) -> Array:
