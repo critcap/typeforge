@@ -26,7 +26,7 @@ func create_hints_from_mapping(hints: Dictionary) -> Array:
 		var scancode_string: = OS.get_scancode_string(scancode)
 		
 		# build label and label text
-		var hint_label = Label.new()
+		var hint_label = Button.new()
 		hint_label.text = str(scancode_string,":",hints[key]).to_lower()
 		labels.append(hint_label)
 	
