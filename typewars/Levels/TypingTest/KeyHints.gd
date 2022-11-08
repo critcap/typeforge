@@ -1,8 +1,8 @@
 extends HBoxContainer
 
 var debug_hints: = {"debug": "debug"}
-onready var selection_hints: = {"subentry": tr("HINT_SUBENTRY"), "ui_accept": tr("HINT_START_TEST")}
-onready var test_hints: = {"reload_test":tr("HINT_RELOAD"), "quit_test": tr("HINT_QUIT")}
+onready var selection_hints: = {"subentry": tr("HINT_SUBENTRY"), "ui_accept": tr("HINT_START_TEST"), "show_help":tr("HINT_SHOW_HELP")}
+onready var test_hints: = {"reload_test":tr("HINT_RELOAD"), "quit_test": tr("HINT_QUIT"), "show_help":tr("HINT_SHOW_HELP")}
 onready var end_hints: = {"reload_test":tr("HINT_RELOAD"), "quit_test": tr("HINT_QUIT"), "ui_accept":tr("HINT_PROCEED")}
 
 # region Methods
