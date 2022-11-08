@@ -245,7 +245,7 @@ void fragment()
 shader = SubResource( 4 )
 shader_param/overlay = true
 shader_param/scanlines_opacity = 0.4
-shader_param/scanlines_width = 0.288
+shader_param/scanlines_width = 0.1
 shader_param/grille_opacity = 0.0
 shader_param/resolution = Vector2( 640, 480 )
 shader_param/pixelate = false
@@ -380,6 +380,8 @@ unique_name_in_owner = true
 visible = false
 
 [node name="InputPromptTutorial" parent="GUI/VBoxContainer/Body" instance=ExtResource( 4 )]
+unique_name_in_owner = true
+visible = false
 margin_top = 55.0
 margin_bottom = 91.0
 
