@@ -20,6 +20,7 @@ static func assemble_test(raw: TypingTestData, args: Dictionary, tests: Dictiona
 
 # region String Content Generation
 static func generate_content_from_string(data: String, repeats: int = 0) -> PoolStringArray:
+	data = data.to_lower()
 	var content := data.split(" ")
 	if repeats > 0:
 		for _i in range(repeats):
@@ -54,7 +55,7 @@ static func generate_random_test_content(data: Array, l: int, _min: int, _max: i
 	seed(OS.get_ticks_msec() + OS.get_unix_time())
 	var words = []
 	for _i in range(l):
-		words.append(_generate_word(data, _min, _max))
+		words.append(_generate_word(data, _min, _max).to_lower())
 	return words
 
 
@@ -73,7 +74,8 @@ static func _generate_common_word(data: Array, l: int) -> PoolStringArray:
 	var words = []
 	for _i in range(l):
 		randomize()
-		words.append(data[randi() % data.size()])
+		var word: = data[randi() % data.size()] as String
+		words.append(word.to_lower())
 	return words as PoolStringArray
 
 
