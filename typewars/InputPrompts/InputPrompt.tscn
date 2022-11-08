@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://typewars/Core/UI/InputPrompt/input_prompt.gd" type="Script" id=1]
 [ext_resource path="res://typewars/InputPrompts/ActivePromptLabel.tscn" type="PackedScene" id=2]
 [ext_resource path="res://typewars/Core/UI/InputPrompt/input_prompt_completed.gd" type="Script" id=3]
 [ext_resource path="res://typewars/Core/UI/InputPrompt/input_prompt_queue.gd" type="Script" id=4]
+[ext_resource path="res://typewars/InputPrompts/theme_input_prompt_font.tres" type="DynamicFont" id=5]
 
 [node name="InputPrompt" type="Control"]
 anchor_left = 0.5
@@ -21,18 +22,19 @@ margin_top = -65.0
 margin_bottom = 68.0
 
 [node name="MarginContainer" type="MarginContainer" parent="CenterContainer"]
-margin_left = 108.0
-margin_top = 59.0
-margin_right = 230.0
-margin_bottom = 73.0
+margin_left = 31.0
+margin_top = 50.0
+margin_right = 307.0
+margin_bottom = 82.0
 custom_constants/margin_right = 10
 custom_constants/margin_left = 10
 
 [node name="ActivePromptLabel" parent="CenterContainer/MarginContainer" instance=ExtResource( 2 )]
 margin_left = 10.0
 margin_top = 0.0
-margin_right = 112.0
-margin_bottom = 14.0
+margin_right = 266.0
+margin_bottom = 32.0
+custom_fonts/font = ExtResource( 5 )
 
 [node name="InputPromptQueue" type="HBoxContainer" parent="."]
 anchor_left = 0.5
