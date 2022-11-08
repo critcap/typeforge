@@ -6,7 +6,7 @@ var menu: ListMenu
 
 func enter() -> void:
 	.enter()
-	owner.ui_prompt.visible = true
+
 	setup_list_menu()
 
 

@@ -376,6 +376,7 @@ unique_name_in_owner = true
 
 [node name="InputPrompt" parent="GUI/VBoxContainer/Body" instance=ExtResource( 1 )]
 unique_name_in_owner = true
+visible = false
 
 [node name="Footer" type="MarginContainer" parent="GUI/VBoxContainer"]
 margin_top = 478.0
