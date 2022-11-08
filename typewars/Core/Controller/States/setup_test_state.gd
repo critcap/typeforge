@@ -11,6 +11,8 @@ func enter() -> void:
 #	prompt = owner.ui_prompt.prompt_display
 	if owner.typing_test.is_reload:
 		reload_test()
+	# only automatically shows help window on the first test of current user
+	owner.ui_help.visible = PlayerManager.results.empty()
 	setup_test()
 
 

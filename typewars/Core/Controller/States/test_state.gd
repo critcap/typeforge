@@ -21,6 +21,9 @@ func unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("quit_test") && can_quit:
 		on_quit_test()
 		return
+	if event.is_action_pressed("show_help"):
+		owner.ui_help.visible = !owner.ui_help.visible
+		return
 
 
 func on_reload_test() -> void:

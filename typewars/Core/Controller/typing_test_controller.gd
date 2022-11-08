@@ -9,6 +9,7 @@ var stats_collector: TypingStatsCollector
 var ui_prompt: Control
 var ui_select: ListMenu
 var ui_statistics: ListMenu
+var ui_help: PanelContainer
 
 
 func start():

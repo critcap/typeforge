@@ -51,5 +51,6 @@ func unhandled_input(event):
 
 func exit() -> void:
 	.exit()
+	owner.ui_help.visible = false
 	owner.ui_prompt.reset()
 	owner.ui_prompt.visible = false
