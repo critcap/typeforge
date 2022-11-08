@@ -8,7 +8,7 @@ var prompt
 
 func enter() -> void:
 	.enter()
-	prompt = owner.ui_prompt.prompt_display
+#	prompt = owner.ui_prompt.prompt_display
 	if owner.typing_test.is_reload:
 		reload_test()
 	setup_test()
@@ -22,7 +22,7 @@ func setup_test() -> void:
 	validator.setup(test.scancodes)
 
 	# ui setup
-	prompt.setup(test.content)
+	owner.ui_prompt.setup_test(test)
 
 
 	if test.mode == TypingTestModes.RACE:

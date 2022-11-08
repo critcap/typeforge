@@ -45,10 +45,11 @@ func init_members() -> void:
 	owner.validator.connect("wrong_letter_input", collector, "on_wrong_letter_pressed")
 	owner.validator.connect("word_passed", collector, "on_word_passed")
 	# connect to prompt display
-	var prompt = owner.ui_prompt.prompt_display
-	owner.validator.connect("correct_letter_input", prompt, "_on_TypingTest_correct_letter_input")
-	owner.validator.connect("wrong_letter_input", prompt, "_on_TypingTest_wrong_letter_input")
-	owner.validator.connect("word_passed", prompt, "_on_TypingTest_word_passed")
+	owner.ui_prompt.bind_validator(owner.validator)
+#	var prompt = owner.ui_prompt.prompt_display
+#	owner.validator.connect("correct_letter_input", prompt, "_on_TypingTest_correct_letter_input")
+#	owner.validator.connect("wrong_letter_input", prompt, "_on_TypingTest_wrong_letter_input")
+#	owner.validator.connect("word_passed", prompt, "_on_TypingTest_word_passed")
 	# endregion
 
 

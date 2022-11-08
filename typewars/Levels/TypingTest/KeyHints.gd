@@ -8,7 +8,7 @@ onready var end_hints: = {"reload_test":tr("HINT_RELOAD"), "quit_test": tr("HINT
 # region Methods
 func create_hints_from_mapping(hints: Dictionary) -> Array:
 	var labels = []
-	var actions: = InputMap.get_actions()
+
 	
 	for key in hints.keys():
 		if !InputMap.has_action(key):

@@ -12,20 +12,20 @@ func set_text(value) -> void:
 
 
 func _on_TypingTest_correct_letter_input(_code: int):
-	progress_indicator.color = PlayerManager.settings.correct_letter_color
+	progress_indicator.color = PlayerManager.settings.correct_input_color
 	index += 1
 	update_progress_indicator()
 
 
 func _on_TypingTest_wrong_letter_input(_code: int):
-	progress_indicator.color = PlayerManager.settings.false_letter_color
+	progress_indicator.color = PlayerManager.settings.false_input_color
 	update_progress_indicator(1)
 
 
 func _on_TypingTest_word_passed():
 	index = 0
 	progress_indicator.rect_size.x = 0
-	text = "EMPTY"
+	text = ""
 
 
 func get_current() -> String:

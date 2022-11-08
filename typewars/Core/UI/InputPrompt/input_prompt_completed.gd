@@ -7,10 +7,10 @@ func push(text: String) -> void:
 	label.text = text
 
 	if get_children().size() > 0:
-		var first := get_child(-1) as Label
+		var first := get_children()[-1] as Label
 		first.modulate = PlayerManager.settings.second_in_queue_color
 	if get_children().size() > 1:
-		var second := get_child(-2) as Label
+		var second := get_children()[-2] as Label
 		second.visible = false
 
 	label.modulate = PlayerManager.settings.first_in_queue_color

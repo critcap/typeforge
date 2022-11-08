@@ -26,11 +26,11 @@ func refresh_queue() -> void:
 	if children.size() == 0:
 		return
 	children[0].visible = true
-	children.modulate = PlayerManager.settings.first_in_queue_color
+	children[0].modulate = PlayerManager.settings.first_in_queue_color
 	if !children.size() > 1:
 		return
 	children[1].visible = true
-	children.modulate = PlayerManager.settings.second_in_queue_color
+	children[1].modulate = PlayerManager.settings.second_in_queue_color
 
 
 func reset() -> void:
