@@ -38,9 +38,9 @@ func reload_test() -> void:
 	var test_data := owner.test_list[old_test.name] as TypingTestData
 	var test_list := owner.test_list as Dictionary
 	var args = old_test.arguments.duplicate()
+	owner.remove_child(old_test)
 	old_test.free()
 	var test := TypingTestFactory.assemble_test(test_data, args, test_list)
 	test.scancodes = ScancodeConverter.convert_text_to_scancodes(test.content)
-	owner.remove_child(test)
 	owner.typing_test = test
 	owner.add_child(test)
