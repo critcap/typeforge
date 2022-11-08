@@ -4,7 +4,7 @@ extends Control
 var content: Array
 
 # ui elements
-onready var ui_active: ActiveInputLabel = $CenterContainer/ActivePromptLabel
+onready var ui_active: ActiveInputLabel = $CenterContainer/MarginContainer/ActivePromptLabel
 onready var ui_queue: InputPromptQueue = $InputPromptQueue
 onready var ui_completed: InputPromptCompleted = $InputPromptCompleted
 
