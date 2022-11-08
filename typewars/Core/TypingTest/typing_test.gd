@@ -28,18 +28,18 @@ func get_content() -> PoolStringArray:
 
 
 func get_mode() -> int:
-	return arguments["mode"]# if arguments.has("mode") else DEFAULT_MODE
+	return arguments["mode"]  # if arguments.has("mode") else DEFAULT_MODE
 
 
 func get_time() -> int:
 	if self.mode != 0:
 		return 0
-	return arguments["size"]# if arguments.has("size") else DEFAULT_TIME
+	return arguments["size"]  # if arguments.has("size") else DEFAULT_TIME
 
 
 func get_length() -> int:
 	if self.mode != 1:
 		return int(212 * 60 / time)  # current world record times time
-	return arguments["size"]# if arguments.has("size") else DEFAULT_LENGTH
+	return arguments["size"]  # if arguments.has("size") else DEFAULT_LENGTH
 
 # endregion

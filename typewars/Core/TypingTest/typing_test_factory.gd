@@ -74,7 +74,7 @@ static func _generate_common_word(data: Array, l: int) -> PoolStringArray:
 	var words = []
 	for _i in range(l):
 		randomize()
-		var word: = data[randi() % data.size()] as String
+		var word := data[randi() % data.size()] as String
 		words.append(word.to_lower())
 	return words as PoolStringArray
 

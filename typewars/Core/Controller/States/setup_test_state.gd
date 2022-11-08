@@ -1,7 +1,6 @@
 class_name SetupTestState
 extends TestState
 
-
 var prompt
 
 
@@ -25,17 +24,16 @@ func setup_test() -> void:
 	# ui setup
 	owner.ui_prompt.setup_test(test)
 
-
 	if test.mode == TypingTestModes.RACE:
 		change_state("TypeRaceTestState")
 		return
 	elif test.mode == TypingTestModes.TIME_ATTACK:
 		change_state("TimeAttackTestState")
 		return
-		
+
 
 func reload_test() -> void:
-	var old_test: = owner.typing_test as TypingTest
+	var old_test := owner.typing_test as TypingTest
 	var test_data := owner.test_list[old_test.name] as TypingTestData
 	var test_list := owner.test_list as Dictionary
 	var args = old_test.arguments.duplicate()
