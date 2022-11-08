@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Label",
+"class": "ActiveInputLabel",
+"language": "GDScript",
+"path": "res://typewars/Core/UI/InputPrompt/active_prompt_label.gd"
+}, {
 "base": "TestState",
 "class": "BaseTypingTestState",
 "language": "GDScript",
@@ -17,7 +22,7 @@ _global_script_classes=[ {
 "base": "Reference",
 "class": "CommonWords",
 "language": "GDScript",
-"path": "res://typewars/TypingTest/common_words.gd"
+"path": "res://typewars/Levels/TypingTest/common_words.gd"
 }, {
 "base": "Reference",
 "class": "CompareOperators",
@@ -39,10 +44,25 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://typewars/Core/Controller/States/init_state.gd"
 }, {
+"base": "Control",
+"class": "InputPrompt",
+"language": "GDScript",
+"path": "res://typewars/Core/UI/InputPrompt/input_prompt.gd"
+}, {
+"base": "HBoxContainer",
+"class": "InputPromptCompleted",
+"language": "GDScript",
+"path": "res://typewars/Core/UI/InputPrompt/input_prompt_completed.gd"
+}, {
+"base": "HBoxContainer",
+"class": "InputPromptQueue",
+"language": "GDScript",
+"path": "res://typewars/Core/UI/InputPrompt/input_prompt_queue.gd"
+}, {
 "base": "Reference",
 "class": "KeyboardRows",
 "language": "GDScript",
-"path": "res://typewars/TypingTest/keyboard_rows.gd"
+"path": "res://typewars/Levels/TypingTest/keyboard_rows.gd"
 }, {
 "base": "Control",
 "class": "KeystrokeVisualizer",
@@ -87,7 +107,7 @@ _global_script_classes=[ {
 "base": "Node",
 "class": "Score",
 "language": "GDScript",
-"path": "res://typewars/Core/score.gd"
+"path": "res://typewars/Core/Controller/score.gd"
 }, {
 "base": "TestState",
 "class": "SelectTestState",
@@ -98,6 +118,11 @@ _global_script_classes=[ {
 "class": "SelfDestructingLabel",
 "language": "GDScript",
 "path": "res://typewars/Visualizer/self_destructing_label.gd"
+}, {
+"base": "Resource",
+"class": "Settings",
+"language": "GDScript",
+"path": "res://typewars/Core/settings.gd"
 }, {
 "base": "TestState",
 "class": "SetupTestState",
@@ -142,7 +167,7 @@ _global_script_classes=[ {
 "base": "Node",
 "class": "TextGenerator",
 "language": "GDScript",
-"path": "res://typewars/Core/test_generator.gd"
+"path": "res://typewars/Core/TypingTest/typing_test_generator.gd"
 }, {
 "base": "BaseTypingTestState",
 "class": "TimeAttackTestState",
@@ -192,7 +217,7 @@ _global_script_classes=[ {
 "base": "Node",
 "class": "Validator",
 "language": "GDScript",
-"path": "res://typewars/Core/validator.gd"
+"path": "res://typewars/Core/Controller/validator.gd"
 }, {
 "base": "Node",
 "class": "Visualizer",
@@ -200,12 +225,16 @@ _global_script_classes=[ {
 "path": "res://typewars/Visualizer/vizualizer.gd"
 } ]
 _global_script_class_icons={
+"ActiveInputLabel": "",
 "BaseTypingTestState": "",
 "CommonWords": "",
 "CompareOperators": "",
 "ETypingStats": "",
 "EndTestState": "",
 "InitState": "",
+"InputPrompt": "",
+"InputPromptCompleted": "",
+"InputPromptQueue": "",
 "KeyboardRows": "",
 "KeystrokeVisualizer": "",
 "ListEntry": "",
@@ -218,6 +247,7 @@ _global_script_class_icons={
 "Score": "",
 "SelectTestState": "",
 "SelfDestructingLabel": "",
+"Settings": "",
 "SetupTestState": "",
 "SpecialUtility": "",
 "State": "",
@@ -288,7 +318,7 @@ debug={
 
 [locale]
 
-translations=PoolStringArray( "res://typewars/TypingTest/locals.en.translation" )
+translations=PoolStringArray( "res://typewars/Locals/locals.en.translation" )
 
 [physics]
 

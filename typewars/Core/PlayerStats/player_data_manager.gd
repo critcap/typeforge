@@ -4,16 +4,19 @@ extends Node
 # Singleton that handles the saving and loading of typing test results
 # also provides the collected results for further processing
 
-signal changed()
+signal changed
 
 # region Properties
 const DEFAULT_USERNAME = "local"
 const DEFAULT_DIRECTORY = "user://"
+const DEFAULT_SETTINGS_FILE = ""
 
 # username of the current player
 var username: String setget , get_username
 # list of results from current player
-var results: Array setget, get_results_list
+var results: Array setget , get_results_list
+# gets saved player settings
+var settings: Settings setget , get_settings
 
 var _data: PlayerData
 var _results: Array
@@ -22,6 +25,10 @@ var _clear_debug: bool = true
 # endregion
 
 # region Public Methods
+
+
+func get_settings() -> Settings:
+	return _data.settings
 
 
 func get_username() -> String:
@@ -48,7 +55,6 @@ func add_result(test: TypingTest) -> void:
 	)
 	_results.append(result)
 	_save_player_data()
-
 
 
 # endregion
@@ -86,6 +92,8 @@ func _create_new_player_data(_user_name) -> PlayerData:
 	var player_data = PlayerData.new()
 	player_data.username = _user_name
 	player_data.results = []
+	var default_settings = load(DEFAULT_SETTINGS_FILE) as Settings
+	player_data.settings = default_settings if default_settings else Settings.new()
 
 	_save_player_data(player_data)
 

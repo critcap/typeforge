@@ -1,7 +1,7 @@
 extends HBoxContainer
 
 var debug_hints: = {"debug": "debug"}
-onready var selection_hints: = {"subentry": tr("HINT_SUBENTRY"), "ui_accept": tr("HINT_START")}
+onready var selection_hints: = {"subentry": tr("HINT_SUBENTRY"), "ui_accept": tr("HINT_START_TEST")}
 onready var test_hints: = {"reload_test":tr("HINT_RELOAD"), "quit_test": tr("HINT_QUIT")}
 onready var end_hints: = {"reload_test":tr("HINT_RELOAD"), "quit_test": tr("HINT_QUIT"), "ui_accept":tr("HINT_PROCEED")}
 
@@ -31,8 +31,6 @@ func create_hints_from_mapping(hints: Dictionary) -> Array:
 		labels.append(hint_label)
 	
 	# adds debug options if in debug mode
-	if OS.is_debug_build() && !hints.has("debug"):
-		labels += create_hints_from_mapping(debug_hints)
 	return labels
 	
 	

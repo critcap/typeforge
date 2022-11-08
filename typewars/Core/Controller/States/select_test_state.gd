@@ -7,7 +7,6 @@ var menu: ListMenu
 func enter() -> void:
 	.enter()
 	owner.ui_prompt.visible = true
-	owner.ui_prompt.get_node("CenterContainer/Label").text = "Typealot"
 	setup_list_menu()
 
 

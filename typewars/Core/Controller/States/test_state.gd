@@ -39,8 +39,8 @@ func on_quit_test() -> void:
 	var test = owner.typing_test
 	owner.remove_child(test)
 	test.queue_free()
-	var validator = owner.validator
-	owner.remove_child(validator)
+	#var validator = owner.validator
+	#owner.remove_child(validator)
 	owner.stats_collector.reset()
 	change_state("SelectTestState")
 	can_reload = false
