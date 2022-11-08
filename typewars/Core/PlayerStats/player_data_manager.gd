@@ -9,7 +9,7 @@ signal changed
 # region Properties
 const DEFAULT_USERNAME = "local"
 const DEFAULT_DIRECTORY = "user://"
-const DEFAULT_SETTINGS_FILE = ""
+const DEFAULT_SETTINGS_FILE = "res://typewars/Levels/TypingTest/default_settings.tres"
 
 # username of the current player
 var username: String setget , get_username
