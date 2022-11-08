@@ -4,9 +4,9 @@ extends Control
 var content: Array
 
 # ui elements
-onready var ui_active: ActiveInputLabel
-onready var ui_queue: InputPromptQueue
-onready var ui_completed: Control
+onready var ui_active: ActiveInputLabel = $CenterContainer/ActivePromptLabel
+onready var ui_queue: InputPromptQueue = $InputPromptQueue
+onready var ui_completed: InputPromptCompleted = $InputPromptCompleted
 
 
 func bind_validator(validator: Validator):
