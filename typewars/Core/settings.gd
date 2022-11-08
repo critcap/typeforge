@@ -1,6 +1,14 @@
 class_name Settings
 extends Resource
 
+# Test Arguments
+export (int) var args_base_size: int = 60
+export (int) var args_base_mode: int  = 1
+
+
+# Test Factory Constants
+export (int) var factory_min_size: int = 3
+export (int) var factory_max_size: int = 8
 
 # Colors
 # input label color

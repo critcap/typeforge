@@ -11,7 +11,7 @@ const TESTS = {
 	"toprow":
 	{
 		"content": KeyboardRows.TOPROW,
-		"args": {"combine": ["homerow", "bottomrow"], "mode": 1, "size": 50}
+		"args": {"combine": ["homerow", "bottomrow"]}
 	},
 	"bottomrow":
 	{

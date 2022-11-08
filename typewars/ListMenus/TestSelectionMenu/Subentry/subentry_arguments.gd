@@ -2,10 +2,6 @@ class_name SubentryTestArguments
 extends SubentryBase
 # Subentry for Typing Test arguments
 
-# TODO add to base args
-const BASE_SIZE = 60
-const BASE_MODE = 1
-
 var _base_data: Dictionary
 var _combine: Array
 
@@ -43,8 +39,8 @@ func get_combine_values() -> Array:
 func setup(args: Dictionary) -> void:
 	if args.has("combine") && args["combine"] is Array && !args["combine"].empty():
 		_create_combine_buttons(args["combine"])
-	_setup_mode_button(args["mode"] if args.has("mode") else BASE_MODE)
-	_setup_size_input(args["size"] if args.has("size") else BASE_SIZE)
+	_setup_mode_button(args["mode"] if args.has("mode") else PlayerManager.settings.args_base_mode)
+	_setup_size_input(args["size"] if args.has("size") else PlayerManager.settings.args_base_size)
 
 	get_node(first_born).set_focus_previous(_size_input.get_line_edit().get_path())
 	get_node(first_born).focus_neighbour_left = _size_input.get_line_edit().get_path()

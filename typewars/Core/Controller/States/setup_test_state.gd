@@ -1,7 +1,6 @@
 class_name SetupTestState
 extends TestState
 
-const DEFAULT_MODE = TypingTestModes.RACE
 
 var prompt
 

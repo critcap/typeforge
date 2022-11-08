@@ -164,11 +164,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://typewars/Core/Controller/States/test_state.gd"
 }, {
-"base": "Node",
-"class": "TextGenerator",
-"language": "GDScript",
-"path": "res://typewars/Core/TypingTest/typing_test_generator.gd"
-}, {
 "base": "BaseTypingTestState",
 "class": "TimeAttackTestState",
 "language": "GDScript",
@@ -256,7 +251,6 @@ _global_script_class_icons={
 "SubentryBase": "",
 "SubentryTestArguments": "",
 "TestState": "",
-"TextGenerator": "",
 "TimeAttackTestState": "",
 "TypeRaceTestState": "",
 "TypingStatsAnalyzer": "",

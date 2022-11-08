@@ -1,10 +1,6 @@
 class_name TypingTestFactory
 extends Node
 
-const SIZE = 20
-const MIN_SIZE = 3
-const MAX_SIZE = 8
-
 
 static func assemble_test(raw: TypingTestData, args: Dictionary, tests: Dictionary) -> TypingTest:
 	var test = TypingTest.new()
@@ -46,7 +42,9 @@ static func generate_random_test(
 			if is_qwerty_layout()
 			else Qwertzyfier.qwertzify(data.join(" ")).split(" ")
 		)
-		test.content = generate_random_test_content(new_data, test.length, MIN_SIZE, MAX_SIZE)
+		var min_size = PlayerManager.settings.factory_min_size
+		var max_size = PlayerManager.settings.factory_max_size
+		test.content = generate_random_test_content(new_data, test.length, min_size, max_size)
 	else:
 		test.content = _generate_common_word(data, test.length)
 	return test
